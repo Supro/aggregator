@@ -1,0 +1,47 @@
+<div class="form">
+  <div class="buttons">
+    <button type="button" name="button" class="btn btn-success" {{action "saveSource"}} disabled={{model.formInvalid}}>Сохранить</button>
+    <button type="button" name="button" class="btn btn-danger" {{action "removeSource"}}>Удалить</button>
+    {{link-to "Отмена" "sources" class="btn btn-default" activeClass="" }}
+  </div>
+  <div class="{{ if model.titleValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="title">Название</label>
+    {{input value=model.title name="title" class="form-control" placeholder="Название"}}
+    {{#unless model.titleValid}}
+      <span class="help-block">Минимум 3 символа</span>
+    {{/unless}}
+  </div>
+  <div class="{{ if model.urlValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="url">Адрес</label>
+    {{input value=model.url name="url" class="form-control" placeholder="Адрес"}}
+    {{#unless model.urlValid}}
+      <span class="help-block">Формат: http://kremlin.ru</span>
+    {{/unless}}
+  </div>
+
+  <h4>Синонимы</h4>
+  <a {{action "addSource" 'sibling'}}>Добавить синоним к источнику</a>
+  <p class="help">
+    Например: если адрес источника - http://bbc.com,
+    <br />
+    можно в качестве синонима добавить http://bbc.co.uk
+  </p>
+  <div class="related">
+    {{#each model.siblings as |source|}}
+      {{partial 'sources/source'}}
+    {{/each}}
+  </div>
+
+  <h4>Суб-источники</h4>
+  <a {{action "addSource" 'child'}}>Добавить суб-источник</a>
+  <p class="help">
+    Например: если источник - http://vk.com,
+    <br />
+    то суб-источник будет группа вконтакте http://vk.com/cykling
+  </p>
+  <div class="related">
+    {{#each model.childrens as |source|}}
+      {{partial 'sources/source'}}
+    {{/each}}
+  </div>
+</div>

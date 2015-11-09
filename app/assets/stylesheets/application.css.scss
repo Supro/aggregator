@@ -1,0 +1,26 @@
+// Utilities
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+
+// Font-awesome
+// @import "font-awesome-sprockets";
+// @import "font-awesome";
+
+html, body {
+  background-color: #ededed;
+}
+
+#page-show {
+
+  .top {
+    padding: 20px;
+
+    .line-select {
+      float: left;
+    }
+
+    .categories {
+      float: right;
+    }
+  }
+}

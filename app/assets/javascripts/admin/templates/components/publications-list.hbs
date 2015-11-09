@@ -1,0 +1,4 @@
+{{input value=titleFilter class="form-control title-filter" placeholder="Поиск"}}
+{{#each filteredPublications as |publication|}}
+  {{publication-element publication=publication store=store publications=publications box=box category=category}}
+{{/each}}

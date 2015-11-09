@@ -1,0 +1,22 @@
+<div class="{{ if source.titleValid 'form-group has-success' 'form-group has-error' }}">
+  <label for="title">Название</label>
+  {{input value=source.title name="title" class="form-control" placeholder="Название"}}
+  {{#unless source.titleValid}}
+    <span class="help-block">Минимум 3 символа</span>
+  {{/unless}}
+</div>
+<div class="{{ if source.urlValid 'form-group has-success' 'form-group has-error' }}">
+  <!--<label for="url">Адрес</label>-->
+  {{input value=source.url name="url" class="form-control" placeholder="Адрес"}}
+  {{#unless source.urlValid}}
+    <span class="help-block">Формат: http://kremlin.ru</span>
+  {{/unless}}
+</div>
+<div class="form-group">
+  <div class="checkbox">
+    <label>
+      {{input type="checkbox" checked=source.willDestroy}}
+      Удалить
+    </label>
+  </div>
+</div>

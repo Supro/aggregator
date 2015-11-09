@@ -53,4 +53,30 @@ Aggregator::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :categories, only: [:show, :index, :create, :update, :destroy]
+
+      resources :lines, only: [:show, :create, :update, :destroy] do
+        post :insert_at, on: :member
+      end
+
+      resources :publications, only: [:index, :show, :create, :update, :destroy] do
+        post :insert_at, on: :member
+      end
+
+      resources :boxes, only: [:show, :update, :destroy]
+      resources :images, only: [:show, :create]
+
+      resources :sources, only: [:index, :show, :create, :update, :destroy] do
+        get :find_by_link, on: :member
+      end
+    end
+  end
+
+  namespace :admin do
+    get '*tail' => "home#index"
+    get '/' => "home#index"
+  end
 end

@@ -1,0 +1,12 @@
+<div id="page-show">
+  <div class="col-lg-12 col-md-12 top">
+    <div class="categories">
+      {{#each model as |page|}}
+        {{#link-to 'pages.show' page.id class="btn btn-default" title=page.timeFrom}}
+          {{page.title}}
+        {{/link-to}}
+      {{/each}}
+    </div>
+    {{outlet}}
+  </div>
+</div>
