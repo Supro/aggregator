@@ -1,0 +1,52 @@
+<div class="col-lg-8">
+  {{publication-edit-select socket=socket
+                            model_id=model.id
+                            valid=model.typeValid
+                            value=model.type
+                            selectors=settings.typeSelect
+                            field="type"
+                            error="Выберите тип публикации"
+                            title="Тип публикации"}}
+
+  {{publication-edit-input socket=socket
+                           model_id=model.id
+                           valid=model.titleValid
+                           value=model.title
+                           field="title"
+                           error="Минимум 3 символа, максимум 70"
+                           title=model.titleTitle}}
+
+  {{publication-edit-input socket=socket
+                           model_id=model.id
+                           valid=model.subTitleValid
+                           value=model.subTitle
+                           field="sub_title"
+                           error="Минимум 3 символа, максимум 120"
+                           title=model.subTitleTitle}}
+
+  {{publication-edit-textarea socket=socket
+                              model_id=model.id
+                              valid=model.contextValid
+                              value=model.context
+                              field="context"
+                              error="Минимум 3 символа, максимум 160"
+                              title=model.contextTitle}}
+
+  {{#if model.isNewsOrArticle}}
+    {{publication-edit-textarea socket=socket
+                                model_id=model.id
+                                valid=model.bodyValid
+                                value=model.body
+                                field="title"
+                                error="Минимум 3 буквы"
+                                title="Текст"}}
+  {{/if}}
+</div>
+
+<div class="col-lg-4">
+  {{#if model.isNews}}
+    {{publication-edit-source socket=socket
+                              store=store
+                              model=model}}
+  {{/if}}
+</div>

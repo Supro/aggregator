@@ -1,4 +1,5 @@
 //= require_tree ./adapters
+//= require_tree ./initializers
 //= require_tree ./mixins
 //= require_tree ./transforms
 //= require_tree ./models

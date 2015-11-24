@@ -1,6 +1,7 @@
 Aggregator.Box = DS.Model.extend({
   line: DS.belongsTo('line'),
   image: DS.belongsTo('image'),
+
   publications: DS.hasMany('publication'),
 
   type: DS.attr('string'),

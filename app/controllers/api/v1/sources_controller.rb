@@ -36,11 +36,15 @@ class Api::V1::SourcesController < ActionController::Base
   end
 
   def find_by_link
-    obj = Source.find_with_link(params[:id])
-    if obj.children
-      render json: { errors: "found as parent" }, status: :bad_request
+    obj = Source.find_with_link(params[:link])
+    if obj.source.present?
+      if obj.children
+        render json: { errors: "found as parent", source: Api::V1::SourceSerializer.new(obj.source).as_json }#, status: :bad_request
+      else
+        render json: obj.source, serializer: Api::V1::SourceSerializer
+      end
     else
-      render json: obj.source, serializer: Api::V1::SourceSerializer
+      render json: { errors: "not found" }
     end
   end
 

@@ -16,11 +16,6 @@
 #  index_boxes_on_image_id  (image_id)
 #  index_boxes_on_line_id   (line_id)
 #
-# Foreign Keys
-#
-#  fk_rails_46d9d366fc  (image_id => images.id)
-#  fk_rails_a5e18f9daf  (line_id => lines.id)
-#
 
 class Box < ActiveRecord::Base
   self.inheritance_column = '_type'

@@ -14,16 +14,13 @@
 #
 #  index_sources_on_source_id  (source_id)
 #
-# Foreign Keys
-#
-#  fk_rails_e3bdb4d463  (source_id => sources.id)
-#
 
 class Source < ActiveRecord::Base
   self.inheritance_column = '_type'
 
   belongs_to :source
   has_many :sources
+  has_many :publications
 
   # Nested
   accepts_nested_attributes_for :sources,
@@ -31,21 +28,23 @@ class Source < ActiveRecord::Base
                                 reject_if: proc { |attributes| attributes['title'].blank? || attributes['url'].blank? }
 
   def self.find_with_link(link)
-    source = nil
+    rsource = nil
 
     Source.where(source_id: nil).find_each do |source|
+
       if link =~ /#{source.url}/
         if source.got_childrens
           source.childrens.find_each do |new_source|
             if link =~ /#{new_source.url}/
               return OpenStruct.new source: new_source, children: false
             else
-              source = OpenStruct.new source: source, children: true
+              rsource = OpenStruct.new source: source, children: true
             end
           end
-          return source
+
+          return rsource
         else
-          return OpenStruct.new source: source, children: false
+          rsource = OpenStruct.new source: source, children: false
         end
       else
         if source.got_siblings
@@ -53,16 +52,16 @@ class Source < ActiveRecord::Base
             if link =~ /#{new_source.url}/
               return OpenStruct.new source: new_source, children: false
             else
-              source = OpenStruct.new source: nil, children: false
+              rsource = OpenStruct.new source: nil, children: false
             end
           end
         else
-          source = OpenStruct.new source: nil, children: false
+          rsource = OpenStruct.new source: nil, children: false
         end
       end
     end
 
-    source
+    return rsource
   end
 
   def embed_sources

@@ -1,0 +1,5 @@
+h3
+  = publication.title
+  - if publication.sub_title.present?
+    span= publication.sub_title
+p=publication.context

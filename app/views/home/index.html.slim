@@ -1,0 +1,74 @@
+.container
+  - @category.lines.order(position: :asc).each do |line|
+    - line.boxes.each do |box|
+      - if line.type.eql?('one')
+        .col-lg-12 style="background-image: url(#{box.image.present? ? box.image.url : ''}); background-size: cover; background-position: center;"
+          - if box.title.present?
+            h2= box.title
+          - box.publications.each do |publication|
+            - if box.type.eql?('one')
+              .col-lg-12
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('two')
+              .col-lg-6
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('three')
+              .col-lg-4
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('four')
+              .col-lg-3
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+
+      - if line.type.eql?('two')
+        .col-lg-6 style="background-image: url(#{box.image.present? ? box.image.url : ''}); background-size: cover; background-position: center;"
+          - if box.title.present?
+            h2= box.title
+          - box.publications.each do |publication|
+            - if box.type.eql?('one')
+              .col-lg-12
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('two')
+              .col-lg-6
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('three')
+              .col-lg-4
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('four')
+              .col-lg-3
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+
+      - if line.type.eql?('three')
+        .col-lg-4 style="background-image: url(#{box.image.present? ? box.image.url : ''}); background-size: cover; background-position: center;"
+          - if box.title.present?
+            h2= box.title
+          - box.publications.each do |publication|
+            - if box.type.eql?('one')
+              .col-lg-12
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('two')
+              .col-lg-6
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('three')
+              .col-lg-4
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('four')
+              .col-lg-3
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+
+      - if line.type.eql?('four')
+        .col-lg-3 style="background-image: url(#{box.image.present? ? box.image.url : ''}); background-size: cover; background-position: center;"
+          - if box.title.present?
+            h2= box.title
+          - box.publications.each do |publication|
+            - if box.type.eql?('one')
+              .col-lg-12
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('two')
+              .col-lg-6
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('three')
+              .col-lg-4
+                = render partial: '/home/partials/publication', locals: {publication: publication}
+            - if box.type.eql?('four')
+              .col-lg-3
+                = render partial: '/home/partials/publication', locals: {publication: publication}

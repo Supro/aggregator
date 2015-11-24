@@ -14,10 +14,6 @@
 #
 #  index_sources_on_source_id  (source_id)
 #
-# Foreign Keys
-#
-#  fk_rails_e3bdb4d463  (source_id => sources.id)
-#
 
 require 'rails_helper'
 

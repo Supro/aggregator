@@ -16,6 +16,9 @@ Aggregator.Router.map(function() {
     });
 
     this.route('publications', { resetNamespace: true }, function(){
+      this.route('index', { path: '/' }, function(){
+        this.route('inner', { path: '/' });
+      });
       this.route('new', { path: '/new' });
       this.route('show', { path: '/:id' });
       this.route('edit', { path: '/:id/edit' });

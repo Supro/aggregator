@@ -10,6 +10,15 @@
 #  position   :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  source_id  :integer
+#  sub_title  :string
+#  slug       :string
+#  type       :string
+#  url        :string
+#
+# Indexes
+#
+#  index_publications_on_source_id  (source_id)
 #
 
 FactoryGirl.define do

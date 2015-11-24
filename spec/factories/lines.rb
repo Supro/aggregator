@@ -14,10 +14,6 @@
 #
 #  index_lines_on_category_id  (category_id)
 #
-# Foreign Keys
-#
-#  fk_rails_8097e5d990  (category_id => categories.id)
-#
 
 FactoryGirl.define do
   factory :line do

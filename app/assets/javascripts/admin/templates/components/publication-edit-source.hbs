@@ -1,0 +1,89 @@
+<div class="{{ if model.sourceValid 'form-group has-success' 'form-group has-error' }}">
+  <label for="title">Ссылка на источник</label>
+  {{input value=model.url name="source" class="main-input form-control" placeholder="Ссылка на источник"}}
+  {{#unless model.sourceValid}}
+    <span class="help-block">Источник обязателен</span>
+  {{/unless}}
+</div>
+<div>
+  {{#if gotSourceError}}
+    {{#if sourceErrorNotFound}}
+      <span class="help-block">Источник не найден, нужно сначала добавить его в список</span>
+      {{#if gotParentSource }}
+        <div class="{{ if parentSource.titleValid 'form-group has-success' 'form-group has-error' }}">
+          <label for="title">Название</label>
+          {{input value=parentSource.title name="title" class="form-control" placeholder="Название"}}
+          {{#unless parentSource.titleValid}}
+            <span class="help-block">Минимум 3 символа</span>
+          {{/unless}}
+        </div>
+        <div class="{{ if parentSource.urlValid 'form-group has-success' 'form-group has-error' }}">
+          <!--<label for="url">Адрес</label>-->
+          {{input value=parentSource.url name="url" class="form-control" placeholder="Адрес"}}
+          {{#unless parentSource.urlValid}}
+            <span class="help-block">Формат: http://kremlin.ru</span>
+          {{/unless}}
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-success" disabled={{parentSource.formInvalid}} {{action "updateSource"}}>Добавить источник</button>
+          {{#if sourceSaving}}
+            <div>Сохраняю...</div>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/if}}
+    {{#if sourceErrorFoundAsParent}}
+      <span class="help-block">У указанного источника уже есть субисточники, но среди них не найден нужный, добавьте в базу нужный субисточник</span>
+      {{#if gotParentSource }}
+        <div class="{{ if newSource.titleValid 'form-group has-success' 'form-group has-error' }}">
+          <label for="title">Название</label>
+          {{input value=newSource.title name="title" class="form-control" placeholder="Название"}}
+          {{#unless newSource.titleValid}}
+            <span class="help-block">Минимум 3 символа</span>
+          {{/unless}}
+        </div>
+        <div class="{{ if newSource.urlValid 'form-group has-success' 'form-group has-error' }}">
+          <!--<label for="url">Адрес</label>-->
+          {{input value=newSource.url name="url" class="form-control" placeholder="Адрес"}}
+          {{#unless newSource.urlValid}}
+            <span class="help-block">Формат: http://kremlin.ru</span>
+          {{/unless}}
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-success" disabled={{newSource.formInvalid}} {{action "updateSource"}}>Сохранить субисточник</button>
+          {{#if sourceSaving}}
+            <div>Сохраняю...</div>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+  {{#if model.sourceValid}}
+    <div class="source-name">
+      Связано с источником:&nbsp;
+      <b>{{model.source.title}}</b>
+      <span class="remove" {{action "removeSource"}}>&times;</span>
+      <br />
+      <br />
+      {{input value=fakeTerm class="form-control title-filter" placeholder="Поиск по базе публикаций"}}
+      {{#if gotPublications}}
+        <p>
+          <br/>
+          Другие публикации данного источника.
+          <br/>
+          <b style="color: #d9534f;">Обязательно проверьте, нет ли данной новости в базе (поиск идет среди всех публикаций).</b>
+          <br/>
+          <br/>
+        </p>
+        <div class="publications-list">
+          {{#each publications as |publication|}}
+            {{#link-to 'publications.show' class="publication-element" target="_blank"}}
+              <div class="title">{{publication.title}}</div>
+              <time>{{publication.timeFrom}}</time>
+            {{/link-to}}
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

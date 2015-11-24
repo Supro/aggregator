@@ -1,0 +1,26 @@
+<div class="publications-table-container">
+  <div class="col-lg-4">
+    {{input value=term name="term" class="form-control" placeholder="Поиск"}}
+  </div>
+  <div class="col-lg-2">
+    <select onchange={{action "selectType" value="target.value"}} class="form-control">
+      {{#each settings.types as |typeChoice|}}
+        <option value={{typeChoice.id}} selected={{is-equal type typeChoice.id}}>{{typeChoice.label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <!--<div class="col-lg-2">
+    <select onchange={{action "selectAuthor" value="target.value"}} class="form-control">
+      {{#each types as |authorChoice|}}
+        <option value={{authorChoice.id}} selected={{is-equal type authorChoice.id}}>{{authorChoice.label}}</option>
+      {{/each}}
+    </select>
+  </div>-->
+  <div class="col-lg-2">
+    {{link-to 'Добавить' 'publications.new' class="btn btn-success"}}
+  </div>
+  <br />
+  <br />
+  <br />
+  {{outlet}}
+</div>

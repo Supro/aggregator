@@ -5,6 +5,7 @@ gem 'rails', '4.2.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'redis'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -40,6 +41,11 @@ gem 'sass-rails'#, github: 'rails/sass-rails', branch: 'master'
 #gem 'sprockets', github: 'rails/sprockets', branch: 'master'
 #gem 'babel-transpiler'
 
+gem 'doorkeeper'
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
 gem 'ember-rails'
 gem 'emblem-rails'
 gem 'active_model_serializers'
@@ -73,11 +79,15 @@ group :development, :test do
   # gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 
+gem 'tubesock'
+
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
   gem 'webmock'
 end
+
+gem 'puma'
 
 gem 'faker'
 gem 'factory_girl_rails'

@@ -36,11 +36,13 @@ Aggregator.SortableBoxComponent = Ember.Component.extend({
   }),
 
   showTitleInput: Ember.computed('box.type', 'lineType', function(){
-    return ['five'].contains(this.get('box.type')) && ['one'].contains(this.get('lineType'));
+    return ['five'].contains(this.get('box.type')) && ['one'].contains(this.get('lineType')) ||
+           ['three'].contains(this.get('box.type')) && ['two'].contains(this.get('lineType'));
   }),
 
   showImageInput: Ember.computed('box.type', 'lineType', function(){
-    return ['one', 'five'].contains(this.get('box.type')) && ['one'].contains(this.get('lineType'));
+    return ['one', 'five'].contains(this.get('box.type')) && ['one'].contains(this.get('lineType')) ||
+           ['one', 'three'].contains(this.get('box.type')) && ['two'].contains(this.get('lineType'));
   }),
 
   showTypeOne: Ember.computed('box.type', 'lineType', function(){

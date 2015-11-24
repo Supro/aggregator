@@ -1,0 +1,132 @@
+
+.publications-table-container {
+  padding: 0 30px;
+}
+
+.publications-table {
+
+  th {
+    font-weight: bold;
+    color: #777;
+    text-align: center;
+  }
+
+  .time, .views, .author {
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .title {
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #000;
+
+    &:hover {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+
+  .type {
+    color: #777;
+  }
+}
+
+.source-name {
+  span.remove {
+    cursor: pointer;
+  }
+}
+
+.slides {
+  .remove-slide {
+    cursor: pointer;
+  }
+}
+
+.slide-image-uploader {
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+
+  .image-container {
+    text-align: center;
+
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+
+  .remove-image {
+    cursor: pointer;
+  }
+
+  .progress {
+    display: none;
+  }
+
+  .error {
+    display: none;
+  }
+
+  .image-add {
+    display: none;
+  }
+}
+
+.publication-element {
+  //background-color: #e3e3e3;
+  padding: 5px 3px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+
+    .delete-pub {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+
+  .delete-pub {
+    opacity: 0;
+    font-size: 16px;
+    transition: opacity .5s;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  time {
+    color: #999;
+    font-size: 12px;
+  }
+}
+
+.publications-list {
+  margin-top: 25px;
+
+  .publication-element {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+
+  .title-filter {
+    //width: 100%;
+    margin-bottom: 10px;
+    //border: none;
+    //border-radius: 5px;
+    //padding: 10px;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="{{ if model.bodyValid 'form-group has-success' 'form-group has-error' }}">
+  <label for="body">Текст</label>
+  {{textarea value=model.body name="body" class="form-control" placeholder="Текст"}}
+  {{#unless model.bodyValid}}
+    <span class="help-block">Минимум 3 символа</span>
+  {{/unless}}
+</div>

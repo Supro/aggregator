@@ -30,53 +30,6 @@
       }
     }
 
-    .publications-list {
-      margin-top: 25px;
-
-      .publication-element {
-        background-color: #fff;
-        padding: 10px;
-        margin-bottom: 5px;
-      }
-
-      .title-filter {
-        //width: 100%;
-        margin-bottom: 10px;
-        //border: none;
-        //border-radius: 5px;
-        //padding: 10px;
-      }
-    }
-
-    .publication-element {
-      //background-color: #e3e3e3;
-      padding: 5px 3px;
-      margin-bottom: 3px;
-      cursor: pointer;
-
-      &:hover {
-        .delete-pub {
-          opacity: 1;
-        }
-      }
-
-      .delete-pub {
-        opacity: 0;
-        font-size: 16px;
-        transition: opacity .5s;
-      }
-
-      .title {
-        font-size: 14px;
-        font-weight: bold;
-      }
-
-      time {
-        color: #999;
-        font-size: 12px;
-      }
-    }
-
     .lines {
       margin-top: 25px;
       background-color: #fff;
@@ -122,8 +75,9 @@
           }
 
           .box-list {
-            height: 70px;
+            height: auto;
             clear: both;
+            overflow: hidden;
           }
 
           .title-input {
@@ -131,7 +85,7 @@
             margin-bottom: 10px;
             border: none;
             border-radius: 5px;
-            width: 250px;
+            width: 120px;
           }
 
           .menu {

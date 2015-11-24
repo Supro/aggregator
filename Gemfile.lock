@@ -56,6 +56,7 @@ GEM
     barber-emblem (0.1.2)
       barber (>= 0.4.1)
       emblem-source
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.5.1)
@@ -63,6 +64,7 @@ GEM
       sass (>= 3.3.0)
     builder (3.2.2)
     byebug (6.0.2)
+    cancancan (1.12.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -72,7 +74,16 @@ GEM
       safe_yaml (~> 1.0.0)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    devise (3.5.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    doorkeeper (2.2.1)
+      railties (>= 3.2)
     ember-data-source (2.1.0)
       ember-source (>= 1.8, < 3.0)
     ember-handlebars-template (0.4.2)
@@ -130,7 +141,9 @@ GEM
     minitest (5.8.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     pg (0.18.3)
+    puma (2.15.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -160,7 +173,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redis (3.2.1)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rmagick (2.15.2)
+    rolify (4.0.0)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -210,11 +227,16 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    tubesock (0.2.5)
+      rack (>= 1.5.0)
+      websocket (>= 1.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -224,6 +246,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    websocket (1.2.2)
 
 PLATFORMS
   ruby
@@ -234,8 +257,11 @@ DEPENDENCIES
   annotate
   bootstrap-sass
   byebug
+  cancancan
   carrierwave
   database_cleaner
+  devise
+  doorkeeper
   ember-rails
   emblem-rails
   factory_girl_rails
@@ -246,13 +272,17 @@ DEPENDENCIES
   jquery-ui-rails
   letter_opener
   pg
+  puma
   rails (= 4.2.4)
+  redis
   rmagick
+  rolify
   rspec-rails
   sass-rails
   sdoc
   shoulda-matchers
   slim-rails
+  tubesock
   uglifier (>= 1.3.0)
   web-console
   webmock

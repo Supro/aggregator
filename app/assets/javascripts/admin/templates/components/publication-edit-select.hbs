@@ -1,0 +1,11 @@
+<label for="title">{{title}}</label>
+<div class="{{ if valid 'main-input form-group has-success' 'main-input form-group has-error' }}">
+  <select onchange={{action "selectType" value="target.value"}} class="form-control">
+    {{#each selectors as |typeChoice|}}
+      <option value={{typeChoice.id}} selected={{is-equal value typeChoice.id}}>{{typeChoice.label}}</option>
+    {{/each}}
+  </select>
+  {{#unless valid}}
+    <span class="help-block">{{error}}</span>
+  {{/unless}}
+</div>
