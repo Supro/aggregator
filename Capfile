@@ -10,6 +10,7 @@ require 'capistrano/deploy'
 #
 require 'capistrano/bundler'
 require 'capistrano3/unicorn'
+require 'capistrano3/puma'
 require 'capistrano/sidekiq'
 #   require 'capistrano/sidekiq/monit'
 #   https://github.com/capistrano/rvm

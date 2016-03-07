@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.3'
 gem 'redis'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -82,11 +82,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
+  #gem 'capistrano3-puma'
   gem 'capistrano-sidekiq'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
-
-gem 'tubesock'
 
 group :test do
   gem 'database_cleaner'
