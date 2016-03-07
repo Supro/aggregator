@@ -78,12 +78,12 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console'
 
-  # gem 'capistrano'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-bundler'
-  # gem 'capistrano3-unicorn'
-  # gem 'capistrano-sidekiq'
-  # gem 'capistrano-rbenv', github: "capistrano/rbenv"
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 
 gem 'tubesock'
@@ -95,6 +95,9 @@ group :test do
 end
 
 gem 'puma'
+gem 'sidekiq'
+
+gem 'sitemap_generator'
 
 gem 'faker'
 gem 'factory_girl_rails'

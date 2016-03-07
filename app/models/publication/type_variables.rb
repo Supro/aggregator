@@ -7,6 +7,10 @@ class Publication < ActiveRecord::Base
         Publication::TypeVariables::Url.new(self).url
       end
 
+      def type_path
+        Publication::TypeVariables::Url.new(self).path
+      end
+
       def type_name
         Publication::TypeVariables::Name.new(self).name
       end

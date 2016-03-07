@@ -8,10 +8,14 @@ class Publication < ActiveRecord::Base
       end
 
       def url
+        "http://#{ActionMailer::Base.default_url_options[:host]}#{path}"
+      end
+
+      def path
         if publication.type.eql?('news')
-          "http://#{ActionMailer::Base.default_url_options[:host]}/#{publication.type}/#{publication.created_at.strftime("%Y/%m/%d")}/#{publication.slug}"
+          "/#{publication.type}/#{publication.created_at.strftime("%Y/%m/%d")}/#{publication.slug}"
         else
-          "http://#{ActionMailer::Base.default_url_options[:host]}/#{publication.type.pluralize}/#{publication.slug}"
+          "/#{publication.type.pluralize}/#{publication.slug}"
         end
       end
     end
