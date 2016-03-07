@@ -19,6 +19,14 @@ set :keep_releases, 3
 namespace :deploy do
   desc 'Restart application'
 
+  desc 'Shared storage folders and symlinks to the release'
+  task :file_system do
+    on roles(:all) do
+      execute "ln -nfs #{shared_path}/config/database.yml #{release_path}/config"
+      execute "ln -nfs #{shared_path}/config/secrets.yml #{release_path}/config"
+    end
+  end
+
   task :restart do
     invoke 'unicorn:restart'
   end
@@ -26,5 +34,6 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
+before 'deploy:migrate', 'deploy:file_system'
 after 'deploy:publishing', 'deploy:restart'
 after 'deploy:migrate', 'deploy:sitemap:refresh'

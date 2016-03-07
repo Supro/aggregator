@@ -10,7 +10,7 @@ require 'capistrano/deploy'
 #
 require 'capistrano/bundler'
 require 'capistrano3/unicorn'
-require 'capistrano3/puma'
+#require 'capistrano3/puma'
 require 'capistrano/sidekiq'
 #   require 'capistrano/sidekiq/monit'
 #   https://github.com/capistrano/rvm
@@ -26,7 +26,6 @@ require 'capistrano/rbenv'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
 require 'capistrano/sitemap_generator'
-require "whenever/capistrano"
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
