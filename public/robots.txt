@@ -1,10 +1,13 @@
-User-agent: Yandex
-Allow: /
-Disallow: /redaction*
-Host: fireimp.ru
+# User-agent: Yandex
+# Allow: /
+# Disallow: /redaction*
+# Host: fireimp.ru
+# 
+# User-agent: *
+# Allow: /
+# Disallow: /redaction*
+# 
+# Sitemap: http://fireimp.ru/sitemap.xml.gz
 
 User-agent: *
-Allow: /
-Disallow: /redaction*
-
-Sitemap: http://fireimp.ru/sitemap.xml.gz
+Disallow: /

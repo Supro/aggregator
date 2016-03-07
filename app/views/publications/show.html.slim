@@ -1,10 +1,10 @@
-- cache "#{@publication.class.to_s.downcase}_#{@publication.id}", skip_digest: true do
-  - if @publication.type.eql?("video")
-    = render partial: "publications/video"
-  - elsif @publication.type.eql?("guide")
-    = render partial: "publications/guide"
-  - else
-    = render partial: "publications/news"
+//- cache "#{@publication.class.to_s.downcase}_#{@publication.id}", skip_digest: true do
+- if @publication.type.eql?("video")
+  = render partial: "publications/video"
+- elsif @publication.type.eql?("guide")
+  = render partial: "publications/guide"
+- else
+  = render partial: "publications/news"
 
 css:
   body {

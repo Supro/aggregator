@@ -69,6 +69,7 @@ gem 'acts_as_list'
 
 gem 'rmagick', require: false
 gem 'carrierwave'
+gem "fog"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -93,7 +94,7 @@ group :test do
   gem 'webmock'
 end
 
-gem 'puma'
+gem 'unicorn'
 gem 'sidekiq'
 
 gem 'sitemap_generator'

@@ -22,10 +22,12 @@ class Image < ActiveRecord::Base
   mount_uploader :file, ImageUploader
 
   def url
-    "http://#{ActionMailer::Base.default_url_options[:host]}" + file.url
+    #"http://#{ActionMailer::Base.default_url_options[:host]}" + file.url
+    file.url
   end
 
   def thumb
-    "http://#{ActionMailer::Base.default_url_options[:host]}" + file.thumb.url
+    #"http://#{ActionMailer::Base.default_url_options[:host]}" + file.thumb.url
+    file.thumb.url
   end
 end

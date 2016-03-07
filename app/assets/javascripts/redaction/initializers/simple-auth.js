@@ -4,8 +4,8 @@ Aggregator.CustomAuthenticator = SimpleAuth.Authenticators.OAuth2.extend({
     requestData = Ember.$.extend(data, {
       username: data.username,
       password: data.password,
-      client_id: "14e00928ed2365344c5f3e840bff17ab255d89c55bbc9e6df093f80756fa56ff",
-      client_secret: "97f4a70459e88fc1d5bc101ca16316a4b417e401f82ed62b6a3fe3aae4c655b7"
+      client_id: "f3032ec9fbe3bc045bdec5a7d10ac34f3dd78562172ce289306e05bc39e0500d",
+      client_secret: "0a6069326062ce2282d85211fb895cc3d991409fb543919e90709ab378080d37"
     });
 
     return Ember.$.ajax({

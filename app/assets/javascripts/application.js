@@ -13,14 +13,14 @@ $(function(){
 var url = "";
 var title = "";
 
-new GetShare({
-  root: $(".twitter"),
-  network: "twitter",
-  share: {
-    url: url,
-    message: url + ' ' + title,
-  }
-});
+//new GetShare({
+//  root: $(".twitter"),
+//  network: "twitter",
+//  share: {
+//    url: url,
+//    message: url + ' ' + title,
+//  }
+//});
 
 new GetShare({
   root: $(".facebook"),
