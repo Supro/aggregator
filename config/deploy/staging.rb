@@ -10,9 +10,9 @@ set :deploy_to, '/home/deploy/apps/staging'
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{deploy@139.162.197.163}
-role :web, %w{deploy@139.162.197.163}
-role :db,  %w{deploy@139.162.197.163}
+role :app, %w{deploy@139.162.155.95}
+role :web, %w{deploy@139.162.155.95}
+role :db,  %w{deploy@139.162.155.95}
 
 # Extended Server Syntax
 # ======================
@@ -20,7 +20,7 @@ role :db,  %w{deploy@139.162.197.163}
 # definition into the server list. The second argument
 # something that quacks like a has can be used to set
 # extended properties on the server.
-server '139.162.197.163', user: 'deploy', roles: %w{web app}
+server '139.162.155.95', user: 'deploy', roles: %w{web app}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

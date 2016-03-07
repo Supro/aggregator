@@ -4,7 +4,7 @@ set :user, :deploy
 set :application, 'fireimp'
 
 set :deploy_via, :remote_cache
-set :repo_url, 'git@github.com:Supro/fireimp.git'
+set :repo_url, 'git@github.com:Supro/aggregator.git'
 set :scm, :git
 set :branch, ENV['BRANCH'] || 'master'
 
