@@ -1,0 +1,9 @@
+<div class="{{ if valid 'form-group has-success' 'form-group has-error' }}">
+  <div class="{{if cannotEdit 'hidden' 'visible'}}" style="float: right;">
+    <i class="glyphicon glyphicon-picture image-add-fake"></i>
+    <input name="image" type='file' class="image-add" />
+  </div>
+  <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+</div>

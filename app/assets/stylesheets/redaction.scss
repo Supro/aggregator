@@ -1,0 +1,28 @@
+$headings-font-family: 'GeometriaLight', sans-serif;
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+
+// Utilities
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+@import 'geometria-font';
+
+// Font-awesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "jquery-ui/core";
+
+@import "redaction/grid";
+@import "redaction/pages";
+@import "redaction/sources";
+@import "redaction/wbbtheme";
+@import "redaction/publications";
+@import "redaction/publication-edit-body";
+
+@import url(https://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic);
+
+.watchers {
+  background-color: #d3d3d3;
+  font-weight: bold;
+  padding: 10px 10px;
+}

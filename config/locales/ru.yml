@@ -1,0 +1,308 @@
+ru:
+  item:
+    types:
+      guide: 'Гайд'
+      news: 'Новость'
+  activerecord:
+    model:
+      post: 'Публикацию'
+    attributes:
+      post:
+        title: 'Заголовок публикации'
+        headline: 'Краткое описание публикации'
+        type: 'Тип публикации'
+        body: 'Текст публикации'
+        related: 'Относится к'
+        guide: 'Руководство'
+        news: 'Новость'
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: ! '%d.%m.%Y'
+      long: ! '%-d %B %Y'
+      short: ! '%-d %b'
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: около %{count} часов
+        many: около %{count} часов
+        one: около %{count} часа
+        other: около %{count} часа
+      about_x_months:
+        few: около %{count} месяцев
+        many: около %{count} месяцев
+        one: около %{count} месяца
+        other: около %{count} месяца
+      about_x_years:
+        few: около %{count} лет
+        many: около %{count} лет
+        one: около %{count} года
+        other: около %{count} лет
+      almost_x_years:
+        one: почти 1 год
+        few: почти %{count} года
+        many: почти %{count} лет
+        other: почти %{count} лет
+      half_a_minute: меньше минуты
+      less_than_x_minutes:
+        few: меньше %{count} минут
+        many: меньше %{count} минут
+        one: меньше %{count} минуты
+        other: меньше %{count} минуты
+      less_than_x_seconds:
+        few: меньше %{count} секунд
+        many: меньше %{count} секунд
+        one: меньше %{count} секунды
+        other: меньше %{count} секунды
+      over_x_years:
+        few: больше %{count} лет
+        many: больше %{count} лет
+        one: больше %{count} года
+        other: больше %{count} лет
+      x_days:
+        few: ! '%{count} дня'
+        many: ! '%{count} дней'
+        one: ! '%{count} день'
+        other: ! '%{count} дня'
+      x_minutes:
+        few: ! '%{count} минуты'
+        many: ! '%{count} минут'
+        one: ! '%{count} минуту'
+        other: ! '%{count} минуты'
+      x_months:
+        few: ! '%{count} месяца'
+        many: ! '%{count} месяцев'
+        one: ! '%{count} месяц'
+        other: ! '%{count} месяца'
+      x_seconds:
+        few: ! '%{count} секунды'
+        many: ! '%{count} секунд'
+        one: ! '%{count} секундy'
+        other: ! '%{count} секунды'
+    prompts:
+      day: День
+      hour: Часов
+      minute: Минут
+      month: Месяц
+      second: Секунд
+      year: Год
+  helpers:
+    select:
+      prompt: ! 'Выберите: '
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ' '
+        format: ! '%n %u'
+        precision: 2
+        separator: ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: ₽
+    format:
+      delimiter: ! ' '
+      precision: 3
+      separator: ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            few: миллиардов
+            many: миллиардов
+            one: миллиард
+            other: миллиардов
+          million:
+            few: миллионов
+            many: миллионов
+            one: миллион
+            other: миллионов
+          quadrillion:
+            few: квадриллионов
+            many: квадриллионов
+            one: квадриллион
+            other: квадриллионов
+          thousand:
+            few: тысяч
+            many: тысяч
+            one: тысяча
+            other: тысяч
+          trillion:
+            few: триллионов
+            many: триллионов
+            one: триллион
+            other: триллионов
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            few: байта
+            many: байт
+            one: байт
+            other: байта
+          gb: ГБ
+          kb: КБ
+          mb: МБ
+          tb: ТБ
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' и '
+      two_words_connector: ! ' и '
+      words_connector: ! ', '
+  time:
+    am: утра
+    formats:
+      default: ! '%a, %d %b %Y, %H:%M:%S %z'
+      long: ! '%-d %B %Y - %H:%M'
+      short: ! '%-d %b %H:%M'
+    pm: вечера
+  active_admin:
+    custom_pages:
+      titles:
+        static_link_file_upload: "Импорт ссылок из файла"
+    boolean:
+      true_value: 'Да'
+      false_value: 'Нет'
+  devise:
+    confirmations:
+      confirmed: "Ваш адрес электронной почты успешно подтвержден."
+      send_instructions: "В течение нескольких минут Вы получите письмо с инструкциями по подтверждению Вашего адреса электронной почты."
+      send_paranoid_instructions: "Если Ваш адрес email есть в нашей базе данных, то в течение нескольких минут Вы получите письмо с инструкциями по подтверждению Вашего адреса электронной почты."
+    failure:
+      already_authenticated: "Вы уже вошли в систему."
+      inactive: "Ваша учётная запись ещё не активирована."
+      invalid: "Неверные %{authentication_keys} или пароль."
+      locked: "Ваша учётная запись заблокирована."
+      last_attempt: "У Вас осталась еще одна попытка ввести пароль до блокировки."
+      not_found_in_database: "Неверный %{authentication_keys} или пароль."
+      timeout: "Ваш сеанс закончился. Пожалуйста, войдите в систему снова."
+      unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
+      unconfirmed: "Вы должны подтвердить Ваш адрес электронной почты."
+    mailer:
+      confirmation_instructions:
+        subject: "Инструкции по подтверждению учётной записи"
+      reset_password_instructions:
+        subject: "Инструкции по восстановлению пароля"
+      unlock_instructions:
+        subject: "Инструкции по разблокировке учётной записи"
+    omniauth_callbacks:
+      failure: "Вы не можете войти в систему с учётной записью из %{kind}, так как \"%{reason}\"."
+      success: "Вход в систему выполнен с учётной записью из %{kind}."
+    passwords:
+      no_token: "Эта страница доступна только при переходе по ссылке из письма с инструкциями для сброса пароля. Если Вы перешли по ссылке из письма, пожалуйста, убедитесь, что Вы использовали полный URL."
+      send_instructions: "В течение нескольких минут Вы получите письмо с инструкциями по восстановлению Вашего пароля."
+      send_paranoid_instructions: "Если Ваш адрес электронной почты есть в нашей базе данных, то в течение нескольких минут Вы получите письмо с инструкциями по восстановлению Вашего пароля."
+      updated: "Ваш пароль успешно изменён. Теперь Вы вошли в систему."
+      updated_not_active: "Ваш пароль успешно изменён."
+    registrations:
+      destroyed: "До свидания! Ваша учётная запись удалена. Надеемся вскоре снова увидеть Вас."
+      signed_up: "Добро пожаловать! Вы успешно зарегистрировались."
+      signed_up_but_inactive: "Вы успешно зарегистрировались. Тем не менее, Вы не можете войти, потому что Ваша учетная запись еще не активирована."
+      signed_up_but_locked: "Вы успешно зарегистрировались. Тем не менее, Вы не можете войти, потому что Ваша учетная запись заблокирована."
+      signed_up_but_unconfirmed: "На Ваш адрес электронной почты было отправлено сообщение с инструкциями по подтверждению Вашей учётной записи. Пожалуйста, проследуйте по ссылке из этого письма для активации Вашей учетной записи."
+      update_needs_confirmation: "Ваш аккаунт успешно обновлен, но нам необходимо проверить Ваш новый адрес электронной почты. Пожалуйста, проверьте свою электронную почту и проследуйте по ссылке для того чтобы подтвердить ваш адрес электронной почты."
+      updated: "Ваша учётная запись успешно обновлена."
+    sessions:
+      signed_in: "Вход в систему выполнен."
+      signed_out: "Выход из системы выполнен."
+      already_signed_out: "Выход из системы выполнен."
+    unlocks:
+      send_instructions: "В течение нескольких минут Вы получите письмо с инструкциями по разблокировке Вашей учётной записи."
+      send_paranoid_instructions: "Если Ваша учётная запись существует, то в течение нескольких минут Вы получите письмо с инструкциями по её разблокировке."
+      unlocked: "Ваша учётная запись разблокирована. Теперь Вы вошли в систему."
+  errors:
+    messages:
+      extension_white_list_error: "Доступные форматы изобаржений: %{allowed_types}"
+      already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
+      confirmation_period_expired: "должен быть подтвержден в течении %{period}, пожалуйста, запросите заново"
+      expired: "устарела. Пожалуйста, запросите новую"
+      not_found: "не найдена"
+      not_locked: "не заблокирована"
+      not_saved:
+        one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+        few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
+        many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
+        other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "Показана %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> из <b>%{total}</b>"
+      one_page:
+        display_entries:
+          few: "Показаны <b>%{count}</b> %{entry_name}"
+          many: "Показаны <b>%{count}</b> %{entry_name}"
+          one: "Показано <b>%{count}</b> %{entry_name}"
+          other: Показаны <b>все %{count}</b> %{entry_name}"
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      next: "Следующая &rsaquo;"
+      previous: "&lsaquo; Предыдущая"
+      truncate: "&hellip;"

@@ -1,0 +1,16 @@
+<div class="{{ if valid 'main-input form-group has-success' 'main-input form-group has-error' }}">
+  <label for="title">
+    {{title}}
+    {{#if cannotEdit}}
+      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+    {{/if}}
+  </label>
+  <select onchange={{action "selectType" value="target.value"}} class="form-control main-input" disabled={{cannotEdit}}>
+    {{#each selectors as |typeChoice|}}
+      <option value={{typeChoice.id}} selected={{is-equal value typeChoice.id}}>{{typeChoice.label}}</option>
+    {{/each}}
+  </select>
+  {{#unless valid}}
+    <span class="help-block">{{error}}</span>
+  {{/unless}}
+</div>

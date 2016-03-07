@@ -1,0 +1,37 @@
+<div class="background">
+  <div class="menu">
+    <div class="col-lg-8 col-md-8">
+      {{#if showImageInput}}
+        <i class="{{if gotImage 'glyphicon glyphicon-remove visible' 'hidden'}}" {{action "removeImage"}}></i>
+        <i class="{{if gotImage 'hidden image-add-fake ' 'glyphicon glyphicon-picture visible image-add-fake'}}"></i>
+      {{/if}}
+      <input name="image" type='file' class="image-add" />
+      {{#if showTypeOne}}
+        <div class="type {{if isTypeOne 'current'}}" {{action "setType" 'one' }}>1</div>
+      {{/if}}
+      {{#if showTypeTwo}}
+        <div class="type {{if isTypeTwo 'current'}}" {{action "setType" 'two' }}>2</div>
+      {{/if}}
+      {{#if showTypeThree}}
+        <div class="type {{if isTypeThree 'current'}}" {{action "setType" 'three' }}>3</div>
+      {{/if}}
+      {{#if showTypeFive}}
+        <div class="type {{if isTypeFive 'current'}}" {{action "setType" 'five' }}>5</div>
+      {{/if}}
+      {{#if showTitleInput}}
+        {{input value=box.title class="title-input"}}
+      {{/if}}
+    </div>
+    <div class="col-lg-4 col-md-4">
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+      <div class="error"></div>
+    </div>
+  </div>
+  <div class="box-list">
+    {{#each publicationsSorted as |publication|}}
+      {{publication-element publication=publication store=store publications=publicationsSorted boxType=box.type category=category box=box fakeFire=fakeFire}}
+    {{/each}}
+  </div>
+</div>

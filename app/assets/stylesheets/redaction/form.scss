@@ -1,0 +1,38 @@
+.wysibb {
+  img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+}
+.bb-code-editor {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 1px 1px #f3f3f3;
+  border: none;
+}
+
+form.form {
+  .form-inputs {
+    &.bb {
+      background-color: #f9f9f9;
+      padding: 10px;
+    }
+
+    &.white {
+      padding: 0px;
+      background-color: #fff;
+
+      .wysibb {
+        background-color: #fff;
+
+        .wysibb-toolbar {
+          background-color: #f9f9f9;
+        }
+
+        .wysibb-body, .bottom-resize-line {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

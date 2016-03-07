@@ -1,4 +1,5 @@
-class Api::V1::LinesController < ActionController::Base
+class Api::V1::LinesController < Api::V1::ApplicationController
+  before_action :doorkeeper_authorize!
   before_action :find_line, only: [:show, :insert_at, :update, :destroy]
 
   def show

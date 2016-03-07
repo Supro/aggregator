@@ -15,7 +15,7 @@ class CreatePublicationLocks < ActiveRecord::Migration
       t.integer :body_by
       t.boolean :url_locked
       t.integer :url_by
-      t.references :publication, index: true, foreign_key: true
+      t.references :publication, index: true
 
       t.timestamps null: false
     end

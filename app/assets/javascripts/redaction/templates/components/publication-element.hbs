@@ -1,0 +1,7 @@
+<div class="title">
+  {{#link-to 'publications.show' publication.id }}
+    {{publication.title}}
+  {{/link-to}}
+</div>
+<time>{{publication.timeFrom}}</time>
+<span class="delete-pub" {{action "removeFromBox"}}>&times;</span>

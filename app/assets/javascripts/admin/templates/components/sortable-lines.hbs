@@ -1,8 +1,0 @@
-{{#each lines as |line|}}
-  <div data-position={{line.position}} data-id={{line.id}} class="line {{line.type}}">
-    <div class="delete" {{action "destroyLine" line.id}}>&times;</div>
-    {{#each line.boxes as |box|}}
-      {{sortable-box box=box store=store publications=publications lineType=line.type category=category fakeFire=fakeFire}}
-    {{/each}}
-  </div>
-{{/each}}

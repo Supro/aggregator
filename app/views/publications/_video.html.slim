@@ -1,0 +1,52 @@
+- set_meta_tags title: @publication.title,
+                description: @publication.context,
+                og: { title: @publication.title, type: 'article', image: @publication.poster.url, description: @publication.context, url: "#{@publication.full_url}" },
+                twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.url }
+
+#publication-show.news
+  .publication-top
+    .background style="background-image: url(#{@publication.background.present? ? @publication.background.url : (@publication.poster.present? ? @publication.poster.url : '')});"
+      .inner-block
+        .info
+          .share.visible-md.visible-lg
+            a.facebook
+            a.googleplus
+            a.vk
+            a.twitter
+          .time
+            i.fa.fa-calendar-o style="color: #{@publication.type_color};"
+            time= I18n.l @publication.created_at, format: :long
+        .inner-content.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1
+          .holder
+            h1= @publication.title
+            h2= @publication.sub_title
+
+  .col-lg-8.col-md-8.publication-left
+    .content
+      .context= @publication.context
+      .body
+        .youtube-box
+          .youtube_iframe
+            = youtube_embed(@publication.body)
+  .col-lg-4.col-md-4.publication-right
+    .sticky
+      .adv Реклама
+
+  .col-lg-12.col-md-12.share.bottom
+    a.facebook
+    a.googleplus
+    a.vk
+    a.twitter
+
+script type="application/ld+json" {
+    "@context": "http://schema.org",
+    "@type": "VideoObject",
+    "name": "#{@publication.title}",
+    "description": "#{@publication.context}",
+    "thumbnailUrl": "#{@publication.poster.url}",
+    "uploadDate": "#{@publication.created_at.iso8601}",
+    //"duration": "PT1M33S",
+    //"contentUrl": "http://www.example.com/video123.flv",
+    //"embedUrl": "http://www.example.com/videoplayer.swf?video=123",
+    "interactionCount": "2347"
+  }

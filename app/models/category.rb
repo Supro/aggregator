@@ -11,6 +11,7 @@
 #
 
 class Category < ActiveRecord::Base
+  include FragmentCacheRemoveable
   # Validations
   validates :title, presence: true
 

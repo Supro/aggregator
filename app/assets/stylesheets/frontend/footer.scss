@@ -1,0 +1,144 @@
+footer#main {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 20px 0 0 0;
+  margin-top: 40px;
+  background-color: #222;
+  overflow: hidden;
+
+  .brand {
+    text-align: center;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .right-block-items {
+    h3 {
+      color: #f3f3f3;
+      font-size: 18px;
+      border-bottom: 1px solid #363636;
+
+      &.guides {
+        &:after {
+          background-color: $brand-danger;
+        }
+      }
+
+      &.news {
+        &:after {
+          background-color: $brand-primary;
+        }
+      }
+    }
+
+    ul {
+      li {
+        a {
+          .info {
+            .title {
+              color: #f3f3f3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #footer-menu {
+    h3 {
+      margin: 0 10px 0 10px;
+      padding: 0 0 10px 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.8px;
+      color: #f3f3f3;
+      font-size: 18px;
+      border-bottom: 1px solid #363636;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: $brand-warning;
+        height: 3px;
+        width: 20%;
+        margin-top: 8px;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 10px 10px 0 10px;
+
+      li {
+        text-align: center;
+
+        @media (min-width: $screen-md-min) {
+          text-align: left;
+        }
+
+        a {
+          display: block;
+          padding: 3px 20px;
+          line-height: 24px;
+            font-family: 'GeometriaLight', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+
+          @media (min-width: $screen-md-min) {
+            display: inline;
+            padding: 0;
+            line-height: 18px;
+          }
+        }
+      }
+
+      a {
+        color: #f3f3f3;
+
+        &:hover{
+          color: $color6;
+        }
+      }
+    }
+  }
+
+  #copyrights {
+    color: #f3f3f3;
+    font-size: 14px;
+  }
+
+  #footer-footer {
+    background-color: #353535;
+    clear: both;
+    padding: 20px 30px;
+    font-family: 'GeometriaLight', sans-serif;
+    font-weight: bold;
+    height: 60px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    text-align: left;
+
+    #copyrights {
+      color: #f3f3f3;
+      float: left;
+    }
+
+    .footer-body {
+      overflow: hidden;
+      padding-bottom: 20px;
+    }
+
+    .live-inter {
+      float: right;
+      margin-right: 10px;
+      padding-bottom: 20px;
+    }
+  }
+}

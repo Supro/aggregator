@@ -1,0 +1,10 @@
+a.publication-inner.three-block href="#{publication.full_url}"
+  .black-background
+    .info
+      .type style="color: #{publication.type_color};"
+        = publication.type_name
+      time= "#{time_ago_in_words publication.created_at} назад"
+      h3
+        = publication.title
+        - if publication.sub_title.present?
+          span= publication.sub_title

@@ -31,7 +31,6 @@ class Source < ActiveRecord::Base
     rsource = nil
 
     Source.where(source_id: nil).find_each do |source|
-
       if link =~ /#{source.url}/
         if source.got_childrens
           source.childrens.find_each do |new_source|
@@ -56,7 +55,7 @@ class Source < ActiveRecord::Base
             end
           end
         else
-          rsource = OpenStruct.new source: nil, children: false
+          rsource = OpenStruct.new source: nil, children: false if rsource.blank?
         end
       end
     end

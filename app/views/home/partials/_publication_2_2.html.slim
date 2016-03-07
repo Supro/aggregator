@@ -1,0 +1,8 @@
+a.publication-inner.two-block href="#{publication.full_url}"
+  .black-background
+    .info
+      .type style="color: #{publication.type_color};"
+        = publication.type_name
+      h3
+        = publication.title
+      time= "#{time_ago_in_words publication.created_at} назад"

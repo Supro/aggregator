@@ -1,0 +1,50 @@
+<table class="table table-striped publications-table">
+  <thead>
+    <tr>
+      <th>Заголовок</th>
+      <th>Добавлено</th>
+      <!--<th>Редактор</th>-->
+      <th>Статус</th>
+      <th>На главной</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |publication|}}
+      <tr>
+        <td>
+          {{#link-to 'publications.show' publication.id class="title"}}
+            {{publication.title}}
+          {{/link-to}}
+          <div class="type">
+            {{#if publication.isNews}}
+              Новость
+            {{/if}}
+            {{#if publication.isGuide}}
+              Гайды
+            {{/if}}
+            {{#if publication.isVideo}}
+              Видео
+            {{/if}}
+          </div>
+        </td>
+        <td class="time">{{publication.creator.name}} - {{publication.timeFullLLL}}</td>
+        <!--<td class="time">{{publication.editor.name}}</td>-->
+        <td>
+          {{#if publication.isApproved}}
+            Утверждена - {{publication.approveTimeFullLLL}}
+          {{else}}
+            На утверждении
+          {{/if}}
+          {{#if publication.canApprove}}
+            {{publication-approve publication=publication}}
+          {{/if}}
+        </td>
+        <td class="time">
+          {{#if publication.isOnMain}}
+            Да
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

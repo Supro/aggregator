@@ -1,0 +1,37 @@
+- set_meta_tags title: "Гайды к последним играм",
+                description: "Гайды"
+
+- cache "#{@category.class.to_s.downcase}_#{@category.id}", skip_digest: true do
+  - @category.lines.order(position: :asc).each do |line|
+    - if line.type.eql?('two')
+      .line-two
+        - line.boxes.each do |box|
+          .col-lg-6.col-md-6.box-one
+            - if box.type.eql?("three")
+              .publication-inner.three-title
+                h2= box.title
+            - box.publications.each do |publication|
+              - if box.type.eql?("one")
+                - if box.image.present?
+                  = render partial: '/home/partials/publication_2_1_with_image', locals: { publication: publication, box: box }
+                - else
+                  = render partial: '/home/partials/publication_2_1', locals: { publication: publication }
+              - if box.type.eql?("two")
+                .col-lg-6.col-md-6.box-one
+                  = render partial: '/home/partials/publication_2_2', locals: { publication: publication }
+              - if box.type.eql?("three")
+                = render partial: '/home/partials/publication_2_3', locals: { publication: publication }
+
+    - if line.type.eql?('three')
+      .line-three
+        - line.boxes.each do |box|
+          .col-lg-4.col-md-4.box-one
+            - box.publications.each do |publication|
+              = render partial: '/home/partials/publication_3_1', locals: { publication: publication }
+
+    - if line.type.eql?('four')
+      .line-four
+        - line.boxes.each do |box|
+          .col-lg-3.col-md-3.box-one
+            - box.publications.each do |publication|
+              = render partial: '/home/partials/publication_4_1', locals: { publication: publication }

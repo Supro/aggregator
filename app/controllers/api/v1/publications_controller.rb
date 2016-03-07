@@ -1,8 +1,11 @@
-class Api::V1::PublicationsController < ActionController::Base
-  before_action :find_publication, only: [:show, :insert_at, :update, :destroy]
+class Api::V1::PublicationsController < Api::V1::ApplicationController
+  before_action :doorkeeper_authorize!
+  before_action :find_publication, only: [:show, :insert_at, :move_to_approved,
+                                          :move_to_pending, :update, :destroy]
+  before_action :set_creator, only: [:create]
 
   def index
-    render json: Publication.where("title LIKE ?", "%#{params[:term]}%").order(updated_at: :desc), each_serializer: Api::V1::PublicationIndexSerializer
+    render json: Publication.search(params), each_serializer: Api::V1::PublicationIndexSerializer
   end
 
   def show
@@ -43,11 +46,23 @@ class Api::V1::PublicationsController < ActionController::Base
     render json: @publication, serializer: Api::V1::PublicationSerializer
   end
 
+  def move_to_approved
+    if @publication.approve
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
+  end
+
+  def move_to_pending
+    if @publication.move_to_pending
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
+  end
+
 private
 
   def publication_params
-    params[:publication].permit(:type, :slug, :title, :sub_title,
-                                :context, :body, :url, :source_id,
+    params[:publication].permit(:type, :slug, :title, :sub_title, :editor_id, :state,
+                                :context, :body, :url, :source_id, :creator_id,
                                 slides_attributes: [:id, :title, :body, :publication_id, :image_id, :_destroy],
                                 images_attributes: [:id, :imageable_id, :imageable_type],
                                 publication_lock_attributes: [:slug_locked, :slug_by,
@@ -57,6 +72,10 @@ private
                                                               :context_locked, :context_by,
                                                               :body_locked, :body_by,
                                                               :url_locked, :url_by])
+  end
+
+  def set_creator
+    params[:publication][:creator_id] = current_user.id
   end
 
   def find_publication

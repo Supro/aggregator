@@ -1,0 +1,47 @@
+.line-one, .line-two, .line-three, .line-four {
+  padding:0;
+  margin: 0 0 20px 0;
+
+  h2 {}
+
+  h3 {
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: bold;
+
+    a {
+      color: #333;
+      decoration: none;
+
+      &:hover {
+        decoration: none;
+      }
+    }
+
+    span {
+      font-weight: normal;
+      margin-left: 5px;
+    }
+  }
+
+  time {
+    color: #999;
+    font-size: 14px;
+  }
+
+  .type {
+    display: block;
+    position: absolute;
+    margin-top: -200px;
+    font-size: 12px;
+    padding: 0px 10px 3px 10px;
+    color: #fff;
+  }
+
+  &.width-background {
+    h3 {
+      color: #fff;
+    }
+  }
+}

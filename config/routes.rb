@@ -6,8 +6,22 @@ Aggregator::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  get '/guides' => 'home#guides'
 
-  get '/:id' => 'categories#show'
+  get '/about' => 'home#about'
+  get '/contacts' => 'home#contacts'
+
+  get '/:type/:year/:month/:day/:slug' => 'publications#show'
+  get '/guides/:slug' => 'publications#show'
+  get '/news/:slug' => 'publications#show'
+  get '/videos/:slug' => 'publications#show'
+
+  namespace :feeds do
+    resources :publications, only: [:index]
+    resources :news, only: [:index]
+  end
+
+  #get '/:id' => 'categories#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -60,6 +74,13 @@ Aggregator::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :search, only: [:index]
+
+      resources :users, only: [:index, :show, :create, :update] do
+        get 'me', on: :collection
+      end
+
+      resources :tweets, only: [:show]
       resources :categories, only: [:show, :index, :create, :update, :destroy]
 
       resources :lines, only: [:show, :create, :update, :destroy] do
@@ -67,7 +88,11 @@ Aggregator::Application.routes.draw do
       end
 
       resources :publications, only: [:index, :show, :create, :update, :destroy] do
-        post :insert_at, on: :member
+        member do
+          post :insert_at
+          put :move_to_approved
+          put :move_to_pending
+        end
       end
 
       #resources :publication_edit, only: [] do
@@ -77,7 +102,7 @@ Aggregator::Application.routes.draw do
       get '/publication_edit/listen' => 'publication_edit#listen', as: :socket
 
       resources :boxes, only: [:show, :update, :destroy]
-      resources :images, only: [:show, :create]
+      resources :images, only: [:show, :create, :destroy]
 
       resources :sources, only: [:index, :show, :create, :update, :destroy] do
         get :find_by_link, on: :collection
@@ -86,7 +111,7 @@ Aggregator::Application.routes.draw do
   end
 
 
-  namespace :admin do
+  namespace :redaction do
     get '*tail' => "home#index"
     get '/' => "home#index"
   end

@@ -1,0 +1,12 @@
+<div class="{{ if valid 'form-group has-success' 'form-group has-error' }}">
+  <label for="title">
+    {{title}}
+    {{#if cannotEdit}}
+      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+    {{/if}}
+  </label>
+  {{textarea value=value class="main-input form-control" placeholder=placeholder disabled=cannotEdit}}
+  {{#unless valid}}
+    <span class="help-block">{{error}}</span>
+  {{/unless}}
+</div>

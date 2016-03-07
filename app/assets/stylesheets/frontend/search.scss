@@ -1,0 +1,101 @@
+.search {
+  height: 50px;
+  width: 100%;
+
+  background-color: #fff;
+
+  $tl: 0.6s; // transition length
+
+  .container {
+    padding-top: 0;
+
+    i {
+      position: absolute;
+      margin-left: 10px;
+      margin: 16px 0 0 12px;
+    }
+
+    .twitter-typeahead {
+      width: 100%;
+      z-index: 1;
+
+      .tt-hint {
+        line-height: 16px;
+        padding: 10px 10px 10px 35px;
+        margin-top: 6px;
+        border: none;
+        width: 100%;
+      }
+
+      .tt-menu {
+        width: 100%;
+        background-color: #f3f3f3;
+
+        .empty-message {
+          padding: 15px;
+          font-weight: bold;
+        }
+
+        .typeahead-element {
+          display: block;
+          color: $color5;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid #e3e3e3;
+          transition: background-color 0.5s;
+          display: table;
+          position: relative;
+          width: 100%;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.025);
+          }
+
+          .typeahead-left {
+            display: table-cell;
+            width: 90px;
+            height: 90px;
+            background-position: center;
+            background-size: cover;
+          }
+
+          .typeahead-right {
+            padding: 10px 25px;
+            display: table-cell;
+            height: 75px;
+            //width: 100%;
+
+            .typeahead-title {
+              height: 25px;
+              font-weight: bold;
+            }
+
+            .typeahead-sub-title {
+              height: 25px;
+            }
+
+            .typeahead-type {
+              height: 25px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    #top-search {
+      line-height: 16px;
+      padding: 10px 10px 10px 35px;
+      margin-top: 6px;
+      width: 100%;
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 25px;
+      border: none;
+    }
+  }
+}

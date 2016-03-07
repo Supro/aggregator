@@ -4,11 +4,19 @@ html
     meta charset='utf-8'
     meta content='width=device-width' name='viewport'
     meta http-equiv='X-UA-Compatible' content='IE=edge'
-    //= display_meta_tags
+    = display_meta_tags
     = yield :head
+    link rel="alternate" type="application/rss+xml" title="Fireimp.ru - последние публикации" href="http://fireimp.ru/feeds/publications.rss"
+    link rel="alternate" type="application/atom+xml" title="Fireimp.ru - последние новости" href="http://fireimp.ru/feeds/news.rss"
 
   body
-    = yield
+    .loader style="position: fixed; width: 100%; height: 100%; z-index: 100001; top: 0; left: 0; background-color: #f3f3f3;"
+    - cache :header
+      = render partial: 'partials/header'
+    .container.main
+      = yield
+    - cache :footer
+      = render partial: 'partials/footer'
 
     = stylesheet_link_tag :application
     = javascript_include_tag :application

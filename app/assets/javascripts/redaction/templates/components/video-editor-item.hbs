@@ -1,0 +1,19 @@
+<div class="item-menu">
+  <a class="delete-item"{{action "removeItem"}}>
+    <i class="fa fa-trash"></i>
+  </a>
+  <div class="handle">
+    <i class="fa fa-arrows-alt"></i>
+  </div>
+  <div class="type">Видео</div>
+</div>
+<div class="tweet item-content">
+  <div class="form-group">
+    {{input value=source class="source-input form-control" placeholder="Ссылка на youtube" disabled=disabled}}
+  </div>
+  <div class="video-content">
+    {{#if youtubeValid}}
+      {{{youtubeEmbed}}}
+    {{/if}}
+  </div>
+</div>

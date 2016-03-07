@@ -1,0 +1,29 @@
+<div class="item-menu">
+  <a class="delete-item"{{action "removeItem"}}>
+    <i class="fa fa-trash"></i>
+  </a>
+  <div class="handle">
+    <i class="fa fa-arrows-alt"></i>
+  </div>
+  <div class="type">Цитата</div>
+</div>
+<div class="quote item-content">
+  <div class="form-group">
+    <label for="link">
+      Ссылка на источник цитаты (по умолчанию ссылка на источник)
+    </label>
+    {{input value=link class="main-input form-control" placeholder="Ссылка на источник цитаты" disabled=disabled}}
+  </div>
+  <div class="form-group">
+    <label for="source">
+      Название источника (по умолчанию название источника)
+    </label>
+    {{input value=source class="main-input form-control" placeholder="Название источника" disabled=disabled}}
+  </div>
+  <div class="form-group">
+    <label for="text">
+      Название источника (по умолчанию название источника)
+    </label>
+    {{textarea value=text class="main-input form-control" placeholder="Название источника" disabled=disabled}}
+  </div>
+</div>

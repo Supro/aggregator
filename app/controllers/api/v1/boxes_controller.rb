@@ -1,4 +1,5 @@
-class Api::V1::BoxesController < ActionController::Base
+class Api::V1::BoxesController < Api::V1::ApplicationController
+  before_action :doorkeeper_authorize!
   before_action :find_box, only: [:show, :update, :destroy]
 
   def show

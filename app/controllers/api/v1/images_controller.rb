@@ -1,10 +1,11 @@
 # require 'image_optim'
 
 module Api::V1
-  class ImagesController < ActionController::Base
+  class ImagesController < Api::V1::ApplicationController
     ### Callbacks
-    before_filter :create_tmp_file, only: [:create]
-    before_filter :find_image, only: [:show]
+    before_action :doorkeeper_authorize!, only: [:destroy]
+    before_action :create_tmp_file, only: [:create]
+    before_action :find_image, only: [:show, :destroy]
 
     def show
       render json: @image, serializer: Api::V1::ImageSerializer, status: :ok
@@ -12,6 +13,10 @@ module Api::V1
 
     def create
       upload_file
+    end
+
+    def destroy
+      render json: { status: @image.destroy }, status: :ok
     end
 
   private

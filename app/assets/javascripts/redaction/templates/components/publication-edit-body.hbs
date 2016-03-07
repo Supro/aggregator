@@ -1,0 +1,101 @@
+<div class="{{ if valid 'form-group has-success' 'form-group has-error' }}">
+  <label for="title">
+    {{title}}
+    {{#if cannotEdit}}
+      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+    {{/if}}
+  </label>
+  <div class="body-edit-buttons">
+    <div class="button" {{action "addParagraph"}} title="Абзац">
+      <i class="fa fa-paragraph"></i>
+    </div>
+    <div class="button" {{action "addHeading"}} title="Подзаголовок">
+      <i class="fa fa-header"></i>
+    </div>
+    <div class="button" {{action "addImage"}} title="Изображение">
+      <i class="fa fa-image"></i>
+    </div>
+    <div class="button" {{action "addVideo"}} title="Видео">
+      <i class="fa fa-youtube"></i>
+    </div>
+    <div class="button" {{action "addTweet"}} title="Твит">
+      <i class="fa fa-twitter"></i>
+    </div>
+    <div class="button" {{action "addQuote"}} title="Цитата">
+      <i class="fa fa-quote-left"></i>
+    </div>
+    <div class="button" {{action "addAdv"}} title="Реклама">
+      <i class="fa fa-money"></i>
+    </div>
+  </div>
+  <div class="body-edit-content">
+    {{#each bodyJSON as |item|}}
+      {{#if item.isParagraph}}
+        {{paragraph-editor-item socket=socket
+                                session=session
+                                model=model
+                                json=bodyJSON
+                                body=model.body
+                                disabled=cannotEdit
+                                currentItem=item}}
+      {{/if}}
+      {{#if item.isHeading}}
+        {{heading-editor-item socket=socket
+                              session=session
+                              model=model
+                              json=bodyJSON
+                              body=model.body
+                              disabled=cannotEdit
+                              currentItem=item}}
+      {{/if}}
+      {{#if item.isTweet}}
+        {{tweet-editor-item socket=socket
+                            session=session
+                            model=model
+                            json=bodyJSON
+                            body=model.body
+                            disabled=cannotEdit
+                            currentItem=item}}
+      {{/if}}
+      {{#if item.isQuote}}
+        {{quote-editor-item socket=socket
+                            session=session
+                            model=model
+                            json=bodyJSON
+                            body=model.body
+                            disabled=cannotEdit
+                            currentItem=item}}
+      {{/if}}
+      {{#if item.isVideo}}
+        {{video-editor-item socket=socket
+                            session=session
+                            model=model
+                            json=bodyJSON
+                            body=model.body
+                            disabled=cannotEdit
+                            currentItem=item}}
+      {{/if}}
+      {{#if item.isImage}}
+        {{image-editor-item socket=socket
+                            session=session
+                            model=model
+                            json=bodyJSON
+                            body=model.body
+                            disabled=cannotEdit
+                            currentItem=item}}
+      {{/if}}
+      {{#if item.isAdv}}
+        {{adv-editor-item socket=socket
+                          session=session
+                          model=model
+                          json=bodyJSON
+                          body=model.body
+                          disabled=cannotEdit
+                          currentItem=item}}
+      {{/if}}
+    {{/each}}
+  </div>
+  {{#unless valid}}
+    <span class="help-block">{{error}}</span>
+  {{/unless}}
+</div>

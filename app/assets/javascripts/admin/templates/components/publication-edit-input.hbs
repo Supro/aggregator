@@ -1,7 +1,0 @@
-<div class="{{ if valid 'form-group has-success' 'form-group has-error' }}">
-  <label for="title">{{title}}</label>
-  {{input value=value class="main-input form-control" placeholder=placeholder disabled=locked}}
-  {{#unless valid}}
-    <span class="help-block">{{error}}</span>
-  {{/unless}}
-</div>

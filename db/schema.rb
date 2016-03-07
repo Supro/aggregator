@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124140903) do
+ActiveRecord::Schema.define(version: 20160304220405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,27 +124,45 @@ ActiveRecord::Schema.define(version: 20151124140903) do
     t.boolean  "url_locked"
     t.integer  "url_by"
     t.integer  "publication_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.boolean  "background_locked"
+    t.integer  "background_by"
+    t.boolean  "poster_locked"
+    t.integer  "poster_by"
   end
 
   add_index "publication_locks", ["publication_id"], name: "index_publication_locks_on_publication_id", using: :btree
+
+  create_table "publication_watchers", force: :cascade do |t|
+    t.integer  "user_ids",       default: [],              array: true
+    t.integer  "publication_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "publication_watchers", ["publication_id"], name: "index_publication_watchers_on_publication_id", using: :btree
 
   create_table "publications", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.text     "context"
     t.string   "state"
-    t.integer  "position",   default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "position",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "source_id"
     t.string   "sub_title"
     t.string   "slug"
     t.string   "type"
     t.string   "url"
+    t.integer  "creator_id"
+    t.integer  "editor_id"
+    t.datetime "approved_at"
   end
 
+  add_index "publications", ["creator_id"], name: "index_publications_on_creator_id", using: :btree
+  add_index "publications", ["editor_id"], name: "index_publications_on_editor_id", using: :btree
   add_index "publications", ["source_id"], name: "index_publications_on_source_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
@@ -213,6 +231,7 @@ ActiveRecord::Schema.define(version: 20151124140903) do
   add_foreign_key "boxes", "lines"
   add_foreign_key "lines", "categories"
   add_foreign_key "publication_locks", "publications"
+  add_foreign_key "publication_watchers", "publications"
   add_foreign_key "publications", "sources"
   add_foreign_key "slides", "images"
   add_foreign_key "slides", "publications"

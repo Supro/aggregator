@@ -1,18 +1,23 @@
-class Api::V1::UsersController < Api::V1::ApiController
+class Api::V1::UsersController < Api::V1::ApplicationController
   load_and_authorize_resource except: [:me]
   before_action :doorkeeper_authorize!, only: :update
 
   def me
-    render json: current_user, serializer: Api::V1:UserFullSerializer
+    render json: current_user, serializer: Api::V1::UserFullSerializer, root: :user
+  end
+
+  def index
+    users = User.where(id: params[:ids])
+    render json: users, each_serializer: Api::V1::UserSerializer
   end
 
   def show
-    render json: @user, serializer: is_current_user ? Api::V1:UserFullSerializer : Api::V1:UserSerializer
+    render json: @user, serializer: (is_current_user ? Api::V1::UserFullSerializer : Api::V1::UserSerializer), root: :user
   end
 
   def create
     if @user.save
-      render json: @user, serializer: Api::V1:UserFullSerializer
+      render json: @user, serializer: Api::V1::UserFullSerializer, root: :user
     else
       render json: { errors: @user.errors }, status: :bad_request
     end
@@ -20,7 +25,7 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def update
     if @user.update(update_params)
-      render json: @user, serializer: Api::V1:UserFullSerializer
+      render json: @user, serializer: Api::V1::UserFullSerializer, root: :user
     else
       render json: { errors: @user.errors }, status: :bad_request
     end

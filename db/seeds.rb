@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create email: 'budnikov1990@gmail.com', name: 'Supro', password: '123456789', password_confirmation: '123456789'
 
 ['Новости', 'Статьи', 'Обзоры'].each do |category|
   Category.create(title: category)

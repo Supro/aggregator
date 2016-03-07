@@ -1,0 +1,20 @@
+<form {{action 'authenticate' on='submit'}} class="col-lg-6 col-lg-offset-3 col-md-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+  <b>{{errorMessage}}</b>
+  <div class="{{ if usernameValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="identification">Email</label>
+    {{input value=identification name="identification" class="form-control" placeholder="Email"}}
+    {{#unless usernameValid}}
+      <span class="help-block">Введите email</span>
+    {{/unless}}
+  </div>
+  <div class="{{ if passwordValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="password">Пароль</label>
+    {{input value=password name="password" class="form-control" type="password" placeholder="Пароль"}}
+    {{#unless passwordValid}}
+      <span class="help-block">Введите пароль</span>
+    {{/unless}}
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Войти" />
+  </div>
+</form>

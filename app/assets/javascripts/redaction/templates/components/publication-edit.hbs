@@ -1,0 +1,146 @@
+<div class="col-lg-8" style="margin-bottom: 50px;">
+  <div class="watchers">
+    {{#if model.publicationWatcher.gotUsers}}
+      Смотрят:&nbsp;
+      {{model.publicationWatcher.usersString}}
+    {{/if}}
+  </div>
+
+  <div class="delete-block">
+    {{#if model.isOnMain}}
+      Нельзя удалить, опубликовано на главной
+    {{/if}}
+    <button {{action 'removePublication'}} class="btn btn-danger" type="button" disabled={{model.isOnMain}}>Удалить публикацию</button>
+  </div>
+
+  {{publication-edit-select socket=socket
+                            session=session
+                            model_id=model.publicationLock.id
+                            valid=model.typeValid
+                            value=model.type
+                            selectors=settings.typeSelect
+                            locked=model.publicationLock.typeLocked
+                            lockedBy=model.publicationLock.typeLockedBy
+                            field="type"
+                            error="Выберите тип публикации"
+                            title="Тип публикации"}}
+
+  {{image-uploader socket=socket
+                   session=session
+                   model=model
+                   modelField="poster"
+                   imageableType="PublicationPoster"
+                   store=store
+                   locked=model.publicationLock.posterLocked
+                   lockedBy=model.publicationLock.posterLockedBy
+                   valid=model.posterValid
+                   title="Постер публикации"
+                   value=model.poster.url}}
+
+  {{image-uploader socket=socket
+                   session=session
+                   model=model
+                   modelField="background"
+                   imageableType="PublicationBackground"
+                   store=store
+                   locked=model.publicationLock.backgroundLocked
+                   lockedBy=model.publicationLock.backgroundLockedBy
+                   valid=model.backgroundValid
+                   title="Фон заголовка публикации (по умолчанию используется постер)"
+                   value=model.background.url}}
+
+  {{publication-edit-input socket=socket
+                           session=session
+                           model_id=model.publicationLock.id
+                           valid=model.titleValid
+                           value=model.title
+                           locked=model.publicationLock.titleLocked
+                           lockedBy=model.publicationLock.titleLockedBy
+                           field="title"
+                           error="Минимум 3 символа, максимум 70"
+                           title=model.titleTitle}}
+
+
+  {{#if model.isPending}}
+    {{publication-edit-input socket=socket
+                             session=session
+                             model_id=model.publicationLock.id
+                             valid=model.slugValid
+                             value=model.slug
+                             locked=model.publicationLock.slugLocked
+                             lockedBy=model.publicationLock.slugLockedBy
+                             field="slug"
+                             error="Минимум 3 символа, максимум 70"
+                             title=model.slugTitle}}
+  {{else}}
+    {{publication-edit-input socket=socket
+                             session=session
+                             model_id=model.publicationLock.id
+                             valid=model.slugValid
+                             value=model.slug
+                             locked=true
+                             field="slug"
+                             error="Минимум 3 символа, максимум 70"
+                             title=model.slugTitle}}
+  {{/if}}
+
+  {{publication-edit-input socket=socket
+                           session=session
+                           model_id=model.publicationLock.id
+                           valid=model.subTitleValid
+                           value=model.subTitle
+                           locked=model.publicationLock.subTitleLocked
+                           lockedBy=model.publicationLock.subTitleLockedBy
+                           field="sub_title"
+                           error="Минимум 3 символа, максимум 120"
+                           title=model.subTitleTitle}}
+
+  {{publication-edit-textarea socket=socket
+                              session=session
+                              model_id=model.publicationLock.id
+                              valid=model.contextValid
+                              value=model.context
+                              locked=model.publicationLock.contextLocked
+                              lockedBy=model.publicationLock.contextLockedBy
+                              field="context"
+                              error="Минимум 100 символа, максимум 200"
+                              title=model.contextTitle}}
+
+  {{#if model.isNewsOrGuide}}
+    {{publication-edit-body socket=socket
+                            session=session
+                            model=model
+                            model_id=model.publicationLock.id
+                            valid=model.bodyValid
+                            value=model.body
+                            locked=model.publicationLock.bodyLocked
+                            lockedBy=model.publicationLock.bodyLockedBy
+                            field="body"
+                            error="Минимум 3 буквы"
+                            title="Текст"}}
+  {{/if}}
+
+  {{#if model.isVideo}}
+    {{publication-edit-input socket=socket
+                             session=session
+                             model_id=model.publicationLock.id
+                             valid=model.bodyValid
+                             value=model.body
+                             locked=model.publicationLock.bodyLocked
+                             lockedBy=model.publicationLock.bodyLockedBy
+                             field="body"
+                             error="Формат: https://www.youtube.com/watch?v=uFau8BFbg3s"
+                             title="Ссылка на видео"}}
+  {{/if}}
+</div>
+
+<div class="col-lg-4">
+  {{#if model.isNews}}
+    {{publication-edit-source socket=socket
+                              session=session
+                              store=store
+                              locked=model.publicationLock.urlLocked
+                              lockedBy=model.publicationLock.urlLockedBy
+                              model=model}}
+  {{/if}}
+</div>

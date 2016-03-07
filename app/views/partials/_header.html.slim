@@ -1,0 +1,15 @@
+nav#main-menu
+  .brand
+    a href=root_path
+      img src=asset_path('logo.png')
+
+  ul
+    li
+      = link_to 'Главная', root_path
+    li
+      = link_to 'Руководства', guides_path
+
+.search
+  .container
+    i.fa.fa-search
+    input#top-search type="text" name="q"

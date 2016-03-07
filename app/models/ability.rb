@@ -2,31 +2,47 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    can :read, :all
+
+    if user.has_role?(:chief_editor)
+      chief_editor_rights
+      editor_rights
+      journalist_rights
+    end
+
+    if user.has_role?(:editor)
+      editor_rights
+      journalist_rights
+    end
+
+    if user.has_role?(:journalist)
+      journalist_rights
+    end
+  end
+
+  def journalist_rights
+    can :read, :all
+    can :create, Publication
+    can :edit, Publication
+    can :create, Source
+    can :edit, Source
+    can :create, Image
+  end
+
+  def editor_rights
+    can :move_to_approved, Publication
+    can :move_to_pending, Publication
+  end
+
+  def chief_editor_rights
+    can :manage, Category
   end
 end
+
+=begin
+  Роли: главный редактор, редактор, журналист
+
+  Редактор может утверждать публикации, удалять их
+
+  Журналист может добавлять публикации, редактировать их
+=end

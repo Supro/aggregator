@@ -40,15 +40,21 @@ gem 'sass-rails'#, github: 'rails/sass-rails', branch: 'master'
 #gem 'sprockets-rails', github: 'rails/sprockets-rails', branch: 'master'
 #gem 'sprockets', github: 'rails/sprockets', branch: 'master'
 #gem 'babel-transpiler'
+gem 'mechanize'
 
 gem 'doorkeeper'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem "friendly_id"
+gem "russian"
+gem "kaminari"
+gem 'meta-tags'
 
 gem 'ember-rails'
 gem 'emblem-rails'
 gem 'active_model_serializers'
+gem 'state_machines-activerecord'
 
 gem "slim-rails"
 gem 'jquery-rails'
@@ -57,6 +63,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'jquery-fileupload-rails'
 gem 'font-awesome-sass', '~> 4.4.0'
+gem 'twitter-typeahead-rails'
 
 gem 'acts_as_list'
 

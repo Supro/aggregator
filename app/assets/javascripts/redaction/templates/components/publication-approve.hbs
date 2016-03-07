@@ -1,0 +1,5 @@
+{{#if publication.isApproved}}
+  <a {{action 'moveToPending'}}>На утверждение</a>
+{{else}}
+  <a {{action 'moveToApproved'}}>Утвердить</a>
+{{/if}}

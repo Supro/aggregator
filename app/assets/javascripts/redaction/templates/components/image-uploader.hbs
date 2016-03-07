@@ -1,0 +1,25 @@
+<div class="{{ if valid 'form-group has-success' 'form-group has-error' }}">
+  <label for="title">
+    {{title}}
+    {{#if cannotEdit}}
+      -&nbsp;<i>загружает: {{lockedBy.name}}</i>
+    {{/if}}
+  </label>
+
+  <div class="{{if cannotEdit 'hidden' 'visible'}}" style="float: right;">
+    <a class="remove-image" {{action "removeImage"}}>Удалить</a>
+    <i class="glyphicon glyphicon-picture image-add-fake"></i>
+    <input name="image" type='file' class="image-add" />
+  </div>
+  {{#if valid}}
+    <div class="image-container">
+      <img src="{{value}}" />
+    </div>
+  {{/if}}
+  <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+  {{#unless valid}}
+    <span class="error help-block">Загрузите изображение</span>
+  {{/unless}}
+</div>

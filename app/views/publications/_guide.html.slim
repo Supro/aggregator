@@ -1,0 +1,161 @@
+- set_meta_tags title: @publication.title,
+                description: @publication.context,
+                og: { title: @publication.title, type: 'article', image: @publication.poster.url, description: @publication.context, url: "#{@publication.full_url}" },
+                twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.url }
+
+#publication-show.guide
+  .publication-top
+    .background style="background-image: url(#{@publication.background.present? ? @publication.background.url : (@publication.poster.present? ? @publication.poster.url : '')});"
+      .inner-block
+        .info
+          .share.visible-md.visible-lg
+            a.facebook
+            a.googleplus
+            a.vk
+            a.twitter
+          .time
+            i.fa.fa-calendar-o style="color: #{@publication.type_color};"
+            time= I18n.l @publication.created_at, format: :long
+        .inner-content.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1
+          .holder
+            h1= @publication.title
+            h2= @publication.sub_title
+
+  - json = JSON.parse(@publication.body.gsub(/&lt;/, "<").gsub(/&gt;/, ">"))
+
+  .col-lg-9.col-md-9.publication-left
+    .content
+      .context
+        = @publication.context
+      .body
+        - json.sort_by{|item| item["position"] }.each do |item|
+          - if item["type"].eql?("paragraph")
+            p= raw item["content"]
+          - if item["type"].eql?("heading")
+            h3 class="heading_#{item["position"]}" position="#{item["position"]}"= raw item["content"]
+          - if item["type"].eql?("tweet")
+            .embed-tweet= raw item["content"]["html"]
+          - if item["type"].eql?("quote")
+            a.quote target="_blanl" rel="nofollow" href="#{item["content"]["link"].present? ? item["content"]["link"] : @publication.url}"
+              .quote-text= raw item["content"]["text"]
+              .quote-source
+                i.fa.fa-quote-left
+                - if item["content"]["source"].present?
+                  = item["content"]["source"]
+                - else
+                  = @publication.source.title
+          - if item["type"].eql?('video')
+            .youtube-box
+              .youtube_iframe
+                = youtube_embed(item["content"]["source"])
+          - if item["type"].eql?('adv')
+            .laugh-block
+              .laugh-inner
+                .fake-adv Реклама
+          - if item["type"].eql?('image')
+            .image-block class="image_#{item["position"]}" href="#{item["content"]["url"]}" target="_blank"
+              img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" style="#{item["content"]["width"].blank? ? "" : "max-width: #{item["content"]["width"]}px;"}#{item["content"]["height"].blank? ? "" : "max-height: #{item["content"]["height"]}px;"}"
+              - if item["content"]["alt"].present?
+                .alt= item["content"]["alt"]
+              - if item["content"]["source"].present?
+                .source= "Источник: #{item["content"]["source"]}"
+
+              - content_for :javascripts do
+                javascript:
+                  $(function(){
+                    $(".image_" + #{item["position"]}).click(function(e){
+                      e.preventDefault();
+
+                      var elem = $(this);
+
+                      elem.toggleClass('clicked');
+                      $('body').toggleClass('clicked');
+
+                      $(document).on('keydown', function(event){
+                        if (event.keyCode == 27 /*esc*/) {
+                          elem.toggleClass('clicked');
+                          $('body').toggleClass('clicked');
+                        }
+                      });
+                    });
+                  });
+
+  .col-lg-3.col-md-3.publication-right.visible-md.visible-lg
+    .navigator.sticky
+      - index = 1
+      - json.sort_by{|item| item["position"] }.each do |item|
+        - if item["type"].eql?("heading")
+          .navigation-heading position="#{item["position"]}"
+            = "#{index}. #{item["content"]}"
+          - index += 1
+
+      - content_for :javascripts do
+        javascript:
+          $(function(){
+            $('.navigation-heading').click(function(e){
+              e.preventDefault();
+              var position = $(this).attr('position');
+              $(".heading_" + position).get(0).scrollIntoView();
+            });
+
+            var stickyHeaderTop = $('.sticky').offset().top;
+            var stickyCheck = false;
+
+            $(window).scroll(function(){
+              if($(window).scrollTop() > stickyHeaderTop) {
+                if (!stickyCheck) {
+                  stickyCheck = true
+                  $('.sticky').css({
+                    position: 'fixed',
+                    top: '0px',
+                    width: $('.publication-right').width()
+                  });
+                }
+              } else {
+                if (stickyCheck) {
+                  stickyCheck = false
+                  $('.sticky').css({position: 'static', top: '0px'});
+                }
+              }
+            });
+          });
+
+  .col-lg-12.col-md-12.share.bottom
+    a.facebook
+    a.googleplus
+    a.vk
+    a.twitter
+
+script type="application/ld+json" {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"#{@publication.full_url}"
+    },
+    "headline": "#{@publication.title}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "#{@publication.poster.url}",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "#{@publication.created_at.iso8601}",
+    "dateModified": "#{@publication.updated_at.iso8601}",
+    "author": {
+      "@type": "Person",
+      "name": "Fire Imp"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "FireImp",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://fireimp.ru/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "#{@publication.context}",
+    "interactionCount": "2347"
+  }
