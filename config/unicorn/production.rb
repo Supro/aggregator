@@ -5,7 +5,7 @@ stderr_path "#{root}/shared/log/unicorn_error.log"
 stdout_path "#{root}/shared/log/unicorn.log"
 
 listen "#{root}/shared/tmp/unicorn.sock"
-worker_processes 4
+worker_processes 2
 timeout 60
 
 rails_env = ENV['RAILS_ENV'] || 'production'

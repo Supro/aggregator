@@ -14,3 +14,10 @@ css:
   .container.main {
     padding-top: 0;
   }
+
+- content_for :javascripts do
+  javascript:
+    var title = "#{@publication.title}";
+    var url = "#{@publication.full_url}";
+
+  = javascript_include_tag :share

@@ -1,1 +1,5 @@
-{{publication-edit model=model store=store settings=settings session=session}}
+{{#if isShowingEditor}}
+  {{publication-edit model=model store=store settings=settings session=session}}
+{{else}}
+  {{publication-links model=modle store=store settings=settings session=session}}
+{{/if}}

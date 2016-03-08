@@ -6,12 +6,14 @@
     {{/if}}
   </div>
 
-  <div class="delete-block">
-    {{#if model.isOnMain}}
-      Нельзя удалить, опубликовано на главной
-    {{/if}}
-    <button {{action 'removePublication'}} class="btn btn-danger" type="button" disabled={{model.isOnMain}}>Удалить публикацию</button>
-  </div>
+  {{#if session.currentUser.isChiefEditor}}
+    <div class="delete-block">
+      {{#if model.isOnMain}}
+        Нельзя удалить, опубликовано на главной
+      {{/if}}
+      <button {{action 'removePublication'}} class="btn btn-danger" type="button" disabled={{model.isOnMain}}>Удалить публикацию</button>
+    </div>
+  {{/if}}
 
   {{publication-edit-select socket=socket
                             session=session

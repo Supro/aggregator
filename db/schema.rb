@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304220405) do
+ActiveRecord::Schema.define(version: 20160308094439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(version: 20160304220405) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
+  create_table "publication_links", force: :cascade do |t|
+    t.string   "path"
+    t.integer  "publication_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "publication_links", ["path"], name: "index_publication_links_on_path", unique: true, using: :btree
+  add_index "publication_links", ["publication_id"], name: "index_publication_links_on_publication_id", using: :btree
+
   create_table "publication_locks", force: :cascade do |t|
     t.boolean  "slug_locked"
     t.integer  "slug_by"
@@ -163,6 +173,7 @@ ActiveRecord::Schema.define(version: 20160304220405) do
 
   add_index "publications", ["creator_id"], name: "index_publications_on_creator_id", using: :btree
   add_index "publications", ["editor_id"], name: "index_publications_on_editor_id", using: :btree
+  add_index "publications", ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   add_index "publications", ["source_id"], name: "index_publications_on_source_id", using: :btree
 
   create_table "roles", force: :cascade do |t|

@@ -23,6 +23,7 @@
 #
 #  index_publications_on_creator_id  (creator_id)
 #  index_publications_on_editor_id   (editor_id)
+#  index_publications_on_slug        (slug) UNIQUE
 #  index_publications_on_source_id   (source_id)
 #
 
@@ -52,6 +53,7 @@ class Publication < ActiveRecord::Base
   has_and_belongs_to_many :boxes
   has_and_belongs_to_many :categories
   has_many :images, as: :imageable
+  has_many :publication_links
   belongs_to :source
   belongs_to :creator, class_name: 'User', foreign_key: :creator_id
   belongs_to :editor, class_name: 'User', foreign_key: :editor_id

@@ -95,9 +95,7 @@ Aggregator::Application.routes.draw do
         end
       end
 
-      #resources :publication_edit, only: [] do
-      #  get 'listen', on: :member
-      #end
+      resources :publication_links, only: [:show, :index, :create, :update, :destroy]
 
       get '/publication_edit/listen' => 'publication_edit#listen', as: :socket
 

@@ -10,9 +10,17 @@
         .info
           .share.visible-md.visible-lg
             a.facebook
-            a.googleplus
             a.vk
+            a.googleplus
+              getshare-5.getshare
+                input type="checkbox" id="cb-getshare-5"
+                  label for="cb-getshare-5" class="getshare-button getshare-icon getshare-button-googleplus" title="Share on Google+" href=""
+                  span class="getshare-counter inside" style="width: 10px;"
             a.twitter
+              getshare-6.getshare
+                input type="checkbox" id="cb-getshare-6"
+                  label for="cb-getshare-6" class="getshare-button getshare-icon getshare-button-twitter" title="Share on twitter" href=""
+                  span class="getshare-counter inside" style="width: 10px;"
           .time
             i.fa.fa-calendar-o style="color: #{@publication.type_color};"
             time= I18n.l @publication.created_at, format: :long
@@ -34,9 +42,17 @@
 
   .col-lg-12.col-md-12.share.bottom
     a.facebook
-    a.googleplus
     a.vk
+    a.googleplus
+      getshare-5.getshare
+        input type="checkbox" id="cb-getshare-5"
+          label for="cb-getshare-5" class="getshare-button getshare-icon getshare-button-googleplus" title="Share on Google+" href=""
+          span class="getshare-counter inside" style="width: 10px;"
     a.twitter
+      getshare-6.getshare
+        input type="checkbox" id="cb-getshare-6"
+          label for="cb-getshare-6" class="getshare-button getshare-icon getshare-button-twitter" title="Share on twitter" href=""
+          span class="getshare-counter inside" style="width: 10px;"
 
 script type="application/ld+json" {
     "@context": "http://schema.org",
@@ -44,9 +60,9 @@ script type="application/ld+json" {
     "name": "#{@publication.title}",
     "description": "#{@publication.context}",
     "thumbnailUrl": "#{@publication.poster.url}",
-    "uploadDate": "#{@publication.created_at.iso8601}",
+    "uploadDate": "#{@publication.created_at.iso8601}"
     //"duration": "PT1M33S",
     //"contentUrl": "http://www.example.com/video123.flv",
     //"embedUrl": "http://www.example.com/videoplayer.swf?video=123",
-    "interactionCount": "2347"
+    //"interactionCount": "2347"
   }

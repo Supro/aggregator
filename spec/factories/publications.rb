@@ -23,6 +23,7 @@
 #
 #  index_publications_on_creator_id  (creator_id)
 #  index_publications_on_editor_id   (editor_id)
+#  index_publications_on_slug        (slug) UNIQUE
 #  index_publications_on_source_id   (source_id)
 #
 
