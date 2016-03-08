@@ -1,7 +1,7 @@
 Aggregator.PublicationsListComponent = Ember.Component.extend({
   classNames: ['publications-list', 'col-lg-3', 'col-md-3'],
 
-  filteredPublications: Ember.computed('categoryPublications.[]', 'titleFilter', function(){
+  filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', 'titleFilter', function(){
     var _this = this;
 
     var publications = this.get('publications').filter(function(publication, index, array){
@@ -55,7 +55,5 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
         }
       }
     });
-  },
-
-  actions: {}
+  }
 });

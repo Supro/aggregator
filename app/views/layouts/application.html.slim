@@ -10,7 +10,18 @@ html
     link rel="alternate" type="application/atom+xml" title="Fireimp.ru - последние новости" href="http://fireimp.ru/feeds/news.rss"
 
   body
-    //.loader style="position: fixed; width: 100%; height: 100%; z-index: 100001; top: 0; left: 0; background-color: #f3f3f3;"
+    css:
+      .loader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 100001;
+        top: 0;
+        left: 0;
+        background-color: #f3f3f3;
+      }
+
+    .loader
     - cache :header
       = render partial: 'partials/header'
     .container.main
@@ -18,6 +29,46 @@ html
     - cache :footer
       = render partial: 'partials/footer'
 
-    = stylesheet_link_tag :application
-    = javascript_include_tag :application
-    = yield :javascripts
+= stylesheet_link_tag :application
+= javascript_include_tag :application
+
+= yield :javascripts
+
+- if Rails.env.eql?('production')
+  javascript:
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35860761-8', 'auto');
+    ga('send', 'pageview');
+
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter28115085 = new Ya.Metrika({
+                    id:28115085,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+  noscript
+    div
+      img src="https://mc.yandex.ru/watch/28115085" style="position:absolute; left:-9999px;" alt=""

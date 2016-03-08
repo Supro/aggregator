@@ -67,7 +67,7 @@
                 .fake-adv Реклама
           - if item["type"].eql?('image')
             a.image-block class="image_#{item["position"]}" href="#{item["content"]["url"]}" target="_blank"
-              img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" width="#{item["content"]["width"].eql?(0) ? "" : item["content"]["width"]}" height="#{item["content"]["height"].eql?(0) ? "" : item["content"]["height"]}"
+              img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" style="#{item["content"]["width"].blank? ? "" : "max-width: #{item["content"]["width"]}px;"}#{item["content"]["height"].blank? ? "" : "max-height: #{item["content"]["height"]}px;"}"
               - if item["content"]["alt"].present?
                 .alt= item["content"]["alt"]
               - if item["content"]["source"].present?
@@ -86,6 +86,7 @@
 
                       $(document).on('keydown', function(event){
                         if (event.keyCode == 27 /*esc*/) {
+                          $(document).off('keydown');
                           elem.toggleClass('clicked');
                           $('body').toggleClass('clicked');
                         }
@@ -95,7 +96,7 @@
 
   .col-lg-4.col-md-4.publication-right.visible-md.visible-lg
     .sticky
-      .adv Реклама
+      = render partial: 'partials/adv'
 
     - content_for :javascripts do
       javascript:

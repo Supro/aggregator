@@ -24,6 +24,10 @@
           .time
             i.fa.fa-calendar-o style="color: #{@publication.type_color};"
             time= I18n.l @publication.created_at, format: :long
+          - if @publication.editor.present?
+            .user
+              i.fa.fa-user style="color: #{@publication.type_color};"
+              time= @publication.editor.name
         .inner-content.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1
           .holder
             h1= @publication.title
@@ -62,7 +66,7 @@
                 .fake-adv Реклама
           - if item["type"].eql?('image')
             .image-block class="image_#{item["position"]}" href="#{item["content"]["url"]}" target="_blank"
-              img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" style="#{item["content"]["width"].blank? ? "" : "max-width: #{item["content"]["width"]}px;"}#{item["content"]["height"].blank? ? "" : "max-height: #{item["content"]["height"]}px;"}"
+              img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" style="#{item["content"]["width"].blank? ? "" : "max-width: #{item["content"]["width"]}px;"}#{item["content"]["height"].blank? ? "]" : "max-height: #{item["content"]["height"]}px;"}"
               - if item["content"]["alt"].present?
                 .alt= item["content"]["alt"]
               - if item["content"]["source"].present?
@@ -81,6 +85,7 @@
 
                       $(document).on('keydown', function(event){
                         if (event.keyCode == 27 /*esc*/) {
+                          $(document).off('keydown');
                           elem.toggleClass('clicked');
                           $('body').toggleClass('clicked');
                         }
@@ -110,7 +115,7 @@
             var stickyCheck = false;
 
             $(window).scroll(function(){
-              if($(window).scrollTop() > stickyHeaderTop) {
+              if($(window).scrollTop() > stickyHeaderTop && ($('.sticky').height() + 100) < $(window).height()) {
                 if (!stickyCheck) {
                   stickyCheck = true
                   $('.sticky').css({

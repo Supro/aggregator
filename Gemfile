@@ -64,6 +64,7 @@ gem 'bootstrap-sass'
 gem 'jquery-fileupload-rails'
 gem 'font-awesome-sass', '~> 4.4.0'
 gem 'twitter-typeahead-rails'
+gem 'ahoy_matey'
 
 gem 'acts_as_list'
 

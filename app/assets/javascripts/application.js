@@ -3,9 +3,10 @@
 //= require getshare
 //= require twitter/typeahead.min
 //= require search
+//= require ahoy
 
 //= require_self
 
 $(function(){
-  $('.loader').hide();
+  ahoy.track("$page_visit", window.location.toString());
 });

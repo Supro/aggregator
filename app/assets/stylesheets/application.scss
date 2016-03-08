@@ -130,6 +130,10 @@ h1, h2, h3, h3, h5 {
   }
 }
 
+.loader {
+  display: none !important;
+}
+
 @keyframes fade-in-login {
   0% {
     opacity: 0;

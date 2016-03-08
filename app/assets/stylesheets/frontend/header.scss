@@ -16,6 +16,10 @@ nav#main-menu {
     padding: 0 0 5px 0;
     margin: 0;
 
+    @media (min-width: $screen-md-min) {
+      padding: 0;
+    }
+
     li {
       display: block;
 
@@ -23,11 +27,11 @@ nav#main-menu {
         font-family: 'GeometriaLight', sans-serif;
         display: block;
         line-height: 25px;
-        padding: 5px 20px;
+        padding: 10px 20px;
         color: #fff;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 14px;
+        font-size: 16px;
 
         &:hover {
           color: $color6;
@@ -64,6 +68,7 @@ nav#main-menu {
 
         a {
           padding: 12px 12px;
+          font-size: 14px;
         }
       }
     }

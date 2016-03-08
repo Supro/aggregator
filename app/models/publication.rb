@@ -38,8 +38,8 @@ class Publication < ActiveRecord::Base
 
   self.inheritance_column = '_type'
 
-  paginates_per 25
-  max_paginates_per 50
+  paginates_per 50
+  max_paginates_per 100
 
   # Validations
   validates :title, :type, presence: true

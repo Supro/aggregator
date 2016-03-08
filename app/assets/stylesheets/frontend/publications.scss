@@ -57,7 +57,7 @@ a.publication-inner {
             margin-right: 5px;
           }
 
-          .source, .time {
+          .source, .time, .user {
             padding: 5px 5px 5px 10px;
             text-shadow: 1px 1px #000;
 
@@ -122,7 +122,7 @@ a.publication-inner {
           }
 
           h2 {
-            margin-left: 5px;
+            margin-left: 15px;
             text-shadow: 1px 1px #000;
             font-size: 24px;
 
@@ -160,6 +160,14 @@ a.publication-inner {
           padding: 10px 0;
           margin: 0;
           text-align: left;
+        }
+
+        ul {
+          text-align: left;
+
+          li {
+            text-align: left;
+          }
         }
 
         h3 {
@@ -209,7 +217,6 @@ a.publication-inner {
           img {
             cursor: pointer;
             max-width: 100%;
-            width: 100%;
           }
 
           .alt {
@@ -314,10 +321,14 @@ a.publication-inner {
       height: 400px;
       background-color: #f3f3f3;
       margin: 25px auto 50px auto;
-      line-height: 400px;
-      color: #d3d3d3;
-      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
       text-align: center;
+
+      .cont {
+        height: 200px;
+        padding: 140px 25px;
+        width: 300px;
+      }
     }
   }
 }

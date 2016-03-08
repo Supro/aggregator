@@ -52,6 +52,16 @@ GEM
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     addressable (2.3.8)
+    ahoy_matey (1.2.1)
+      addressable
+      browser (>= 0.4.0)
+      errbase
+      geocoder
+      rails
+      referer-parser (>= 0.3.0)
+      request_store
+      user_agent_parser
+      uuidtools
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -71,6 +81,7 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    browser (1.1.0)
     builder (3.2.2)
     byebug (6.0.2)
     cancancan (1.12.0)
@@ -131,6 +142,7 @@ GEM
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.14.0)
     emblem-source (0.4.0)
+    errbase (0.0.3)
     erubis (2.7.0)
     excon (0.48.0)
     execjs (2.6.0)
@@ -257,6 +269,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.2.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashdiff (0.2.2)
@@ -351,6 +364,8 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    referer-parser (0.3.0)
+    request_store (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rmagick (2.15.2)
@@ -443,6 +458,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    user_agent_parser (2.3.0)
+    uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.2.1)
@@ -463,6 +480,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   acts_as_list
+  ahoy_matey
   annotate
   bootstrap-sass
   byebug
