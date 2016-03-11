@@ -8,5 +8,5 @@
 //= require_self
 
 $(function(){
-  ahoy.track("$page_visit", window.location.toString());
+  ahoy.track("$page_visit", { page: window.location.toString() } );
 });
