@@ -6,6 +6,11 @@ Aggregator::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  match "/404", :to => "errors#error_404", :via => :all
+  match "/422", :to => "errors#error_422", :via => :all
+  match "/500", :to => "errors#error_500", :via => :all
+
   get '/guides' => 'home#guides'
 
   get '/about' => 'home#about'

@@ -29,5 +29,6 @@ module Aggregator
     config.i18n.default_locale = :ru
 
     config.handlebars.templates_root = 'redaction/templates'
+    config.exceptions_app = self.routes
   end
 end

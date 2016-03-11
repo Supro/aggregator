@@ -13,7 +13,7 @@ private
     if paths.length > 0
       redirect_to paths.first.publication.full_url, status: 301
     else
-      render file: "#{Rails.root}/public/404", layout: false, status: :not_found
+      render file: 'errors/error_404', status: 404
     end
   end
 end
