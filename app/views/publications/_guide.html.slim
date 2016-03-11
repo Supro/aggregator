@@ -111,26 +111,37 @@
               $(".heading_" + position).get(0).scrollIntoView();
             });
 
-            var stickyHeaderTop = $('.sticky').offset().top;
-            var stickyCheck = false;
+              var sticky = $('.sticky');
+              var stickyHeight = sticky.height();
+              var stickyHeaderTop = sticky.offset().top;
+              var stickyCheck = false;
 
-            $(window).scroll(function(){
-              if($(window).scrollTop() > stickyHeaderTop && ($('.sticky').height() + 100) < $(window).height()) {
-                if (!stickyCheck) {
-                  stickyCheck = true
-                  $('.sticky').css({
-                    position: 'fixed',
-                    top: '0px',
-                    width: $('.publication-right').width()
-                  });
+              var bottom = $('.bottom');
+
+              $(window).scroll(function(){
+                if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
+                  if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
+                    if (stickyCheck) {
+                      stickyCheck = false
+                      sticky.css({position: 'static', top: '0px'});
+                    }
+                  } else {
+                    if (!stickyCheck) {
+                      stickyCheck = true
+                      sticky.css({
+                        position: 'fixed',
+                        top: '0px',
+                        width: $('.publication-right').width()
+                      });
+                    }
+                  }
+                } else {
+                  if (stickyCheck) {
+                    stickyCheck = false
+                    $('.sticky').css({position: 'static', top: '0px'});
+                  }
                 }
-              } else {
-                if (stickyCheck) {
-                  stickyCheck = false
-                  $('.sticky').css({position: 'static', top: '0px'});
-                }
-              }
-            });
+              });
           });
 
   .col-lg-12.col-md-12.share.bottom

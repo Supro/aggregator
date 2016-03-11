@@ -102,18 +102,30 @@
       javascript:
         $(function(){
           if ($('.publication-left').height() > 600) {
-            var stickyHeaderTop = $('.sticky').offset().top;
+
+            var sticky = $('.sticky');
+            var stickyHeight = sticky.height();
+            var stickyHeaderTop = sticky.offset().top;
             var stickyCheck = false;
 
+            var bottom = $('.bottom');
+
             $(window).scroll(function(){
-              if($(window).scrollTop() > stickyHeaderTop) {
-                if (!stickyCheck) {
-                  stickyCheck = true
-                  $('.sticky').css({
-                    position: 'fixed',
-                    top: '0px',
-                    width: $('.publication-right').width()
-                  });
+              if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
+                if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
+                  if (stickyCheck) {
+                    stickyCheck = false
+                    sticky.css({position: 'static', top: '0px'});
+                  }
+                } else {
+                  if (!stickyCheck) {
+                    stickyCheck = true
+                    sticky.css({
+                      position: 'fixed',
+                      top: '0px',
+                      width: $('.publication-right').width()
+                    });
+                  }
                 }
               } else {
                 if (stickyCheck) {
