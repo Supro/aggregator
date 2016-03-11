@@ -161,3 +161,12 @@ form {
     animation: headings-loading 2s infinite linear;
   }
 }
+
+.relap-default-wrapper {
+  border-top: 1px solid #e3e3e3;
+  clear: both;
+}
+
+.relap-default__logo, .relap-default__block-title {
+  display: none !important;
+}

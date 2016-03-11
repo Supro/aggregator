@@ -1,3 +1,7 @@
+- if Rails.env.eql?('production')
+  = content_for :head do
+    script type="text/javascript" async="true" src="https://relap.io/api/v6/head.js?token=nOScV9NXlOAdMEtO"
+
 //- cache "#{@publication.class.to_s.downcase}_#{@publication.id}", skip_digest: true do
 - if @publication.type.eql?("video")
   = render partial: "publications/video"
