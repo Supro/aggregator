@@ -8,26 +8,28 @@ Aggregator.PublicationEditComponent = Ember.Component.extend({
     var socket = this.get('socket');
     var store = this.get('store');
 
-    var stickyHeaderTop = $('.body-edit-buttons').offset().top;
-    var stickyCheck = false;
+    if(!this.get('model.isVideo')) {
+      var stickyHeaderTop = $('.body-edit-buttons').offset().top;
+      var stickyCheck = false;
 
-    $(window).scroll(function(){
-      if($(window).scrollTop() > stickyHeaderTop) {
-        if (!stickyCheck) {
-          stickyCheck = true
-          $('.body-edit-buttons').css({
-            position: 'fixed',
-            top: '0px',
-            right: '0px'
-          });
+      $(window).scroll(function(){
+        if($(window).scrollTop() > stickyHeaderTop) {
+          if (!stickyCheck) {
+            stickyCheck = true
+            $('.body-edit-buttons').css({
+              position: 'fixed',
+              top: '0px',
+              right: '0px'
+            });
+          }
+        } else {
+          if (stickyCheck) {
+            stickyCheck = false
+            $('.body-edit-buttons').css({position: 'static', top: '0px'});
+          }
         }
-      } else {
-        if (stickyCheck) {
-          stickyCheck = false
-          $('.body-edit-buttons').css({position: 'static', top: '0px'});
-        }
-      }
-    });
+      });
+    }
 
     socket.onmessage = function(event) {
       var data = event.data;

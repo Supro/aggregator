@@ -152,9 +152,9 @@ script type="application/ld+json" {
     "headline": "#{@publication.title}",
     "image": {
       "@type": "ImageObject",
-      "url": "#{@publication.poster.url}"
-      //"height": 800,
-      //"width": 800
+      "url": "#{@publication.poster.url}",
+      "height": #{@publication.poster.height},
+      "width": #{@publication.poster.width}
     },
     "datePublished": "#{@publication.created_at.iso8601}",
     "dateModified": "#{@publication.updated_at.iso8601}",
