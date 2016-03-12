@@ -24,6 +24,7 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
   context:  DS.attr('string'),
   body:     DS.attr('string'),
   url:      DS.attr('string'),
+  totalVisits: DS.attr('number'),
 
   canApprove: DS.attr('boolean'),
 

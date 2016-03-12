@@ -1,5 +1,5 @@
 class Api::V1::PublicationIndexSerializer < ActiveModel::Serializer
-  attributes :id, :title, :state, :sub_title, :type, :time,
+  attributes :id, :title, :state, :sub_title, :type, :time, :total_visits,
              :approve_time, :position, :category_ids, :box_ids,
              :can_approve
 

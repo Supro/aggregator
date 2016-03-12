@@ -34,6 +34,7 @@ class Publication < ActiveRecord::Base
   include Publication::StateMachine
   include Publication::TypeVariables
   include Publication::TypeMethods
+  include Publication::Visits
   include Publication::DefaultBody
 
   self.inheritance_column = '_type'

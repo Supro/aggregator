@@ -5,6 +5,7 @@
       <th>Добавлено</th>
       <!--<th>Редактор</th>-->
       <th>Статус</th>
+      <th>Просмотров</th>
       <th>На главной</th>
     </tr>
   </thead>
@@ -38,6 +39,9 @@
           {{#if publication.canApprove}}
             {{publication-approve publication=publication}}
           {{/if}}
+        </td>
+        <td class="time">
+          {{publication.totalVisits}}
         </td>
         <td class="time">
           {{#if publication.isOnMain}}

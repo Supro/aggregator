@@ -195,6 +195,7 @@ a.publication-inner {
         .image-block {
           margin: 10px 0;
           text-align: center;
+          display: block;
 
           &.clicked {
             position: fixed;
