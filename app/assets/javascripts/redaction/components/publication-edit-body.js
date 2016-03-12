@@ -157,8 +157,8 @@ Aggregator.PublicationEditBodyComponent = Ember.Component.extend({
 
     addQuote: function(){
       this.addItemToBody("quote", {
-        link: "http://fireimp.ru",
-        source: "FireImp",
+        link: "",
+        source: "",
         text: "Цитата Арнольда. Мне нужна твоя одежда, ботинки и мотоцикл."
       });
     },

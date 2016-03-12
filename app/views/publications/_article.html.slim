@@ -21,10 +21,6 @@
                   span class="getshare-counter inside" style="width: 10px;"
             a.facebook
             a.vk
-          .source
-            i.fa.fa-television style="color: #{@publication.type_color};"
-            a href=@publication.url rel="nofollow" target="_blank"
-              = @publication.source.title
           .time
             i.fa.fa-calendar-o style="color: #{@publication.type_color};"
             time= I18n.l @publication.created_at, format: :long
