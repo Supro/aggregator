@@ -9,8 +9,6 @@
       .inner-block
         .info
           .share.visible-md.visible-lg
-            a.facebook
-            a.vk
             a.googleplus
               getshare-5.getshare
                 input type="checkbox" id="cb-getshare-5"
@@ -21,6 +19,9 @@
                 input type="checkbox" id="cb-getshare-6"
                   label for="cb-getshare-6" class="getshare-button getshare-icon getshare-button-twitter" title="Share on twitter" href=""
                   span class="getshare-counter inside" style="width: 10px;"
+            a.facebook
+            a.vk
+
           .time
             i.fa.fa-calendar-o style="color: #{@publication.type_color};"
             time= I18n.l @publication.created_at, format: :long
@@ -41,8 +42,6 @@
       = render partial: 'partials/adv'
 
   .col-lg-12.col-md-12.share.bottom
-    a.facebook
-    a.vk
     a.googleplus
       getshare-5.getshare
         input type="checkbox" id="cb-getshare-5"
@@ -53,6 +52,8 @@
         input type="checkbox" id="cb-getshare-6"
           label for="cb-getshare-6" class="getshare-button getshare-icon getshare-button-twitter" title="Share on twitter" href=""
           span class="getshare-counter inside" style="width: 10px;"
+    a.facebook
+    a.vk
 
   .col-lg-12-col-md-12.relap-cont
     script id="Eu0SGdkZE6hS1efn" if (window.relap) window.relap.ar('Eu0SGdkZE6hS1efn');
