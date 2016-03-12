@@ -12,7 +12,7 @@ class Publication < ActiveRecord::Base
       end
 
       def path
-        if publication.type.eql?('news')
+        if publication.is_news?
           "/#{publication.type}/#{publication.created_at.strftime("%Y/%m/%d")}/#{publication.slug}"
         else
           "/#{publication.type.pluralize}/#{publication.slug}"

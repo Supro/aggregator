@@ -3,7 +3,8 @@ Aggregator.SettingController = Ember.Controller.extend({
     {id: null, label: 'Все публикации'},
     {id: 'news', label: 'Новости'},
     {id: 'guide', label: 'Гайды'},
-    {id: 'video', label: 'Видео'}//,
+    {id: 'video', label: 'Видео'},
+    {id: 'article', label: 'Статьи'}//,
     //{id: 'slider', label: 'Слайдеры'}
   ],
 
@@ -16,7 +17,8 @@ Aggregator.SettingController = Ember.Controller.extend({
     {id: null, label: 'Выберите тип публикации'},
     {id: 'news', label: 'Новость'},
     {id: 'guide', label: 'Гайд'},
-    {id: 'video', label: 'Видео'}//,
+    {id: 'video', label: 'Видео'},
+    {id: 'article', label: 'Статья'}//,
     //{id: 'slider', label: 'Слайдер'}
   ]
 });

@@ -13,6 +13,8 @@ class Publication < ActiveRecord::Base
           "Руководство"
         when "news"
           "Новость"
+        when "article"
+          "Статья"
         when "video"
           "Видео"
         end

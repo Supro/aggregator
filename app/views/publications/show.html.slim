@@ -3,11 +3,13 @@
     script type="text/javascript" async="true" src="https://relap.io/api/v6/head.js?token=nOScV9NXlOAdMEtO"
 
 //- cache "#{@publication.class.to_s.downcase}_#{@publication.id}", skip_digest: true do
-- if @publication.type.eql?("video")
+- if @publication.is_video?
   = render partial: "publications/video"
-- elsif @publication.type.eql?("guide")
+- elsif @publication.is_guide?
   = render partial: "publications/guide"
-- else
+- elsif @publication.is_article?
+  = render partial: "publications/article"
+- elsif @publication.is_news?
   = render partial: "publications/news"
 
 css:

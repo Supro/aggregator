@@ -40,15 +40,15 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
 
   isSlide: Ember.computed.equal('type', 'slider'),
   isNews:  Ember.computed.equal('type', 'news'),
-  //isArticle: Ember.computed.equal('type', 'article'),
+  isArticle: Ember.computed.equal('type', 'article'),
   isVideo: Ember.computed.equal('type', 'video'),
   isGuide: Ember.computed.equal('type', 'guide'),
 
   isApproved: Ember.computed.equal('state', 'approved'),
   isPending:  Ember.computed.equal('state', 'pending'),
 
-  isNewsOrGuide: Ember.computed('type', function(){
-    return this.get('isNews') || this.get('isGuide');
+  isNeedText: Ember.computed('type', function(){
+    return this.get('isNews') || this.get('isGuide') || this.get('isArticle');
   }),
 
   typeValid:       Ember.computed.notEmpty('type'),

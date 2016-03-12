@@ -18,6 +18,19 @@ class Ability
     if user.has_role?(:journalist)
       journalist_rights
     end
+
+    if user.has_role?(:junior_journalist)
+      junior_journalist_rights(user)
+    end
+  end
+
+  def junior_journalist_rights(user)
+    can :read, :all
+    can :create, Publication, editor_id: user.id
+    can :edit, Publication
+    can :create, Source
+    can :edit, Source
+    can :create, Image
   end
 
   def journalist_rights

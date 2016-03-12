@@ -14,5 +14,10 @@ class Publication < ActiveRecord::Base
       type.eql?("video")
     end
     alias_method :is_video?, :is_video
+
+    def is_article
+      type.eql?("article")
+    end
+    alias_method :is_article?, :is_video
   end
 end

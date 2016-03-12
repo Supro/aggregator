@@ -15,6 +15,8 @@ class Publication < ActiveRecord::Base
           "#3EA0FF"
         when "video"
           "#8B508C"
+        when "article"
+          "#43A89B"
         end
       end
     end

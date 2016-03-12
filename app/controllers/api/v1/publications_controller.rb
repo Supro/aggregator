@@ -62,7 +62,7 @@ private
 
   def publication_params
     params[:publication].permit(:type, :slug, :title, :sub_title, :editor_id, :state,
-                                :context, :body, :url, :source_id, :creator_id,
+                                :context, :body, :url, :source_id, :creator_id, :editor_id,
                                 slides_attributes: [:id, :title, :body, :publication_id, :image_id, :_destroy],
                                 images_attributes: [:id, :imageable_id, :imageable_type],
                                 publication_lock_attributes: [:slug_locked, :slug_by,
@@ -76,6 +76,7 @@ private
 
   def set_creator
     params[:publication][:creator_id] = current_user.id
+    params[:publication][:editor_id] = current_user.id
   end
 
   def find_publication
