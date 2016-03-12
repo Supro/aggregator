@@ -19,6 +19,7 @@ Aggregator::Application.routes.draw do
   get '/:type/:year/:month/:day/:slug' => 'publications#show'
   get '/guides/:slug' => 'publications#show'
   get '/news/:slug' => 'publications#show'
+  get '/articles/:slug' => 'publications#show'
   get '/videos/:slug' => 'publications#show'
 
   namespace :feeds do
