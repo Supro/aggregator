@@ -86,7 +86,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
   #gem 'capistrano3-puma'
-  gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq', '0.5.3'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 
