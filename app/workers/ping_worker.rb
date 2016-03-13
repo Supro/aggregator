@@ -11,7 +11,7 @@ class PingWorker
        pinger = RssPinger.new resource[:url],
                               resource[:method],
                               'FireImp',
-                              'http://fireimp.ru/feeds/items.rss', {
+                              'http://fireimp.ru/feeds/publications.rss', {
                                 site: 'http://fireimp.ru',
                                 updated: publication.full_url
                               }
