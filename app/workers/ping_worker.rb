@@ -7,10 +7,7 @@ class PingWorker
 
     [{url: 'http://blogsearch.google.com/ping/RPC2', method: 'weblogUpdates.extendedPing'},
      {url: 'http://blogsearch.google.ru/ping/RPC2', method: 'weblogUpdates.extendedPing'},
-     {url: 'http://rpc.pingomatic.com', method: 'weblogUpdates.extendedPing'},
      {url: 'http://ping.blogs.yandex.ru/RPC2', method: 'weblogUpdates.ping'},
-     {url: 'http://rpc.pingomatic.com', method: 'weblogUpdates.extendedPing'},
-     {url: 'http://xping.pubsub.com/ping/', method: 'weblogUpdates.extendedPing'},
      {url: 'http://rpc.weblogs.com/RPC2', method: 'weblogUpdates.extendedPing'},
      {url: 'http://blogpeople.net/servlet/weblogUpdates', method: 'weblogUpdates.extendedPing'}].each do |resource|
 
@@ -19,12 +16,13 @@ class PingWorker
                               'FireImp',
                               'http://fireimp.ru/feeds/publications.rss', {
                                 site: 'http://fireimp.ru',
-                                updated: publication.full_url
+                                update: publication.full_url
                               }
       begin
-        pinger.ping!
+        p pinger.ping!
       rescue
         p "fail"
+        p resource[:url]
       end
 
     end
