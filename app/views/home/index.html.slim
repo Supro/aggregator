@@ -1,6 +1,8 @@
 - set_meta_tags title: "Подборка интересных новостей о видео играх",
                 description: "Игры"
 
+h1.h1-title Подборка интересных новостей о видео играх
+
 //- cache "#{@category.class.to_s.downcase}_#{@category.id}", skip_digest: true do
 - @category.lines.order(position: :asc).each do |line|
   - if line.type.eql?('two')

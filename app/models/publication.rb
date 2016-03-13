@@ -47,6 +47,7 @@ class Publication < ActiveRecord::Base
 
   # Callbacks
   after_create :create_publication_lock, :create_publication_watcher
+  after_save :social_job
 
   # Relations
   has_one :publication_lock
@@ -80,5 +81,11 @@ class Publication < ActiveRecord::Base
   def clear_cache
     super
     categories.each{|cat| cat.clear_cache }
+  end
+
+  def social_job
+    if approved?
+      PingWorker.perform_in 2.minutes, self.id
+    end
   end
 end

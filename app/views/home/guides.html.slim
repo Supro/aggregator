@@ -1,6 +1,8 @@
 - set_meta_tags title: "Гайды к последним играм",
                 description: "Гайды"
 
+h1.h1-title Гайды к последним играм
+
 //- cache "#{@category.class.to_s.downcase}_#{@category.id}", skip_digest: true do
 - @category.lines.order(position: :asc).each do |line|
   - if line.type.eql?('two')
