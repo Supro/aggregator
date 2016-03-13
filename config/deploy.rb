@@ -13,6 +13,7 @@ set :linked_dirs, ['tmp/pids']
 set :use_sudo, false
 set :rbenv_type, :system
 set :rbenv_ruby, '2.2.2'
+set :bundle_bins, fetch(:bundle_bins, []).push %w(sidekiq sidekiqctl)
 
 set :keep_releases, 3
 
