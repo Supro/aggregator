@@ -172,8 +172,23 @@ form {
   padding-bottom: 10px !important;
 }
 
-.relap-cont {
+.relap-cont, .disqus-cont {
   clear: both;
+}
+
+#disqus_thread {
+  padding: 15px 10px;
+  border-top: 1px solid #e3e3e3;
+  display: none;
+
+  @media (min-width: $screen-md-min) {
+    padding: 15px 25px;
+    display: block;
+  }
+}
+
+#placement-bottom {
+  display: none;
 }
 
 .relap-default-wrapper {

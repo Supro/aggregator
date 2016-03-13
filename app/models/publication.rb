@@ -73,6 +73,10 @@ class Publication < ActiveRecord::Base
     images.length > 0 ? images.first : nil
   end
 
+  def full_title
+    [title, sub_title].compact.join('. ')
+  end
+
   def clear_cache
     super
     categories.each{|cat| cat.clear_cache }

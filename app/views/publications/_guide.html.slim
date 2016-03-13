@@ -1,6 +1,6 @@
 - set_meta_tags title: @publication.title,
                 description: @publication.context,
-                og: { title: @publication.title, type: 'article', image: @publication.poster.url, description: @publication.context, url: "#{@publication.full_url}" },
+                og: { title: @publication.full_title, type: 'article', image: @publication.poster.url, description: @publication.context, url: "#{@publication.full_url}" },
                 twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.url }
 
 #publication-show.guide
@@ -162,6 +162,9 @@
 
   .col-lg-12-col-md-12.relap-cont
     script id="Eu0SGdkZE6hS1efn" if (window.relap) window.relap.ar('Eu0SGdkZE6hS1efn');
+  .col-lg-12-col-md-12.disqus-cont
+    - if Rails.env.eql?('production')
+      #disqus_thread
 
 script type="application/ld+json" {
     "@context": "http://schema.org",

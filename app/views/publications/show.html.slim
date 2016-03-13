@@ -12,6 +12,14 @@
 - elsif @publication.is_news?
   = render partial: "publications/news"
 
+nav.bread
+  ul class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#"
+    li typeof="v:Breadcrumb" class="breadcrumbs__item"
+      a href="http://fireimp.ru" rel="v:url" property="v:title" Главная
+    li typeof="v:Breadcrumb" class="breadcrumbs__item"
+      a href="#{@publication.full_url}" rel="v:url" property="v:title"
+        = @publication.title
+
 css:
   body {
     background-color: black !important;
@@ -21,9 +29,28 @@ css:
     padding-top: 0;
   }
 
+  .bread {
+    display: none;
+  }
+
 - content_for :javascripts do
   javascript:
     var title = "#{@publication.title}";
     var url = "#{@publication.full_url}";
 
   = javascript_include_tag :share
+
+  javascript:
+
+    var url = "#{@publication.full_url}";
+    var disqus_identifier = 'publication_#{@publication.id}';
+    var title = "#{@publication.full_title}";
+    var disqus_shortname = 'fireimp';
+    var disqus_title = title;
+    var disqus_url = url;
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
