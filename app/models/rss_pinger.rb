@@ -4,9 +4,9 @@ class RssPinger
 
   def initialize(ping_url, method, name, feed_url, options = {})
     @ping_url, @method, @name, @feed_url = ping_url, method, name, feed_url
-    @site_url   = options.delete(:site)   || infer_url(feed_url)
-    @update_url = options.delete(:update) || options.delete(:updated) || infer_url(feed_url)
-    self.tags   = options.delete(:tags)   || []
+    @site_url   = options.delete(:site)
+    @update_url = options.delete(:update)
+    self.tags   = options.delete(:tags) || []
   end
 
   def ping!
