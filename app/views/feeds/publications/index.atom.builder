@@ -16,7 +16,7 @@ atom_feed feed_options do |feed|
     }
 
     feed.entry item, feed_entry_options do |entry|
-      entry.title item.title
+      entry.title item.full_title
       entry.content image_tag(item.poster.url), type: 'html'
       #entry.author do |author|
       #  author.name item.user.name

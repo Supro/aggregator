@@ -7,7 +7,7 @@ xml.rss :version => "2.0" do
 
     @publications.each do |item|
       xml.item do
-        xml.title item.title
+        xml.title item.full_title
         xml.description item.context
         xml.pubDate item.created_at.to_s(:rfc822)
         url = item.full_url
