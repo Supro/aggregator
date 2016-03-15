@@ -21,6 +21,7 @@ Aggregator::Application.routes.draw do
   get '/news/:slug' => 'publications#show'
   get '/articles/:slug' => 'publications#show'
   get '/videos/:slug' => 'publications#show'
+  get '/publications/:slug' => 'publications#show'
 
   namespace :feeds do
     resources :publications, only: [:index]
