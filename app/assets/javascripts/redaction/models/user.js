@@ -5,5 +5,10 @@ Aggregator.User = DS.Model.extend({
   email:                DS.attr('string'),
   slug:                 DS.attr('string'),
 
-  isChiefEditor:        DS.attr('boolean')
+  role:                 DS.attr('string'),
+
+  isChiefEditor:      Ember.computed.equal('role', 'chief_editor'),
+  isEditor:           Ember.computed.equal('role', 'editor'),
+  isJuniorJournalist: Ember.computed.equal('role', 'junior_journalist'),
+  isJournalist:       Ember.computed.equal('role', 'journalist')
 });

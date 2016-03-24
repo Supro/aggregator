@@ -6,7 +6,7 @@
   <!--<button class="btn btn-default" {{action "pushLine" 'ad'}}>1/4 с рекламой</button>-->
 </div>
 {{sortable-lines lines=model.linesActive publications=publications store=store category=model fakeFire=fakeFire}}
-{{publications-list publications=publications store=store category=model fakeFire=fakeFire}}
+{{publications-list store=store category=model fakeFire=fakeFire}}
 <div class="save-buttons">
   <button class="btn btn-success" {{action "saveCategory"}}>Опубликовать экран</button>
 </div>

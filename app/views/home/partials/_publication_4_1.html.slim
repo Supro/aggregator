@@ -1,6 +1,6 @@
 a.publication-inner href="#{publication.full_url}"
   .black-background
-    .img style="background-image: url(#{publication.poster.present? ? publication.poster.url : ''});"
+    .img style="background-image: url(#{publication.poster.present? ? publication.poster.small_thumb : ''});"
     .info
       .type style="color: #{publication.type_color};"
         = publication.type_name

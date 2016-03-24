@@ -1,7 +1,7 @@
 - set_meta_tags title: @publication.title,
                 description: @publication.context,
-                og: { title: @publication.full_title, type: 'article', image: @publication.poster.url, description: @publication.context, url: "#{@publication.full_url}" },
-                twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.url }
+                og: { title: @publication.full_title, type: 'article', image: @publication.poster.square, description: @publication.context, url: "#{@publication.full_url}" },
+                twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.square }
 
 #publication-show.guide
   .publication-top

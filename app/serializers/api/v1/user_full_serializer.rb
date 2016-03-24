@@ -1,7 +1,7 @@
 class Api::V1::UserFullSerializer < ActiveModel::Serializer
-  attributes :id, :email, :slug, :name, :about, :is_chief_editor
+  attributes :id, :email, :slug, :name, :about, :role
 
-  def is_chief_editor
-    object.has_role?(:chief_editor)
+  def role
+    object.roles.first.name
   end
 end

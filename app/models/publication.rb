@@ -36,18 +36,18 @@ class Publication < ActiveRecord::Base
   include Publication::TypeMethods
   include Publication::Visits
   include Publication::DefaultBody
+  include Publication::SocialJob
 
   self.inheritance_column = '_type'
 
-  paginates_per 50
-  max_paginates_per 100
+  paginates_per 12
+  max_paginates_per 24
 
   # Validations
   validates :title, :type, presence: true
 
   # Callbacks
   after_create :create_publication_lock, :create_publication_watcher
-  after_save :social_job
 
   # Relations
   has_one :publication_lock
@@ -56,6 +56,7 @@ class Publication < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :images, as: :imageable
   has_many :publication_links
+  has_many :urls
   belongs_to :source
   belongs_to :creator, class_name: 'User', foreign_key: :creator_id
   belongs_to :editor, class_name: 'User', foreign_key: :editor_id
@@ -81,11 +82,5 @@ class Publication < ActiveRecord::Base
   def clear_cache
     super
     categories.each{|cat| cat.clear_cache }
-  end
-
-  def social_job
-    if approved?
-      PingWorker.perform_in 2.minutes, self.id
-    end
   end
 end

@@ -14,9 +14,19 @@
       <ul class="nav navbar-nav">
         {{#if session.currentUser.isChiefEditor}}
           <li>{{link-to "Страницы" 'pages.show' 1}}</li>
+          <li>{{link-to "Источники" 'sources'}}</li>
+          <li>{{link-to "Редакция" 'publications'}}</li>
         {{/if}}
-        <li>{{link-to "Источники" 'sources'}}</li>
-        <li>{{link-to "Публикации" 'publications'}}</li>
+        {{#if session.currentUser.isEditor}}
+          <li>{{link-to "Редакция" 'publications'}}</li>
+        {{/if}}
+        {{#if session.currentUser.isJournalist}}
+          <li>{{link-to "Публикации" 'publications'}}</li>
+        {{/if}}
+        {{#if session.currentUser.isJuniorJournalist}}
+          <li>{{link-to "Публикации" 'publications'}}</li>
+        {{/if}}
+        <li>{{link-to "Ссылки" 'urls'}}</li>
         {{#unless session.isAuthenticated}}
           <li>{{link-to "Войти" 'login'}}</li>
         {{/unless}}

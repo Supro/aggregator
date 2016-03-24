@@ -52,3 +52,15 @@
     {{/each}}
   </tbody>
 </table>
+
+<div class="show-more">
+  {{#if canLoadMore}}
+    <a class="btn btn-primary" {{action 'getMore'}}>
+      {{#if loading}}
+        Загрузка
+      {{else}}
+        Еще
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

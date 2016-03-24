@@ -16,10 +16,17 @@
 #
 
 class Source < ActiveRecord::Base
+  include Source::UrlChecker
+  include Source::Searchable
+
   self.inheritance_column = '_type'
+
+  paginates_per 12
+  max_paginates_per 24
 
   belongs_to :source
   has_many :sources
+  has_many :urls
   has_many :publications
 
   # Nested

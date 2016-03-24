@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311180726) do
+ActiveRecord::Schema.define(version: 20160322171148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -224,6 +225,21 @@ ActiveRecord::Schema.define(version: 20160311180726) do
 
   add_index "sources", ["source_id"], name: "index_sources_on_source_id", using: :btree
 
+  create_table "urls", force: :cascade do |t|
+    t.string   "path"
+    t.string   "title"
+    t.string   "context"
+    t.string   "image"
+    t.integer  "source_id"
+    t.integer  "publication_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "state"
+  end
+
+  add_index "urls", ["publication_id"], name: "index_urls_on_publication_id", using: :btree
+  add_index "urls", ["source_id"], name: "index_urls_on_source_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "slug"
@@ -285,8 +301,6 @@ ActiveRecord::Schema.define(version: 20160311180726) do
   add_foreign_key "boxes", "images"
   add_foreign_key "boxes", "lines"
   add_foreign_key "lines", "categories"
-  add_foreign_key "publication_locks", "publications"
-  add_foreign_key "publication_watchers", "publications"
   add_foreign_key "publications", "sources"
   add_foreign_key "slides", "images"
   add_foreign_key "slides", "publications"

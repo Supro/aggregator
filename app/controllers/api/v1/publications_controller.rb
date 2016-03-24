@@ -5,7 +5,12 @@ class Api::V1::PublicationsController < Api::V1::ApplicationController
   before_action :set_creator, only: [:create]
 
   def index
-    render json: Publication.search(params), each_serializer: Api::V1::PublicationIndexSerializer
+    publications = Publication.search(params)
+    render json: publications,
+           each_serializer: Api::V1::PublicationIndexSerializer,
+           meta: { page:          publications.current_page,
+                   per_page:      (params[:per_page] || Publication.default_per_page).to_i,
+                   total_pages:   publications.total_pages }
   end
 
   def show

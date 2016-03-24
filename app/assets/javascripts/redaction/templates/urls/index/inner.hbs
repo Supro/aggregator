@@ -1,0 +1,53 @@
+<table class="table table-striped publications-table">
+  <thead>
+    <tr>
+      <th>Изображение</th>
+      <th>Описание</th>
+      <th>Добавлено</th>
+      <th>Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |url|}}
+      <tr>
+        <td class="time" style="width: 80px;">
+          <img style="width: 80px; height: 80px;" src="{{url.image}}" />
+        </td>
+        <td style="width: 50%;">
+          <a href="{{url.path}}" target="_blank" class="title">{{url.title}}</a>
+          <div class="type">
+            {{url.context}}
+          </div>
+        </td>
+        <td class="time">{{url.timeFullLLL}}</td>
+        <td>
+          {{#if url.isNew}}
+            В ожидании
+          {{/if}}
+          {{#if url.isIntresting}}
+            {{#if url.gotPublication}}
+              Опубликована
+            {{else}}
+              Стоит внимания
+            {{/if}}
+          {{/if}}
+          {{#if url.isLame}}
+            Не интересна
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="show-more">
+  {{#if canLoadMore}}
+    <a class="btn btn-primary" {{action 'getMore'}}>
+      {{#if loading}}
+        Загрузка
+      {{else}}
+        Еще
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

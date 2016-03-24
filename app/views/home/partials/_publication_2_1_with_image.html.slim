@@ -1,4 +1,4 @@
-a.publication-inner.with_image href="#{publication.full_url}" class="#{"width-background" if box.image.present?}" style="background-image: url(#{box.image.present? ? box.image.url : ''});"
+a.publication-inner.with_image href="#{publication.full_url}" class="#{"width-background" if box.image.present?}" style="background-image: url(#{box.image.present? ? box.image.large : ''});"
   .black-background
     .info
       .type style="color: #{publication.type_color};"

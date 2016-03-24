@@ -1,6 +1,13 @@
 Aggregator.SourcesRoute = Ember.Route.extend(SimpleAuth.AuthenticatedRouteMixin, {
-  model: function(){
-    return this.store.query('source', { source_id: null });
+  queryParams: {
+    term: {
+      refreshModel: true
+    }
+  },
+
+  model: function(params){
+    params["source_id"] = null;
+    return this.store.query('source', params);
   },
 
   setupController: function(controller, model){

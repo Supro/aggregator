@@ -10,6 +10,7 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
 
   slides: DS.hasMany('slide'),
   images: DS.hasMany('image'),
+  urls:   DS.hasMany('url'),
 
   categoryIds: DS.attr('array'),
   boxIds:      DS.attr('array'),
@@ -24,8 +25,8 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
   context:  DS.attr('string'),
   body:     DS.attr('string'),
   url:      DS.attr('string'),
-  totalVisits: DS.attr('number'),
 
+  totalVisits: DS.attr('number'),
   canApprove: DS.attr('boolean'),
 
   slidesActive: Ember.computed('slides.@each.willDestroy', 'lines.@each.position', 'fakeFire', function(){

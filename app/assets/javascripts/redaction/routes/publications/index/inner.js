@@ -16,6 +16,7 @@ Aggregator.PublicationsIndexInnerRoute = Ember.Route.extend({
       refreshModel: true
     }
   },
+
   model: function(params){
     return this.store.query('publication', params);
   },

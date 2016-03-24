@@ -46,6 +46,8 @@ end
 ActiveRecord::Migration.check_pending!
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+  config.alias_example_to :expect_it
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

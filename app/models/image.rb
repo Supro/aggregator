@@ -26,13 +26,28 @@ class Image < ActiveRecord::Base
   before_save :set_dem
 
   def url
-    #"http://#{ActionMailer::Base.default_url_options[:host]}" + file.url
-    file.url
+    "http://#{ActionMailer::Base.default_url_options[:static_host]}" + file.url
+    #file.url
+  end
+
+  def square
+    "http://#{ActionMailer::Base.default_url_options[:static_host]}" + file.square.url
+    #file.square.url
   end
 
   def thumb
-    #"http://#{ActionMailer::Base.default_url_options[:host]}" + file.thumb.url
-    file.thumb.url
+    "http://#{ActionMailer::Base.default_url_options[:static_host]}" + file.thumb.url
+    #file.thumb.url
+  end
+
+  def large
+    "http://#{ActionMailer::Base.default_url_options[:static_host]}" + file.large.url
+    #file.thumb.url
+  end
+
+  def small_thumb
+    "http://#{ActionMailer::Base.default_url_options[:static_host]}" + file.small_thumb.url
+    #file.small_thumb.url
   end
 
   def set_dem

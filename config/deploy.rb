@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:Supro/aggregator.git'
 set :scm, :git
 set :branch, ENV['BRANCH'] || 'master'
 
-set :linked_dirs, ['tmp/pids']
+set :linked_dirs, ['log', 'tmp/pids', 'public/uploads']
 
 set :use_sudo, false
 set :rbenv_type, :system

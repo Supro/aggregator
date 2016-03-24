@@ -1,0 +1,19 @@
+<div class="publications-table-container">
+  <div class="form-group col-lg-4">
+    {{input value=term name="term" class="form-control" placeholder="Поиск"}}
+  </div>
+  <div class="form-group col-lg-2">
+    <select onchange={{action "selectState" value="target.value"}} class="form-control">
+      {{#each settings.states as |stateChoice|}}
+        <option value={{stateChoice.id}} selected={{is-equal state stateChoice.id}}>{{stateChoice.label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group col-lg-2">
+    {{!link-to 'Добавить' 'publications.new' class="btn btn-success"}}
+  </div>
+  <br />
+  <br />
+  <br />
+  {{outlet}}
+</div>

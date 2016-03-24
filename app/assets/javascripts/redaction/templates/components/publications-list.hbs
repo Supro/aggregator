@@ -2,3 +2,15 @@
 {{#each filteredPublications as |publication|}}
   {{publication-element publication=publication store=store publications=publications box=box category=category}}
 {{/each}}
+
+<div class="show-more">
+  {{#if canLoadMore}}
+    <a class="btn btn-primary" {{action 'getMore'}}>
+      {{#if loading}}
+        Загрузка
+      {{else}}
+        Еще
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

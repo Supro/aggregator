@@ -3,8 +3,12 @@ class Api::V1::SourcesController < Api::V1::ApplicationController
   before_action :find_source, only: [:show, :update, :destroy]
 
   def index
-    params[:source_id] = nil if params[:source_id].blank?
-    render json: Source.where(params.permit(:source_id)), each_serializer: Api::V1::SourceSerializer
+    sources = Source.search(params)
+    render json: sources,
+           each_serializer: Api::V1::SourceSerializer,
+           meta: { page:          sources.current_page,
+                   per_page:      (params[:per_page] || Source.default_per_page).to_i,
+                   total_pages:   sources.total_pages }
   end
 
   def show

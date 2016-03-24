@@ -26,5 +26,13 @@ Aggregator.Router.map(function() {
       this.route('new', { path: '/new' });
       this.route('show', { path: '/:id' });
     });
+
+    this.route('urls', { resetNamespace: true }, function(){
+      this.route('index', { path: '/' }, function(){
+        this.route('inner', { path: '/' });
+      });
+      this.route('new', { path: '/new' });
+      this.route('show', { path: '/:id' });
+    });
   });
 });

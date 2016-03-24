@@ -1,6 +1,16 @@
 Aggregator.PublicationsListComponent = Ember.Component.extend({
   classNames: ['publications-list', 'col-lg-3', 'col-md-3'],
 
+  loading: false,
+
+  publications: Ember.computed('category', function(){
+    var _this = this;
+
+    return this.get('store').query('publication', {state: 'approved'});//.then(function(publications){
+    //  _this.set('publications', publications);
+    //});
+  }),
+
   filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', 'titleFilter', function(){
     var _this = this;
 
@@ -55,5 +65,30 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
         }
       }
     });
+  },
+
+  canLoadMore: Ember.computed('publications.[]', function(){
+    if (Ember.isPresent(this.get('publications.content.meta'))) {
+      return this.get('publications.content.meta').page < this.get('publications.content.meta').total_pages;
+    } else {
+      return false;
+    }
+  }),
+
+  actions: {
+    getMore: function(){
+      this.set('loading', true);
+
+      var _this = this;
+      var params = {
+        page: this.get('publications.content.meta').page + 1
+      };
+
+      this.get('store').query('publication', params).then(function(publications) {
+        _this.get('publications.content').set('meta', publications.get('meta'));
+        _this.get('publications.content').addObjects(publications.get('content'));
+        _this.set('loading', false);
+      });
+    }
   }
 });
