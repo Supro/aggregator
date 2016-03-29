@@ -8,24 +8,35 @@
 
   {{#if session.currentUser.isChiefEditor}}
     <div class="delete-block">
-      {{#if model.isOnMain}}
-        Нельзя удалить, опубликовано на главной
+      {{#if model.isPublished}}
+        Нельзя удалить, опубликовано
       {{/if}}
-      <button {{action 'removePublication'}} class="btn btn-danger" type="button" disabled={{model.isOnMain}}>Удалить публикацию</button>
+      <button {{action 'removePublication'}} class="btn btn-danger" type="button" disabled={{model.isPublished}}>Удалить публикацию</button>
     </div>
   {{/if}}
 
-  {{publication-edit-select socket=socket
-                            session=session
-                            model_id=model.publicationLock.id
-                            valid=model.typeValid
-                            value=model.type
-                            selectors=settings.typeSelect
-                            locked=model.publicationLock.typeLocked
-                            lockedBy=model.publicationLock.typeLockedBy
-                            field="type"
-                            error="Выберите тип публикации"
-                            title="Тип публикации"}}
+  {{#if model.isNews}}
+    <div class="{{ if model.typeValid 'main-input form-group has-success' 'main-input form-group has-error' }}">
+      <label for="title">
+        {{model.typeTitle}}
+      </label>
+        <select class="form-control">
+          <option value="news" selected="true">Новость</option>
+        </select>
+    </div>
+  {{else}}
+    {{publication-edit-select socket=socket
+                              session=session
+                              model_id=model.publicationLock.id
+                              valid=model.typeValid
+                              value=model.type
+                              selectors=settings.typeSelect
+                              locked=model.publicationLock.typeLocked
+                              lockedBy=model.publicationLock.typeLockedBy
+                              field="type"
+                              error="Выберите тип публикации"
+                              title="Тип публикации"}}
+  {{/if}}
 
   {{image-uploader socket=socket
                    session=session
@@ -138,7 +149,18 @@
 
 <div class="col-lg-4">
   {{#if model.isNews}}
-    {{publication-edit-source socket=socket
+    <h3>Источник:</h3>
+    {{#each model.urls as |url|}}
+      <div class="publication-url">
+        <div class="publication-url-description">
+          <b><a href="{{url.path}}" target="_blank">{{url.title}}</a></b>
+          <p>
+            {{url.context}}
+          </p>
+        </div>
+      </div>
+    {{/each}}
+    {{!publication-edit-source socket=socket
                               session=session
                               store=store
                               locked=model.publicationLock.urlLocked

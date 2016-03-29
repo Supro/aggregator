@@ -12,6 +12,9 @@ Aggregator.PublicationsIndexInnerRoute = Ember.Route.extend({
     editor_id: {
       refreshModel: true
     },
+    writer_id: {
+      refreshModel: true
+    },
     term: {
       refreshModel: true
     }

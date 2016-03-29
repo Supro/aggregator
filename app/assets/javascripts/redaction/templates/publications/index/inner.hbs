@@ -32,13 +32,15 @@
         <!--<td class="time">{{publication.editor.name}}</td>-->
         <td>
           {{#if publication.isApproved}}
-            Утверждена - {{publication.approveTimeFullLLL}}
-          {{else}}
-            На утверждении
+            Отправлено на проверку - {{publication.approveTimeFullLLL}}
           {{/if}}
-          {{#if publication.canApprove}}
-            {{publication-approve publication=publication}}
+          {{#if publication.isPending}}
+            В процессе
           {{/if}}
+          {{#if publication.isPublished}}
+            Опубликовано - {{publication.publishedTimeFullLLL}}
+          {{/if}}
+          {{publication-approve publication=publication}}
         </td>
         <td class="time">
           {{publication.totalVisits}}

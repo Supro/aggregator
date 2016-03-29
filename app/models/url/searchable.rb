@@ -7,7 +7,8 @@ class Url < ActiveRecord::Base
         urls = self.where(create_filters(params))
         urls = urls.where("UPPER(title) LIKE UPPER(:title) OR UPPER(path) LIKE UPPER(:title)", title: "%#{params[:term]}%") if params[:term].present?
 
-        urls.page(params[:page]||1)
+        urls.order(id: :desc)
+            .page(params[:page]||1)
             .per(params[:per_page]||self.default_per_page)
       end
 
@@ -15,7 +16,7 @@ class Url < ActiveRecord::Base
 
       def create_filters(params)
         {}.tap do |hash|
-          hash[:state] = (params[:state]||['new', 'intresting'])
+          hash[:state] = (params[:state]||'new')
         end
       end
     end

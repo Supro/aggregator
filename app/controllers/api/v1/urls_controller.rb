@@ -3,7 +3,7 @@ class Api::V1::UrlsController < Api::V1::ApplicationController
   load_and_authorize_resource
 
   def index
-      urls = Url.page(params[:page])
+      urls = Url.search(params)
       render json: urls,
              each_serializer: Api::V1::UrlIndexSerializer,
              meta: { page:          urls.current_page,

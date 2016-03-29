@@ -4,13 +4,13 @@
   </div>
   <div class="form-group col-lg-2">
     <select onchange={{action "selectState" value="target.value"}} class="form-control">
-      {{#each settings.states as |stateChoice|}}
+      {{#each settings.urlStates as |stateChoice|}}
         <option value={{stateChoice.id}} selected={{is-equal state stateChoice.id}}>{{stateChoice.label}}</option>
       {{/each}}
     </select>
   </div>
   <div class="form-group col-lg-2">
-    {{!link-to 'Добавить' 'publications.new' class="btn btn-success"}}
+    {{link-to 'Добавить' 'urls.new' class="btn btn-success"}}
   </div>
   <br />
   <br />

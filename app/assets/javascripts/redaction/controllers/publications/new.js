@@ -1,4 +1,6 @@
 Aggregator.PublicationsNewController = Ember.Controller.extend(Aggregator.PublicationSourceFormMixin, {
+  queryParams: ['url', 'type'],
+
   setSource: function(source){
     this.get('model').set('source', source);
   },

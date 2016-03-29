@@ -6,11 +6,17 @@
     <label for="title">
       {{model.typeTitle}}
     </label>
-    <select onchange={{action "selectType" value="target.value"}} class="form-control">
-      {{#each settings.typeSelect as |typeChoice|}}
-        <option value={{typeChoice.id}} selected={{is-equal value typeChoice.id}}>{{typeChoice.label}}</option>
-      {{/each}}
-    </select>
+    {{#if model.isNews}}
+      <select class="form-control">
+        <option value="news" selected="true">Новость</option>
+      </select>
+    {{else}}
+      <select onchange={{action "selectType" value="target.value"}} class="form-control">
+        {{#each settings.typeSelect as |typeChoice|}}
+          <option value={{typeChoice.id}} selected={{is-equal model.type typeChoice.id}}>{{typeChoice.label}}</option>
+        {{/each}}
+      </select>
+    {{/if}}
     {{#unless model.typeValid}}
       <span class="help-block">Выберите тип публикации</span>
     {{/unless}}
@@ -27,7 +33,18 @@
 </div>
 <div class="col-lg-4 col-md-4">
   {{#if model.isNews}}
-    <div class="{{ if model.sourceValid 'form-group has-success' 'form-group has-error' }}">
+    <h3>Источник:</h3>
+    {{#each model.urls as |url|}}
+      <div class="publication-url">
+        <div class="publication-url-description">
+          <b><a href="{{url.path}}" target="_blank">{{url.title}}</a></b>
+          <p>
+            {{url.context}}
+          </p>
+        </div>
+      </div>
+    {{/each}}
+    <!--<div class="{{ if model.sourceValid 'form-group has-success' 'form-group has-error' }}">
       <label for="title">
         Ссылка на источник
       </label>
@@ -115,6 +132,6 @@
           {{/if}}
         </div>
       {{/if}}
-    </div>
+    </div>-->
   {{/if}}
 </div>

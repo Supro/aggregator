@@ -1,6 +1,10 @@
-Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.ApproveTimeable, {
+Aggregator.Publication = DS.Model.extend(
+  Aggregator.Timeable,
+  Aggregator.ApproveTimeable,
+  Aggregator.PublishTimeable, {
+
   box:                DS.belongsTo('box'),
-  source:             DS.belongsTo('source'),
+  //source:             DS.belongsTo('source'),
   publicationLock:    DS.belongsTo('publication-lock'),
   publicationWatcher: DS.belongsTo('publication-watcher'),
   poster:             DS.belongsTo('image'),
@@ -24,10 +28,12 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
   subTitle: DS.attr('string'),
   context:  DS.attr('string'),
   body:     DS.attr('string'),
-  url:      DS.attr('string'),
+  //url:      DS.attr('string'),
 
   totalVisits: DS.attr('number'),
   canApprove: DS.attr('boolean'),
+  canPend: DS.attr('boolean'),
+  canPublish: DS.attr('boolean'),
 
   slidesActive: Ember.computed('slides.@each.willDestroy', 'lines.@each.position', 'fakeFire', function(){
     var slides = this.get('slides');
@@ -60,11 +66,12 @@ Aggregator.Publication = DS.Model.extend(Aggregator.Timeable, Aggregator.Approve
   }),
 
   sourceValid: Ember.computed('source', function(){
-    if (this.get('isNews')) {
-      return Ember.isPresent(this.get('source.id'));
-    } else {
-      return true;
-    }
+    //if (this.get('isNews')) {
+    //  return Ember.isPresent(this.get('source.id'));
+    //} else {
+    //  return true;
+    //}
+    return true;
   }),
 
   gotSlides: Ember.computed.gt('slides.length', 0),

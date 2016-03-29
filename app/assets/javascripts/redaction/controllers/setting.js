@@ -9,13 +9,20 @@ Aggregator.SettingController = Ember.Controller.extend({
   ],
 
   states: [
-    {id: 'pending', label: 'Ожидают утверждения'},
-    {id: 'approved', label: 'Утверждены'},
+    {id: 'pending', label: 'В процессе'},
+    {id: 'approved', label: 'Ожидают проверки'},
+    {id: 'published', label: 'Опубликованы'},
+  ],
+
+  urlStates: [
+    {id: 'new', label: 'Новые'},
+    {id: 'lame', label: 'Неинтересные'},
+    {id: 'intresting', label: 'Интересные'},
+    {id: 'linked', label: 'Связанные с новостями'}
   ],
 
   typeSelect: [
     {id: null, label: 'Выберите тип публикации'},
-    {id: 'news', label: 'Новость'},
     {id: 'guide', label: 'Гайд'},
     {id: 'video', label: 'Видео'},
     {id: 'article', label: 'Статья'}//,

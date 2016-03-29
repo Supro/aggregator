@@ -6,11 +6,15 @@ class Publication < ActiveRecord::Base
         state_machine :state, initial: :pending  do
           after_transition pending: :approved, do: :set_approved_at
           after_transition approved: :pending, do: :remove_approved_at
+            after_transition approved: :published, do: :set_published_at
           event :approve do
             transition pending: :approved
           end
           event :move_to_pending do
             transition approved: :pending
+          end
+          event :publish do
+            transition approved: :published
           end
         end
       end
@@ -18,6 +22,10 @@ class Publication < ActiveRecord::Base
 
     def set_approved_at
       update(approved_at: Time.now)
+    end
+
+    def set_published_at
+      update(published_at: Time.now)
     end
 
     def remove_approved_at

@@ -54,6 +54,7 @@ Aggregator::Application.routes.draw do
           post :insert_at
           put :move_to_approved
           put :move_to_pending
+          put :move_to_published
         end
       end
 

@@ -2,7 +2,7 @@ Aggregator.UrlsIndexInnerController = Ember.Controller.extend({
   queryParams: ['state', 'term'],
 
   term: '',
-  state: 'pending',
+  state: 'new',
   loading: false,
 
   canLoadMore: Ember.computed('model.[]', function(){

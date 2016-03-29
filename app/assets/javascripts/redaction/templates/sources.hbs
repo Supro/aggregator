@@ -2,26 +2,27 @@
   <div class="col-lg-3 col-lg-3 left">
     <h4>Источники</h4>
     {{input value=termFake class="form-control title-filter" placeholder="Поиск"}}
-    {{#link-to 'sources.new' class="new-source"}}
-      Добавить источник
-      <i class="glyphicon glyphicon-plus"></i>
-    {{/link-to}}
+    {{!#link-to 'sources.new' class="new-source"}}
+      <!--Добавить источник
+      <i class="glyphicon glyphicon-plus"></i>-->
+    {{!/link-to}}
     {{#each model as |source|}}
       {{#link-to 'sources.show' source.id class="list-source"}}
         {{source.title}} - {{source.url}}
       {{/link-to}}
     {{/each}}
-  </div>
-  <div class="show-more">
-    {{#if canLoadMore}}
-      <a class="btn btn-primary" {{action 'getMore'}}>
-        {{#if loading}}
-          Загрузка
-        {{else}}
-          Еще
-        {{/if}}
-      </a>
-    {{/if}}
+
+    <div class="show-more">
+      {{#if canLoadMore}}
+        <a class="btn btn-primary" {{action 'getMore'}}>
+          {{#if loading}}
+            Загрузка
+          {{else}}
+            Еще
+          {{/if}}
+        </a>
+      {{/if}}
+    </div>
   </div>
   <div class="col-lg-9 col-md-9">
     {{outlet}}

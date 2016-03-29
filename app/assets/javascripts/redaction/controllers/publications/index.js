@@ -1,6 +1,9 @@
 Aggregator.PublicationsIndexController = Ember.Controller.extend({
   publicationsIndexInnerController: Ember.inject.controller('publications.index.inner'),
 
+  state: Ember.computed.alias('urlsIndexInnerController.state'),
+  type: Ember.computed.alias('urlsIndexInnerController.type'),
+
   termObserver: Ember.observer('term', function(){
     var _this = this;
 

@@ -2,6 +2,9 @@ Aggregator.UrlsIndexInnerRoute = Ember.Route.extend({
   queryParams: {
     state: {
       refreshModel: true
+    },
+    term: {
+      refreshModel: true
     }
   },
 

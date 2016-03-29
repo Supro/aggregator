@@ -1,7 +1,7 @@
 <div class="form">
   <div class="buttons">
-    <button type="button" name="button" class="btn btn-success" {{action "saveSource"}} disabled={{model.formInvalid}}>Сохранить</button>
-    <button type="button" name="button" class="btn btn-danger" {{action "removeSource"}}>Удалить</button>
+    <button type="button" name="button" class="btn btn-success" {{action "saveSource"}} disabled={{model.formInvalid}}>Обновить</button>
+    <!--<button type="button" name="button" class="btn btn-danger" {{action "removeSource"}}>Удалить</button>-->
     {{link-to "Отмена" "sources" class="btn btn-default" activeClass="" }}
   </div>
   <div class="{{ if model.titleValid 'form-group has-success' 'form-group has-error' }}">

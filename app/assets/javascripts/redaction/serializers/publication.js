@@ -1,6 +1,6 @@
 Aggregator.PublicationSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
-    source: {
+    urls: {
       serialize: 'ids'
     },
     slides: {

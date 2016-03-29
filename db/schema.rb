@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322171148) do
+ActiveRecord::Schema.define(version: 20160325205133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,9 +173,9 @@ ActiveRecord::Schema.define(version: 20160322171148) do
     t.text     "body"
     t.text     "context"
     t.string   "state"
-    t.integer  "position",    default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "position",     default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "source_id"
     t.string   "sub_title"
     t.string   "slug"
@@ -184,12 +184,15 @@ ActiveRecord::Schema.define(version: 20160322171148) do
     t.integer  "creator_id"
     t.integer  "editor_id"
     t.datetime "approved_at"
+    t.datetime "published_at"
+    t.integer  "writer_id"
   end
 
   add_index "publications", ["creator_id"], name: "index_publications_on_creator_id", using: :btree
   add_index "publications", ["editor_id"], name: "index_publications_on_editor_id", using: :btree
   add_index "publications", ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   add_index "publications", ["source_id"], name: "index_publications_on_source_id", using: :btree
+  add_index "publications", ["writer_id"], name: "index_publications_on_writer_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

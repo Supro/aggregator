@@ -30,6 +30,21 @@ Aggregator.PublicationApproveComponent = Ember.Component.extend({
           }
         });
       }
+    },
+
+    moveToPublished: function(){
+      publication = this.get('publication')
+
+      if (publication.get('canPublish')) {
+        Ember.$.ajax({
+          url: '/api/v1/publications/' + publication.get('id') + '/move_to_published',
+          type: 'PUT',
+          dataType: 'JSON',
+          success: function(data){
+            publication.set('state', 'published');
+          }
+        });
+      }
     }
   }
 });

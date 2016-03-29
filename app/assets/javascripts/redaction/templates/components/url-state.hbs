@@ -1,0 +1,11 @@
+{{#if url.isNew}}
+  <a {{action 'moveToLame'}}>Неинтересно</a>
+  <a {{action 'moveToIntresting'}}>Интересно</a>
+{{/if}}
+{{#if url.isLame}}
+  <a {{action 'moveToIntresting'}}>Интересно</a>
+{{/if}}
+{{#if url.isIntresting}}
+  <a {{action 'moveToLame'}}>Неинтересно</a>
+  {{link-to "Перевести в новость" 'publications.new' (query-params url=url.id type='news')}}
+{{/if}}

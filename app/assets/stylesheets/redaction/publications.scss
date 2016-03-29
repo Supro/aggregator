@@ -105,6 +105,26 @@
   }
 }
 
+.publication-url {
+  display: table;
+
+  .publication-url-img, .publication-url-description {
+    display: table-cell;
+  }
+
+  .publication-url-description {
+    p {
+      margin-top: 5px;
+    }
+  }
+
+  .publication-url-img {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+  }
+}
+
 .publication-element {
   //background-color: #e3e3e3;
   padding: 5px 3px;
@@ -145,6 +165,7 @@
 .publication-approve {
   a {
     cursor: pointer;
+    display: block;
   }
 }
 
