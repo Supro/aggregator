@@ -19,6 +19,8 @@ Aggregator.PublicationsIndexInnerController = Ember.Controller.extend({
 
       var _this = this;
       var params = {
+        type: this.get('type'),
+        state: this.get('state'),
         page: this.get('content.meta').page + 1
       };
 

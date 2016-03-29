@@ -15,6 +15,7 @@ Aggregator.UrlsIndexInnerController = Ember.Controller.extend({
 
       var _this = this;
       var params = {
+        state: this.get('state'),
         page: this.get('content.meta').page + 1
       };
 

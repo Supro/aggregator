@@ -9,7 +9,7 @@ namespace :urls do
       begin
         resp, data = Net::HTTP.post_form(url, {path: pub.url})
         Url.update_all(state: "intresting")
-        Url.find_by_path(pub.url).update(publication_id: pub.id)
+        Url.find_by_path(pub.url.gsub(/\/$/, '').gsub(/\?(.*)/, '')).update(publication_id: pub.id)
       rescue
         p "rescue"
       end
