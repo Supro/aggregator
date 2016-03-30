@@ -1,4 +1,4 @@
-- if true#Rails.env.eql?('production')
+- if Rails.env.eql?('production')
   = content_for :head do
     - if !@publication.published?
       meta name="robots" content="noindex"
