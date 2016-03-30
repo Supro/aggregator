@@ -81,7 +81,7 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
 
       var _this = this;
       var params = {
-        page: this.get('publications.content.meta').page + 1,
+        page: (this.get('publications.content.meta').page + 1),
         state: 'published'
       };
 
