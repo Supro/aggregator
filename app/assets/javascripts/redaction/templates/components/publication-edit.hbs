@@ -74,7 +74,7 @@
                            title=model.titleTitle}}
 
 
-  {{#if model.isPending}}
+  {{#if model.isNotPublished}}
     {{publication-edit-input socket=socket
                              session=session
                              model_id=model.publicationLock.id
