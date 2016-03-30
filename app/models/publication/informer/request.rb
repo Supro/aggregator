@@ -6,7 +6,7 @@ class Publication < ActiveRecord::Base
       attr_reader :base_url
 
       def initialize
-        @base_url = URI.parse('http://localhost:8080/messages')
+        @base_url = URI.parse('http://api.fireimp.ru/messages')
       end
 
       def send(params)
