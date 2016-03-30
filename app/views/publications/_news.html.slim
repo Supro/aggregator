@@ -170,9 +170,9 @@ script type="application/ld+json" {
     "headline": "#{@publication.title}",
     "image": {
       "@type": "ImageObject",
-      "url": "#{@publication.poster.url}",
-      "height": #{@publication.poster.height},
-      "width": #{@publication.poster.width}
+      "url": "#{@publication.poster.square}",
+      "height": 400,
+      "width": 400
     },
     "datePublished": "#{@publication.created_at.iso8601}",
     "dateModified": "#{@publication.updated_at.iso8601}",

@@ -66,7 +66,7 @@ script type="application/ld+json" {
     "@type": "VideoObject",
     "name": "#{@publication.title}",
     "description": "#{@publication.context}",
-    "thumbnailUrl": "#{@publication.poster.url}",
+    "thumbnailUrl": "#{@publication.poster.square}",
     "uploadDate": "#{@publication.created_at.iso8601}",
     "interactionCount": "#{@publication.total_visits}"
     //"duration": "PT1M33S",
