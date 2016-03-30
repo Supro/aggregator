@@ -73,7 +73,7 @@ private
 
   def publication_params
     params[:publication].permit(:type, :slug, :title, :sub_title, :editor_id, :state,
-                                :context, :body, :creator_id, :writer_id, :url_ids,
+                                :context, :body, :creator_id, :writer_id, url_ids: [],
                                 slides_attributes: [:id, :title, :body, :publication_id, :image_id, :_destroy],
                                 images_attributes: [:id, :imageable_id, :imageable_type],
                                 publication_lock_attributes: [:slug_locked, :slug_by,
