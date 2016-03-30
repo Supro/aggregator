@@ -19,7 +19,7 @@ class Publication < ActiveRecord::Base
           hash[:creator_id] = params[:creator_id] if params[:creator_id].present?
           hash[:editor_id]  = params[:editor_id]  if params[:editor_id].present?
           hash[:type]       = params[:type]       if params[:type].present?
-          hash[:state]      = (params[:state]||'approved')
+          hash[:state]      = (params[:state]||'published')
         end
       end
 

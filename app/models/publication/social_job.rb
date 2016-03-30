@@ -7,7 +7,7 @@ class Publication < ActiveRecord::Base
     end
 
     def social_job
-      if approved?
+      if published?
         PingWorker.perform_in 2.minutes, self.id
       end
     end
