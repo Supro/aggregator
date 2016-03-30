@@ -8,4 +8,4 @@ a.publication-inner href="#{publication.full_url}"
         = publication.title
         - if publication.sub_title.present?
           span= publication.sub_title
-      time= "#{time_ago_in_words publication.created_at} назад"
+      time= "#{time_ago_in_words publication.published_at} назад"
