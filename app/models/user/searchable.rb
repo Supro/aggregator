@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
       def create_filters(params)
         {}.tap do |hash|
+          hash[:id] = params[:ids] if params[:ids].present?
         end
       end
     end
