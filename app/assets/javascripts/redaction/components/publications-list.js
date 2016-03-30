@@ -6,7 +6,7 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
   publications: Ember.computed('category', function(){
     var _this = this;
 
-    return this.get('store').query('publication', {state: 'approved'});//.then(function(publications){
+    return this.get('store').query('publication', {state: 'published'});//.then(function(publications){
     //  _this.set('publications', publications);
     //});
   }),
