@@ -4,9 +4,9 @@ class Publication < ActiveRecord::Base
     def self.included(klass)
       klass.class_eval do
         state_machine :state, initial: :pending  do
-          after_transition pending: :approved, do: :set_approved_at
-          after_transition approved: :pending, do: :remove_approved_at
-            after_transition approved: :published, do: :set_published_at
+          after_transition pending: :approved, do: [:set_approved_at, :slack_inform]
+          after_transition approved: :pending, do: [:remove_approved_at, :slack_inform]
+          after_transition approved: :published, do: [:set_published_at, :slack_inform]
           event :approve do
             transition pending: :approved
           end

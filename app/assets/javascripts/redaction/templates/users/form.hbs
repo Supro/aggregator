@@ -1,0 +1,41 @@
+<div class="col-lg-12 col-md-12 form-group">
+  <button class="btn btn-success" type="button" {{action 'saveUser'}} disabled={{model.formSmallInvalid}}>Сохранить</button>
+</div>
+<div class="col-lg-8 col-md-8">
+  <div class="{{ if model.emailValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="email">
+      {{model.emailTitle}}
+    </label>
+    {{input value=model.email class="main-input form-control" placeholder=placeholder}}
+    {{#unless model.emailValid}}
+      <span class="help-block">Минимум 3 символа, максимум 70</span>
+    {{/unless}}
+  </div>
+  <div class="{{ if model.nameValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="name">
+      {{model.nameTitle}}
+    </label>
+    {{input value=model.name class="main-input form-control" placeholder=placeholder}}
+    {{#unless model.nameValid}}
+      <span class="help-block">Минимум 3 символа, максимум 70</span>
+    {{/unless}}
+  </div>
+  <div class="{{ if model.slackChatValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="slackChat">
+      {{model.slackChatTitle}}
+    </label>
+    {{input value=model.slackChat class="main-input form-control" placeholder=placeholder}}
+    {{#unless model.slackChatValid}}
+      <span class="help-block">Минимум 3 символа, максимум 70</span>
+    {{/unless}}
+  </div>
+  <div class="{{ if model.aboutValid 'form-group has-success' 'form-group has-error' }}">
+    <label for="about">
+      {{model.aboutTitle}}
+    </label>
+    {{textarea value=model.about class="main-input form-control" placeholder=placeholder}}
+    {{#unless model.aboutValid}}
+      <span class="help-block">Минимум 3 символа, максимум 70</span>
+    {{/unless}}
+  </div>
+</div>

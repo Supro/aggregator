@@ -5,6 +5,7 @@ class Ability
     can :read, :all
 
     if user.has_role?(:chief_editor)
+      can :manage, User
       chief_editor_rights(user)
       editor_rights(user)
       journalist_rights(user)

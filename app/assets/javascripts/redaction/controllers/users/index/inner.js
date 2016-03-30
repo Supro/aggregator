@@ -1,9 +1,7 @@
-Aggregator.UrlsIndexInnerController = Ember.Controller.extend({
-  queryParams: ['state', 'term'],
+Aggregator.UsersIndexInnerController = Ember.Controller.extend({
+  queryParams: ['term'],
 
   term: '',
-  state: 'new',
-  loading: false,
 
   canLoadMore: Ember.computed('model.[]', function(){
     return this.get('model.meta').page < this.get('model.meta').total_pages;
@@ -15,14 +13,13 @@ Aggregator.UrlsIndexInnerController = Ember.Controller.extend({
 
       var _this = this;
       var params = {
-        state: this.get('state'),
         term: this.get('term'),
         page: this.get('content.meta').page + 1
       };
 
-      this.store.query('url', params).then(function(urls) {
-        _this.get('model').set('meta', urls.get('meta'));
-        _this.get('model').addObjects(urls.get('content'));
+      this.store.query('user', params).then(function(users) {
+        _this.get('model').set('meta', users.get('meta'));
+        _this.get('model').addObjects(users.get('content'));
         _this.set('loading', false);
       });
     }

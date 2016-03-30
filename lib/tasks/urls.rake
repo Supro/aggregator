@@ -9,7 +9,11 @@ namespace :urls do
       begin
         resp, data = Net::HTTP.post_form(url, {path: pub.url})
         Url.update_all(state: "intresting")
-        Url.find_by_path(pub.url.gsub(/\/$/, '').gsub(/\?(.*)/, '')).update(publication_id: pub.id)
+        if pub.url =~ /https:\/\/youtu/
+          Url.find_by_path(pub.url.gsub(/\/$/, '')).update(publication_id: pub.id)
+        else
+          Url.find_by_path(pub.url.gsub(/\/$/, '').gsub(/\?(.*)/, '')).update(publication_id: pub.id)
+        end
       rescue
         p "rescue"
       end

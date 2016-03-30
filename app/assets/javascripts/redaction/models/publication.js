@@ -54,6 +54,7 @@ Aggregator.Publication = DS.Model.extend(
 
   isApproved: Ember.computed.equal('state', 'approved'),
   isPending:  Ember.computed.equal('state', 'pending'),
+  isPublished:  Ember.computed.equal('state', 'published'),
 
   isNeedText: Ember.computed('type', function(){
     return this.get('isNews') || this.get('isGuide') || this.get('isArticle');

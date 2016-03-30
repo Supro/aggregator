@@ -7,6 +7,10 @@ class Publication < ActiveRecord::Base
         Publication::TypeVariables::Url.new(self).url
       end
 
+      def redaction_url
+        "http://#{ActionMailer::Base.default_url_options[:host]}/redaction/publications/#{id}"
+      end
+
       def type_path
         Publication::TypeVariables::Url.new(self).path
       end

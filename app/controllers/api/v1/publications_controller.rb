@@ -1,7 +1,7 @@
 class Api::V1::PublicationsController < Api::V1::ApplicationController
   before_action :doorkeeper_authorize!
   before_action :find_publication, only: [:show, :insert_at, :move_to_approved,
-                                          :move_to_pending, :update, :destroy]
+                                          :move_to_pending, :move_to_published, :update, :destroy]
   before_action :set_creator, only: [:create]
 
   def index

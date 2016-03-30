@@ -18,6 +18,8 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  slack_chat             :string
+#  user_id                :integer
 #
 # Indexes
 #
@@ -26,11 +28,16 @@
 #
 
 class User < ActiveRecord::Base
+  include User::Searchable
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  paginates_per 12
+  max_paginates_per 24
 
   def is_admin?
     has_role?(:admin)

@@ -7,8 +7,12 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   end
 
   def index
-    users = User.where(id: params[:ids])
-    render json: users, each_serializer: Api::V1::UserSerializer
+      users = User.search(params)
+      render json: users,
+             each_serializer: Api::V1::UserSerializer,
+             meta: { page:          users.current_page,
+                     per_page:      (params[:per_page] || User.default_per_page).to_i,
+                     total_pages:   users.total_pages }
   end
 
   def show
@@ -34,8 +38,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 private
 
   def create_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :gender,
-                                 :first_name, :middle_name, :last_name, :phone)
+    params.require(:user).permit(:email, :password, :password_confirmation, :about, :slack_chat, :name, user_ids: [])
   end
 
   def update_params; create_params end

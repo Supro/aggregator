@@ -34,6 +34,7 @@ class Publication < ActiveRecord::Base
   include FragmentCacheRemoveable
   include Publication::Searchable
   include Publication::Slugable
+  include Publication::Informer
   include Publication::StateMachine
   include Publication::TypeVariables
   include Publication::TypeMethods

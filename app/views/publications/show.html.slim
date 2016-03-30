@@ -1,6 +1,8 @@
-- if Rails.env.eql?('production')
+- if true#Rails.env.eql?('production')
   = content_for :head do
-    link rel="canonical" href="#{@publication.full_url}" 
+    - if !@publication.published?
+      meta name="robots" content="noindex"
+    link rel="canonical" href="#{@publication.full_url}"
     script type="text/javascript" async="true" src="https://relap.io/api/v6/head.js?token=nOScV9NXlOAdMEtO"
 
 //- cache "#{@publication.class.to_s.downcase}_#{@publication.id}", skip_digest: true do

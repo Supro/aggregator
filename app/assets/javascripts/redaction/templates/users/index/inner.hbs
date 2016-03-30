@@ -1,0 +1,34 @@
+<table class="table table-striped users-table">
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Чат</th>
+      <th>Об авторе</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |user|}}
+      <tr>
+        <td>
+          {{#link-to 'users.show' user.id}}
+            {{user.name}}
+          {{/link-to}}
+        </td>
+        <td class="time">{{user.slackChat}}</td>
+        <td class="time">{{user.about}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="show-more">
+  {{#if canLoadMore}}
+    <a class="btn btn-primary" {{action 'getMore'}}>
+      {{#if loading}}
+        Загрузка
+      {{else}}
+        Еще
+      {{/if}}
+    </a>
+  {{/if}}
+</div>
