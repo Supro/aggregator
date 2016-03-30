@@ -200,6 +200,20 @@ form {
   padding-top: 15px;
   border-top: 1px solid #e3e3e3;
   clear: both;
+
+  .relap-default__top-container {
+    width: 100% !important;
+    max-width: none !important;
+
+    .relap-default__items-container {
+      padding: 0 25px !important;
+
+      .js-relap__item {
+        min-width: none !important;
+        max-width: none !important;
+      }
+    }
+  }
 }
 
 .relap-default__logo, .relap-default__block-title {
