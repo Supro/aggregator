@@ -157,8 +157,7 @@
   .col-lg-12-col-md-12.relap-cont
     script id="Eu0SGdkZE6hS1efn" if (window.relap) window.relap.ar('Eu0SGdkZE6hS1efn');
   .col-lg-12-col-md-12.disqus-cont
-    - if Rails.env.eql?('production')
-      #disqus_thread
+    = render partial: 'publications/disqus'
 
 script type="application/ld+json" {
     "@context": "http://schema.org",
