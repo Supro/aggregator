@@ -3,7 +3,7 @@
                 og: { title: @publication.full_title, type: 'article', image: @publication.poster.square, description: @publication.context, url: "#{@publication.full_url}" },
                 twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.square }
 
-#publication-show.guide
+.publication-show.guide
   .publication-top
     .background style="background-image: url(#{@publication.background.present? ? @publication.background.url : (@publication.poster.present? ? @publication.poster.url : '')});"
       .inner-block
