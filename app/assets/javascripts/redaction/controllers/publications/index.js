@@ -16,7 +16,7 @@ Aggregator.PublicationsIndexController = Ember.Controller.extend({
 
   actions: {
     selectType: function(type) {
-      if (['news', 'guide', 'video'].contains(type)) {
+      if (['news', 'guide', 'video', 'article'].contains(type)) {
         this.get('publicationsIndexInnerController').set('type', type);
       } else {
         this.get('publicationsIndexInnerController').set('type', null);
