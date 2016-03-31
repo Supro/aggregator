@@ -16,7 +16,7 @@ class Publication < ActiveRecord::Base
         when "approved"
           Publication::Informer::Editor.new(publication, request)
         when "published"
-          Publication::Informer::ChiefEditor.new(publication, request)
+          Publication::Informer::Chat.new(publication, request)
         end
       end
     end
