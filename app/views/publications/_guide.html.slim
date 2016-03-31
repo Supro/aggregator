@@ -24,10 +24,10 @@
           .time
             i.fa.fa-calendar-o style="color: #{@publication.type_color};"
             time= I18n.l @publication.created_at, format: :long
-          - if @publication.editor.present?
+          - if @publication.creator.present?
             .user
               i.fa.fa-user style="color: #{@publication.type_color};"
-              time= @publication.editor.name
+              time= @publication.creator.name
         .inner-content.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1
           .holder
             h1= @publication.title
@@ -183,7 +183,7 @@ script type="application/ld+json" {
     "dateModified": "#{@publication.updated_at.iso8601}",
     "author": {
       "@type": "Person",
-      "name": "#{@publication.editor.present? ? @publication.editor.name : "Fire Imp"}"
+      "name": "#{@publication.creator.present? ? @publication.creator.name : "Fire Imp"}"
     },
      "publisher": {
       "@type": "Organization",

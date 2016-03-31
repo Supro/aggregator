@@ -172,7 +172,7 @@ script type="application/ld+json" {
     "dateModified": "#{@publication.updated_at.iso8601}",
     "author": {
       "@type": "Person",
-      "name": "#{@publication.editor.present? ? @publication.editor.name : "Fire Imp"}"
+      "name": "#{@publication.creator.present? ? @publication.creator.name : "Fire Imp"}"
     },
      "publisher": {
       "@type": "Organization",
