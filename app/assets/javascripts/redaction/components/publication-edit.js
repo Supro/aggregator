@@ -220,8 +220,10 @@ Aggregator.PublicationEditComponent = Ember.Component.extend({
     },
 
     removePublication: function(){
-      this.get('model').destroyRecord();
-      window.location = "/redaction";
+      if (confirm("Вы уверены?")) {
+        this.get('model').destroyRecord();
+        window.location = "/redaction";
+      }
     },
 
     savePublication: function(){
