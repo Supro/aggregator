@@ -32,7 +32,7 @@ class Publication < ActiveRecord::Base
               hash[params[:sort_by].to_sym] = :asc
             end
           else
-            hash[:updated_at] = :desc
+            hash[:published_at] = :desc
           end
         end
       end
