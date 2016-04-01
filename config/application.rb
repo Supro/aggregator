@@ -31,6 +31,6 @@ module Aggregator
     config.handlebars.templates_root = 'redaction/templates'
     config.exceptions_app = self.routes
 
-    config.active_record.raise_in_transactional_callbacks = true
+    #config.active_record.raise_in_transactional_callbacks = true
   end
 end

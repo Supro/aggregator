@@ -88,7 +88,7 @@ private
   def set_creator
     params[:publication][:creator_id] = current_user.id
     #params[:publication][:writer_id] = current_user.id
-    #params[:publication][:editor_id] = current_user.id
+    params[:publication][:editor_id] = 1
   end
 
   def find_publication

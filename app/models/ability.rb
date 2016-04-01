@@ -22,9 +22,9 @@ class Ability
   def junior_journalist_rights(user)
     can :read, :all
     can :create, Publication
-    can :edit, Publication, writer_id: user.id
-    can :create, Source
-    can :edit, Source
+    can :edit, Publication, creator_id: user.id
+    #can :create, Source
+    #can :edit, Source
     can :create, Image
 
     can :move_to_lame, Url
@@ -42,7 +42,7 @@ class Ability
     can :read, :all
     can :create, Publication
     can :edit, Publication
-    can :create, Source
+    #can :create, Source
     can :edit, Source
     can :create, Image
 
