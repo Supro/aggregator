@@ -1,4 +1,4 @@
-- if Rails.env.eql?('production') && !@publication.is_guide?
+- if Rails.env.eql?('production')
   = content_for :head do
     - if !@publication.published?
       meta name="robots" content="noindex"
