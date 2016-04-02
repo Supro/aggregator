@@ -174,7 +174,7 @@ script type="application/ld+json" {
       "height": 400,
       "width": 400
     },
-    "datePublished": "#{@publication.published_at.iso8601}",
+    "datePublished": "#{@publication.published_at.present? ? @publication.published_at.iso8601 : ""}",
     "dateModified": "#{@publication.updated_at.iso8601}",
     "author": {
       "@type": "Person",

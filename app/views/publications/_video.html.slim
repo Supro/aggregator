@@ -67,7 +67,7 @@ script type="application/ld+json" {
     "name": "#{@publication.title}",
     "description": "#{@publication.context}",
     "thumbnailUrl": "#{@publication.poster.square}",
-    "uploadDate": "#{@publication.published_at.iso8601}",
+    "uploadDate": "#{@publication.published_at.present? ? @publication.published_at.iso8601 : ""}",
     "interactionCount": "#{@publication.total_visits}"
     //"duration": "PT1M33S",
     //"contentUrl": "http://www.example.com/video123.flv",
