@@ -10,7 +10,11 @@ class Publication < ActiveRecord::Base
       end
 
       def send(params)
-        Net::HTTP.post_form(base_url, params)
+        begin
+          Net::HTTP.post_form(base_url, params)
+        rescue
+          p "error"
+        end
       end
     end
   end
