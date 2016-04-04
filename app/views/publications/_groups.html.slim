@@ -1,0 +1,48 @@
+.social-groups
+  .close &times;
+  .social-box
+    #vk_groups
+    .fb-page data-href="https://www.facebook.com/fireimpru" data-width="300" data-height="180" data-hide-cover="false" data-show-posts="false" data-show-facepile="false"
+        .fb-xfbml-parse-ignore
+          blockquote cite="https://www.facebook.com/fireimpru"
+          a.linker href="https://www.facebook.com/fireimpru" Fireimp
+
+  - content_for :javascripts do
+    script type="text/javascript" src="//vk.com/js/api/openapi.js?121"
+    javascript:
+      VK.Widgets.Group("vk_groups", {mode: 1, width: "300", height: "180", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 94530545);
+    #fb-root
+    javascript:
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5&appId=1416362578644502";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+    javascript:
+      $(function(){
+        var sticky2 = $('.social-groups');
+        var marg = $(window).height() / 6;
+        var stickyHeaderTop2 = $('.share.bottom').offset().top;
+        var stickyCheck2 = false;
+
+        $(window).scroll(function(){
+          var scroll = $(window).scrollTop();
+
+          if ((scroll + marg) > stickyHeaderTop2) {
+            if (!stickyCheck2) {
+              sticky2.addClass('visible');
+            }
+          } else {
+            sticky2.removeClass('visible');
+          }
+        });
+
+        $('.social-groups .close').click(function(e){
+          e.preventDefault();
+          stickyCheck2 = true;
+          $('.social-groups').toggleClass('visible');
+        });
+      });

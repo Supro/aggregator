@@ -23,27 +23,7 @@ nav.bread
       a href="#{@publication.full_url}" rel="v:url" property="v:title"
         = @publication.title
 
-//.social style="position: fixed; bottom: 0; left: 0; width: 100%; height: 160px; padding-top: 10px; background-color: #f3f3f3; z-index: 1000001;"
-//  .social-box style="width: 615px; height: 300px; margin: 0 auto;"
-//    //h4 style="font-weight: bold;" Узнавайте о свежих новостях от FireImp первыми.
-//    .fb-page style="margin-right: 15px;" data-href="https://www.facebook.com/fireimpru" data-width="300" data-height="180" data-hide-cover="false" data-show-posts="false" data-show-facepile="false"
-//      .fb-xfbml-parse-ignore
-//        blockquote cite="https://www.facebook.com/fireimpru"
-//        a style="display: none;" href="https://www.facebook.com/fireimpru" Fireimp
-//    script type="text/javascript" src="//vk.com/js/api/openapi.js?121"
-//    #vk_groups style="float: right;"
-//    javascript:
-//      VK.Widgets.Group("vk_groups", {mode: 1, width: "300", height: "180", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 94530545);
-
-  #fb-root
-  javascript:
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5&appId=1416362578644502";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+= render partial: "publications/groups"
 
 
 css:
