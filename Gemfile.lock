@@ -107,6 +107,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    chronic (0.10.2)
     connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -472,6 +473,8 @@ GEM
       crack (>= 0.3.2)
       hashdiff
     webrobots (0.1.1)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
     xml-simple (1.1.5)
 
 PLATFORMS
@@ -528,3 +531,4 @@ DEPENDENCIES
   unicorn
   web-console
   webmock
+  whenever

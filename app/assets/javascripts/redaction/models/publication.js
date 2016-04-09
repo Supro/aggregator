@@ -31,9 +31,14 @@ Aggregator.Publication = DS.Model.extend(
   //url:      DS.attr('string'),
 
   totalVisits: DS.attr('number'),
-  canApprove: DS.attr('boolean'),
-  canPend: DS.attr('boolean'),
-  canPublish: DS.attr('boolean'),
+
+  canEdit: DS.attr('boolean'),
+  canMoveToApproved: DS.attr('boolean'),
+  canMoveToDeclined: DS.attr('boolean'),
+  canMoveToChecking: DS.attr('boolean'),
+  canMoveToRework: DS.attr('boolean'),
+  canMoveToReady: DS.attr('boolean'),
+  canMoveToPublished: DS.attr('boolean'),
 
   slidesActive: Ember.computed('slides.@each.willDestroy', 'lines.@each.position', 'fakeFire', function(){
     var slides = this.get('slides');
@@ -55,6 +60,10 @@ Aggregator.Publication = DS.Model.extend(
   isApproved: Ember.computed.equal('state', 'approved'),
   isPending: Ember.computed.equal('state', 'pending'),
   isPublished: Ember.computed.equal('state', 'published'),
+  isDeclined: Ember.computed.equal('state', 'declined'),
+  isChecking: Ember.computed.equal('state', 'checking'),
+  isReady: Ember.computed.equal('state', 'ready'),
+
   isNotPublished: Ember.computed.equal('isPublished', false),
 
   isNeedText: Ember.computed('type', function(){
@@ -78,7 +87,7 @@ Aggregator.Publication = DS.Model.extend(
 
   gotSlides: Ember.computed.gt('slides.length', 0),
 
-  titleMinLength: 3,
+  titleMinLength: 45,
   titleMaxLength: 70,
   titleValid: Ember.computed('title', function(){
     return this.get('title.length') > this.get('titleMinLength') &&

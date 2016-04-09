@@ -2,10 +2,12 @@
   <label for="title">
     {{title}}
     {{#if cannotEdit}}
-      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{#if gotLockedBy}}
+        -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{/if}}
     {{/if}}
   </label>
-  <div class="body-edit-buttons">
+  <div class="body-edit-buttons {{if cannotEdit 'hidden' 'visible'}}">
     <div class="button" {{action "addParagraph"}} title="Абзац">
       <i class="fa fa-paragraph"></i>
     </div>

@@ -14,6 +14,8 @@ Aggregator.PublicationEditInputComponent = Ember.Component.extend({
     }
   }),
 
+  gotLockedBy: Ember.computed.notEmpty('lockedBy'),
+
   cannotEdit: Ember.computed.equal('canEdit', false),
 
   valueObserver: Ember.observer('value', function(){

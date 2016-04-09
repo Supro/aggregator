@@ -27,7 +27,7 @@
     </label>
     {{input value=model.title class="main-input form-control" placeholder=placeholder}}
     {{#unless model.titleValid}}
-      <span class="help-block">Минимум 3 символа, максимум 70</span>
+      <span class="help-block">Минимум {{model.titleMinLength}} символа, максимум {{model.titleMaxLength}}</span>
     {{/unless}}
   </div>
 </div>

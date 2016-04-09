@@ -2,7 +2,9 @@
   <label for="title">
     Ссылка на источник
     {{#if cannotEdit}}
-      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{#if gotLockedBy}}
+        -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{/if}}
     {{/if}}
   </label>
   {{input value=model.url name="source" class="main-input form-control" placeholder="Ссылка на источник" disabled=cannotEdit}}

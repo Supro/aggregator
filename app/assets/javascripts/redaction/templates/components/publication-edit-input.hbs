@@ -2,7 +2,9 @@
   <label for="title">
     {{title}}
     {{#if cannotEdit}}
-      -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{#if gotLockedBy}}
+        -&nbsp;<i>редактирует: {{lockedBy.name}}</i>
+      {{/if}}
     {{/if}}
   </label>
   {{input value=value class="main-input form-control" placeholder=placeholder disabled=cannotEdit}}

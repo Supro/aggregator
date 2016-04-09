@@ -1,8 +1,8 @@
 <div class="item-menu">
-  <a class="delete-item"{{action "removeItem"}}>
+  <a class="delete-item {{if disabled 'hidden' 'visible'}}"{{action "removeItem"}}>
     <i class="fa fa-trash"></i>
   </a>
-  <div class="handle">
+  <div class="handle {{if disabled 'hidden' 'visible'}}">
     <i class="fa fa-arrows-alt"></i>
   </div>
   <div class="type">Видео</div>

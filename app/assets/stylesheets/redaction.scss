@@ -25,6 +25,8 @@ $font-family-sans-serif: 'Ubuntu', sans-serif;
   background-color: #d3d3d3;
   font-weight: bold;
   padding: 10px 10px;
+  min-height: 10px;
+  z-index: 10001
 }
 
 .show-more {

@@ -1,13 +1,13 @@
 class Publication < ActiveRecord::Base
   module Informer
-    class ChiefEditor < Base
+    class Rework < Base
       def chat
-        "U0W69R883"
+        publication.creator.slack_chat
       end
 
       def message
         %{
-*#{publication.type_name} опубликовано :tada:*
+*#{publication.type_name} требует доработки - редактор _#{publication.editor.name}_ :scream:*
 *#{publication.title} _#{publication.sub_title}_*
 > #{publication.context}
 • #{publication.redaction_url}

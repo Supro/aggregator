@@ -53,7 +53,10 @@ Aggregator::Application.routes.draw do
         member do
           post :insert_at
           put :move_to_approved
-          put :move_to_pending
+          put :move_to_declined
+          put :move_to_checking
+          put :move_to_rework
+          put :move_to_ready
           put :move_to_published
         end
       end

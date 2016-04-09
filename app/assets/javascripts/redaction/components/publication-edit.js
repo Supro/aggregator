@@ -11,6 +11,8 @@ Aggregator.PublicationEditComponent = Ember.Component.extend({
     if(!this.get('model.isVideo')) {
       var stickyHeaderTop = $('.body-edit-buttons').offset().top;
       var stickyCheck = false;
+      var stickyHeaderTop2 = $('.watchers').offset().top;
+      var stickyCheck2 = false;
 
       $(window).scroll(function(){
         if($(window).scrollTop() > stickyHeaderTop) {
@@ -26,6 +28,24 @@ Aggregator.PublicationEditComponent = Ember.Component.extend({
           if (stickyCheck) {
             stickyCheck = false
             $('.body-edit-buttons').css({position: 'static', top: '0px'});
+          }
+        }
+      });
+
+      $(window).scroll(function(){
+        if($(window).scrollTop() > stickyHeaderTop2) {
+          if (!stickyCheck2) {
+            stickyCheck2 = true
+            $('.watchers').css({
+              position: 'fixed',
+              top: '0px',
+              left: '0px'
+            });
+          }
+        } else {
+          if (stickyCheck2) {
+            stickyCheck2 = false
+            $('.watchers').css({position: 'static', top: '0px'});
           }
         }
       });

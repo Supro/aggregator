@@ -20,6 +20,7 @@
 #  approved_at  :datetime
 #  published_at :datetime
 #  writer_id    :integer
+#  publish_at   :datetime
 #
 # Indexes
 #
@@ -33,11 +34,9 @@
 FactoryGirl.define do
   factory :publication do
     title "MyString"
-body "MyText"
-context "MyText"
-state "MyString"
-line nil
-category nil
+    body "MyText"
+    type "news"
+    context "MyText"
   end
 
 end

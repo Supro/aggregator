@@ -1,6 +1,8 @@
 class Api::V1::PublicationSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :sub_title, :context, :body,
-             :type, :time, :category_ids, :box_ids, :state
+             :type, :time, :category_ids, :box_ids, :state, :can_edit,
+             :can_move_to_approved, :can_move_to_declined, :can_move_to_checking,
+             :can_move_to_rework, :can_move_to_ready, :can_move_to_published
 
   #has_one :source, embed: :ids, embed_in_root: true
   has_many :urls, embed: :ids, embed_in_root: true, serializer: Api::V1::UrlIndexSerializer
@@ -15,5 +17,38 @@ class Api::V1::PublicationSerializer < ActiveModel::Serializer
 
   def time
     (object.created_at.to_f * 1000).to_i
+  end
+
+  def can_edit
+    p ability.can?(:edit, object)
+    ability.can?(:edit, object)
+  end
+
+  def can_move_to_approved
+    ability.can?(:move_to_approved, object)
+  end
+
+  def can_move_to_declined
+    ability.can?(:move_to_declined, object)
+  end
+
+  def can_move_to_checking
+    ability.can?(:move_to_checking, object)
+  end
+
+  def can_move_to_rework
+    ability.can?(:move_to_rework, object)
+  end
+
+  def can_move_to_ready
+    ability.can?(:move_to_ready, object)
+  end
+
+  def can_move_to_published
+    ability.can?(:move_to_published, object)
+  end
+
+  def ability
+    @ability ||= Ability.new(scope.current_user)
   end
 end

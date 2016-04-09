@@ -13,6 +13,8 @@ Aggregator.PublicationEditBodyComponent = Ember.Component.extend({
     }
   }),
 
+  gotLockedBy: Ember.computed.notEmpty('lockedBy'),
+
   cannotEdit: Ember.computed.equal('canEdit', false),
 
   bodyJSON: Ember.computed('model.body', function(){

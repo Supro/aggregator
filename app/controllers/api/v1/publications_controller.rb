@@ -1,7 +1,10 @@
 class Api::V1::PublicationsController < Api::V1::ApplicationController
   before_action :doorkeeper_authorize!
   before_action :find_publication, only: [:show, :insert_at, :move_to_approved,
-                                          :move_to_pending, :move_to_published, :update, :destroy]
+                                          :move_to_declined, :move_to_published,
+                                          :move_to_checking, :move_to_ready,
+                                          :move_to_rework,
+                                          :update, :destroy]
   before_action :set_creator, only: [:create]
 
   def index
@@ -52,19 +55,38 @@ class Api::V1::PublicationsController < Api::V1::ApplicationController
   end
 
   def move_to_approved
-    if @publication.approve
+    if @publication.move_to_approved
       render json: @publication, serializer: Api::V1::PublicationSerializer
     end
   end
 
-  def move_to_pending
-    if @publication.move_to_pending
+  def move_to_declined
+    if @publication.move_to_declined
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
+  end
+
+  def move_to_checking
+    if @publication.move_to_checking
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
+  end
+
+  def move_to_rework
+    if @publication.move_to_rework
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
+  end
+
+  def move_to_ready
+    if @publication.move_to_ready
+      @publication.move_to_published if @publication.publish_at.nil?
       render json: @publication, serializer: Api::V1::PublicationSerializer
     end
   end
 
   def move_to_published
-    if @publication.publish
+    if @publication.move_to_published
       render json: @publication, serializer: Api::V1::PublicationSerializer
     end
   end

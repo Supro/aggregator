@@ -1,0 +1,19 @@
+class Publication < ActiveRecord::Base
+  module Informer
+    class Published < Base
+      def chat
+        "U0W69R883"
+      end
+
+      def message
+        %{
+*#{publication.title} _#{publication.sub_title}_*
+*Опубликовано :tada:*
+> #{publication.context}
+• #{publication.redaction_url}
+• #{publication.full_url}
+        }
+      end
+    end
+  end
+end

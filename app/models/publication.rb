@@ -20,6 +20,7 @@
 #  approved_at  :datetime
 #  published_at :datetime
 #  writer_id    :integer
+#  publish_at   :datetime
 #
 # Indexes
 #
@@ -35,7 +36,7 @@ class Publication < ActiveRecord::Base
   include Publication::Searchable
   include Publication::Slugable
   include Publication::Informer
-  include Publication::StateMachine
+  include Publication::States
   include Publication::TypeVariables
   include Publication::TypeMethods
   include Publication::Visits

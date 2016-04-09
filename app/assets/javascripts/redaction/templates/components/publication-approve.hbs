@@ -1,13 +1,18 @@
-{{#if publication.isApproved}}
-  {{#if publication.canPend}}
-    <a {{action 'moveToPending'}}>На доработку</a>
-  {{/if}}
-  {{#if publication.canPublish}}
-    <a {{action 'moveToPublished'}}>Опубликовать</a>
-  {{/if}}
+{{#if publication.canMoveToApproved}}
+  <a {{action 'moveToApproved'}}>Утвердить</a>
 {{/if}}
-{{#if publication.isPending}}
-  {{#if publication.canApprove}}
-    <a {{action 'moveToApproved'}}>На проверку</a>
-  {{/if}}
+{{#if publication.canMoveToDeclined}}
+  <a {{action 'moveToDeclined'}}>Отклонить</a>
+{{/if}}
+{{#if publication.canMoveToChecking}}
+  <a {{action 'moveToChecking'}}>На проверку</a>
+{{/if}}
+{{#if publication.canMoveToRework}}
+  <a {{action 'moveToRework'}}>На доработку</a>
+{{/if}}
+{{#if publication.canMoveToReady}}
+  <a {{action 'moveToReady'}}>Опубликовать</a>
+{{/if}}
+{{#if publication.canMoveToPublished}}
+  <a {{action 'moveToPublished'}}>Опубликовать</a>
 {{/if}}

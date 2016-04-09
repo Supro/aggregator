@@ -34,7 +34,11 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
         var element = Ember.$(_this.$().find('.item-content'));
         var re = new RegExp(String.fromCharCode(160), "g");
         var content = element.text().replace(/(\r\n|\n|\r)/gm, '').replace(re, " ");
-        element.html(content);
+        if(_this.get('session.currentUser.isChiefEditor')) {
+          element.html(content);
+        } else {
+          element.text(content);
+        }
         _this.updateContent(content);
       }, _this.get('timeoutTime'))
     });

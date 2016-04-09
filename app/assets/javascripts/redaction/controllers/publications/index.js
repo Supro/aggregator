@@ -24,7 +24,7 @@ Aggregator.PublicationsIndexController = Ember.Controller.extend({
     },
 
     selectState: function(state) {
-      if (['pending', 'approved', 'published'].contains(state)) {
+      if (['pending', 'declined', 'checking', 'ready', 'approved', 'published'].contains(state)) {
         this.get('publicationsIndexInnerController').set('state', state);
       } else {
         this.get('publicationsIndexInnerController').set('state', null);
