@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   end
 
   def list
-    @publications = Publication.page(params[:page]).per(params[:per_page])
+    @publications = Publication.search(params)
   end
 
   def about

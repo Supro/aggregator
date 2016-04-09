@@ -1,6 +1,6 @@
 class Publication < ActiveRecord::Base
-  module Ready
-    class Checking < Base
+  module Informer
+    class Ready < Base
       def chat
         "U0W69R883"
       end

@@ -8,7 +8,7 @@ gem 'pg', '0.18.3'
 gem 'redis'
 gem 'sidekiq'
 
-gem 'whenever', :require => false
+#gem 'whenever', :require => false
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
