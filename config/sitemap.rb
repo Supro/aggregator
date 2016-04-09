@@ -4,6 +4,7 @@ SitemapGenerator::Sitemap.default_host = "http://fireimp.ru"
 SitemapGenerator::Sitemap.create do
   add '/', priority: 0.9
   add '/guides', priority: 0.8
+  add '/list', priority: 0.8
   add '/about', priority: 0.8
   add '/contacts', priority: 0.8
 

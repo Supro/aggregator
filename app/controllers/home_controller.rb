@@ -7,6 +7,10 @@ class HomeController < ApplicationController
     @category = Category.find(2)
   end
 
+  def list
+    @publications = Publication.page(params[:page]).per(params[:per_page])
+  end
+
   def about
   end
 

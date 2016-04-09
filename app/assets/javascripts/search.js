@@ -7,7 +7,7 @@ $(function(){
       url: '/api/v1/search?term=%QUERY',
       wildcard: '%QUERY',
       filter: function(list) {
-        return list.search;
+        return list.publications;
       }
     }
   });
@@ -26,7 +26,7 @@ $(function(){
       ].join('\n'),
       suggestion: function(item){
         return '<a class="typeahead-element" href="' + item.full_url + '" target="_blank">' +
-        '  <div class="typeahead-left" style="background-image: url(' + item.poster.thumb + ');"></div>' +
+        '  <div class="typeahead-left" style="background-image: url(' + item.thumb + ');"></div>' +
         '  <div class="typeahead-right">' +
         '    <div class="typeahead-title">' + item.title + '</div>' +
         '    <div class="typeahead-sub-title">' + item.sub_title + '</div>' +

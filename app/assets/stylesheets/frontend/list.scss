@@ -1,0 +1,70 @@
+.list-publications {
+  background-color: #fff;
+  padding: 15px 30px;
+
+  .item {
+    display: table;
+    height: 110px;
+    padding: 10px 0;
+    width: 100%;
+
+    &:nth-child(even) {
+      background-color: #f3f3f3;
+    }
+
+    .image {
+      display: table-cell;
+      width: 145px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .info {
+      height: 110px;
+      display: table-cell;
+      padding-left: 15px;
+
+      .type {
+        line-height: 14px;
+        font-size: 14px;
+      }
+
+      h3 {
+        color: $color5;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0;
+        margin: 10px 0;
+
+        .title {
+          display: inline;
+          padding: 0;
+          margin: 0;
+        }
+
+        .sub-title {
+          display: inline;
+          font-weight: normal;
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      .time {
+        color: $color2;
+        font-size: 14px;
+        position: absolute;
+        margin-top: 93px;
+      }
+    }
+  }
+
+  .more {
+    margin: 15px;
+    font-size: 16px;
+    color: $color6;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}

@@ -9,6 +9,7 @@ Aggregator::Application.routes.draw do
   match "/500", :to => "errors#error_500", :via => :all
 
   get '/guides' => 'home#guides'
+  get '/list' => 'home#list'
 
   get '/about' => 'home#about'
   get '/contacts' => 'home#contacts'

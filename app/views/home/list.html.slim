@@ -1,0 +1,59 @@
+- set_meta_tags title: "Все публикации",
+                description: "Все публикации сайта списком"
+
+h1.h1-title Все публикации сайта списком
+
+.list-publications
+  - @publications.each do |pub|
+    a.item href="#{pub.full_url}" target="_blank"
+      .image style="background-image: url(#{pub.poster.small_thumb})"
+      .info
+        .time= pub.published_at.strftime("%d.%m.%Y - %H:%M")
+        .type style="color: #{pub.type_color}"=pub.type_name
+        h3
+          .title= pub.title
+          .sub-title= pub.sub_title
+  .more Показать еще
+
+- content_for :javascripts do
+  javascript:
+    $(function(){
+      var page = 1;
+
+      $('.more').click(function(){
+        $('.more').text('Загрузка...');
+        $.ajax({
+          url: '/api/v1/search',
+          data: {
+            page: (page += 1)
+          },
+          success: function(data){
+            if(data.meta.page >= data.meta.total_pages) {
+              $('.more').remove();
+            } else {
+              $('.more').text('Показать еще');
+            }
+
+            $.each(data.publications, function(index, pub){
+              var html = '<a class="item" href="'+pub.full_url+'" target="_blank">' +
+                '<div class="image" style="background-image: url('+pub.thumb+')"></div>' +
+                '<div class="info">' +
+                '  <div class="time">' + pub.time +
+                '  </div>' +
+                '  <div class="type" style="color: '+ pub.type_color +'">' + pub.type_name +
+                '  </div>' +
+                '  <h3>' +
+                '    <div class="title">' + pub.title +
+                '    </div>' +
+                '    <div class="sub-title">' + pub.sub_title +
+                '    </div>' +
+                '  </h3>' +
+                '</div>' +
+                '</a>';
+
+              $('.more').before(html);
+            });
+          }
+        });
+      });
+    });

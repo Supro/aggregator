@@ -4,14 +4,16 @@ class Ability
   def initialize(user)
     can :read, :all
 
-    if user.has_role?(:chief_editor)
-      chief_editor_rights(user)
-    elsif user.has_role?(:editor)
-      editor_rights(user)
-    elsif user.has_role?(:journalist)
-      journalist_rights(user)
-    elsif user.has_role?(:junior_journalist)
-      junior_journalist_rights(user)
+    if user.present?
+      if user.has_role?(:chief_editor)
+        chief_editor_rights(user)
+      elsif user.has_role?(:editor)
+        editor_rights(user)
+      elsif user.has_role?(:journalist)
+        journalist_rights(user)
+      elsif user.has_role?(:junior_journalist)
+        junior_journalist_rights(user)
+      end
     end
   end
 
