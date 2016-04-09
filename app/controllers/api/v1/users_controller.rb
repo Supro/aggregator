@@ -38,7 +38,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 private
 
   def create_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :about, :slack_chat, :name, user_ids: [])
+    params.require(:user).permit(:email, :password, :password_confirmation,
+                                 :about, :slack_chat, :user_id, :name,
+                                 user_ids: [])
   end
 
   def update_params; create_params end

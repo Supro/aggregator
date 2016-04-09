@@ -6,6 +6,7 @@ Aggregator.User = DS.Model.extend({
   slackChat:            DS.attr('string'),
   slug:                 DS.attr('string'),
   about:                DS.attr('string'),
+  userId:               DS.attr('number'),
 
   role:                 DS.attr('string'),
 
