@@ -104,7 +104,7 @@ class Ability
       pub.can_move_to_ready?
     end
 
-    can :manage, :Category
-    can :manage, :User
+    can :manage, Category
+    can :manage, User
   end
 end
