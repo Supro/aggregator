@@ -7,7 +7,7 @@ class Publication < ActiveRecord::Base
 
       def message
         %{
-*#{publication.title} _#{publication.sub_title}_*
+*#{publication.title}*
 *Новая публикация требует утверждения редакцией - автор _#{publication.creator.name}_ :robot_face:*
 > #{publication.context}
 • #{publication.redaction_url}
