@@ -147,6 +147,7 @@ a.publication-inner {
         color: $color4;
         padding-bottom: 25px;
         border-bottom: 1px solid #e3e3e3;
+        text-align: justify;
       }
 
       .body {
@@ -159,7 +160,8 @@ a.publication-inner {
         p {
           padding: 10px 0;
           margin: 0;
-          text-align: left;
+          //text-align: left;
+          text-align: justify;
         }
 
         ul {
@@ -281,6 +283,7 @@ a.publication-inner {
           .quote-text {
             font-size: 16px;
             padding: 0 0 10px 0;
+            text-align: justify;
           }
 
           .quote-source {
