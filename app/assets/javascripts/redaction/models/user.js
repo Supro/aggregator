@@ -7,13 +7,14 @@ Aggregator.User = DS.Model.extend({
   slug:                 DS.attr('string'),
   about:                DS.attr('string'),
   userId:               DS.attr('number'),
+  rate:                 DS.attr('number'),
 
   role:                 DS.attr('string'),
 
-  isChiefEditor:      Ember.computed.equal('role', 'chief_editor'),
-  isEditor:           Ember.computed.equal('role', 'editor'),
-  isJuniorJournalist: Ember.computed.equal('role', 'junior_journalist'),
-  isJournalist:       Ember.computed.equal('role', 'journalist'),
+  isChiefEditor:        Ember.computed.equal('role', 'chief_editor'),
+  isEditor:             Ember.computed.equal('role', 'editor'),
+  isJuniorJournalist:   Ember.computed.equal('role', 'junior_journalist'),
+  isJournalist:         Ember.computed.equal('role', 'journalist'),
 
   nameMinLength: 3,
   nameMaxLength: 70,

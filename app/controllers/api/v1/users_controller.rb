@@ -39,7 +39,7 @@ private
 
   def create_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :about, :slack_chat, :user_id, :name,
+                                 :about, :slack_chat, :user_id, :rate, :name,
                                  user_ids: [])
   end
 
