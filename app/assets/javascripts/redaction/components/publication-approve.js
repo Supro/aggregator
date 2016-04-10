@@ -64,7 +64,7 @@ Aggregator.PublicationApproveComponent = Ember.Component.extend({
       }
     },
 
-    moveToPublished: function(){
+    moveToReady: function(){
       publication = this.get('publication')
 
       if (publication.get('canMoveToReady')) {
