@@ -87,7 +87,7 @@ Aggregator.Publication = DS.Model.extend(
 
   gotSlides: Ember.computed.gt('slides.length', 0),
 
-  titleMinLength: 45,
+  titleMinLength: 25,
   titleMaxLength: 70,
   titleValid: Ember.computed('title', function(){
     return this.get('title.length') > this.get('titleMinLength') &&
