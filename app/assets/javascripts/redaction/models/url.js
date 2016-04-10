@@ -15,7 +15,8 @@ Aggregator.Url = DS.Model.extend(Aggregator.Timeable, {
   isLinked: Ember.computed.equal('state', 'linked'),
 
   pathValid: Ember.computed('path', function(){
-    return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(this.get('path'));
+    //return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(this.get('path'));
+    return true;
   }),
 
   pathTitle: Ember.computed('path', function(){
