@@ -20,6 +20,7 @@
 #  updated_at             :datetime         not null
 #  slack_chat             :string
 #  user_id                :integer
+#  rate                   :integer
 #
 # Indexes
 #
