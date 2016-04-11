@@ -13,6 +13,7 @@ Aggregator.SettingController = Ember.Controller.extend({
     {id: 'approved', label: 'Утверждены'},
     {id: 'declined', label: 'Отклонены'},
     {id: 'checking', label: 'На проверке'},
+    {id: 'rework', label: 'На доработке'},
     {id: 'ready', label: 'Готовы к публикации'},
     {id: 'published', label: 'Опубликованы'}
   ],
