@@ -65,21 +65,21 @@ class Ability
     can :move_to_lame, Url
     can :move_to_intresting, Url
 
-    can :edit, Publication do |pub|
-      pub.editor_id.eql?(user.id)
-    end
+    can :edit, Publication# do |pub|
+    #  pub.editor_id.eql?(user.id)
+    #end
 
     can :move_to_approved, Publication do |pub|
-      pub.can_move_to_approved? && pub.editor_id.eql?(user.id)
+      pub.can_move_to_approved?# && pub.editor_id.eql?(user.id)
     end
     can :move_to_rework, Publication do |pub|
-      pub.can_move_to_rework? && pub.editor_id.eql?(user.id)
+      pub.can_move_to_rework?# && pub.editor_id.eql?(user.id)
     end
     can :move_to_declined, Publication do |pub|
-      pub.can_move_to_declined? && pub.editor_id.eql?(user.id)
+      pub.can_move_to_declined?# && pub.editor_id.eql?(user.id)
     end
     can :move_to_ready, Publication do |pub|
-      pub.can_move_to_ready? && pub.editor_id.eql?(user.id)
+      pub.can_move_to_ready?# && pub.editor_id.eql?(user.id)
     end
   end
 
