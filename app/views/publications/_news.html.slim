@@ -51,7 +51,7 @@
             .embed-tweet= raw item["content"]["html"]
           - if item["type"].eql?("quote")
             .quote-block
-              a.quote target="_blank" rel="nofollow" href="#{item["content"]["link"].present? ? item["content"]["link"] : @publication.url}"
+              a.quote target="_blank" rel="nofollow" href="#{item["content"]["link"].present? ? item["content"]["link"] : @publication.urls.first.path}"
                 .quote-text= raw item["content"]["text"]
                 .quote-source
                   i.fa.fa-quote-left
