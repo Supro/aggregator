@@ -69,6 +69,14 @@ class Ability
     #  pub.editor_id.eql?(user.id)
     #end
 
+    can :move_to_checking, Publication do |pub|
+      pub.can_move_to_checking? && pub.creator_id.eql?(user.id)
+    end
+
+    can :move_to_rework, Publication do |pub|
+      pub.can_move_to_rework? && pub.creator_id.eql?(user.id)
+    end
+
     can :move_to_approved, Publication do |pub|
       pub.can_move_to_approved?# && pub.editor_id.eql?(user.id)
     end
@@ -93,6 +101,12 @@ class Ability
 
     can :edit, Publication
 
+    can :move_to_checking, Publication do |pub|
+      pub.can_move_to_checking?
+    end
+    can :move_to_rework, Publication do |pub|
+      pub.can_move_to_rework?
+    end
     can :move_to_approved, Publication do |pub|
       pub.can_move_to_approved?
     end
