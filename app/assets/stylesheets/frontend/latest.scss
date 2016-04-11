@@ -1,0 +1,43 @@
+.lastest {
+  padding-right: 10px;
+
+  .heading {
+    font-family: $headings-font-family;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  a.lastest-item {
+    display: table;
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+
+    &:nth-child(even) {
+      background-color: #f3f3f3;
+    }
+
+    .l-img {
+      display: table-cell;
+      width: 80px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 3px;
+    }
+    .l-title {
+      padding-left: 10px;
+      color: $color5;
+      display: table-cell;
+      font-family: $headings-font-family;
+
+      .title {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .sub-title {
+        font-weight: normal;
+      }
+    }
+  }
+}

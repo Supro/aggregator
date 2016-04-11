@@ -94,7 +94,13 @@
 
   .col-lg-4.col-md-4.publication-right.visible-md.visible-lg
     .sticky
-      script id="xPn5W9YXiXOJ7u7u" if (window.relap) window.relap.ar('xPn5W9YXiXOJ7u7u');
+      .lastest
+        .heading Последнее:
+        - Publication.search({per_page: 8}).each do |pub|
+          a.lastest-item href="#{pub.full_url}"
+            .l-img style="background-image: url(#{pub.poster.small_thumb})"
+            .l-title
+              .title= pub.title
       //= render partial: 'partials/adv'
 
     - content_for :javascripts do
@@ -109,30 +115,30 @@
 
             var bottom = $('.bottom');
 
-            $(window).scroll(function(){
-              if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
-                if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
-                  if (stickyCheck) {
-                    stickyCheck = false
-                    sticky.css({position: 'static', top: '0px'});
-                  }
-                } else {
-                  if (!stickyCheck) {
-                    stickyCheck = true
-                    sticky.css({
-                      position: 'fixed',
-                      top: '0px',
-                      width: $('.publication-right').width()
-                    });
-                  }
-                }
-              } else {
-                if (stickyCheck) {
-                  stickyCheck = false
-                  $('.sticky').css({position: 'static', top: '0px'});
-                }
-              }
-            });
+            //$(window).scroll(function(){
+            //  if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
+            //    if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
+            //      if (stickyCheck) {
+            //        stickyCheck = false
+            //        sticky.css({position: 'static', top: '0px'});
+            //      }
+            //    } else {
+            //      if (!stickyCheck) {
+            //        stickyCheck = true
+            //        sticky.css({
+            //          position: 'fixed',
+            //          top: '0px',
+            //          width: $('.publication-right').width()
+            //        });
+            //      }
+            //    }
+            //  } else {
+            //    if (stickyCheck) {
+            //      stickyCheck = false
+            //      $('.sticky').css({position: 'static', top: '0px'});
+            //    }
+            //  }
+            //});
           }
         });
 

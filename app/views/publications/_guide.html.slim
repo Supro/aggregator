@@ -103,6 +103,13 @@
           .navigation-heading position="#{item["position"]}"
             = "#{index}. #{item["content"]}"
           - index += 1
+      .lastest
+        .heading Последнее:
+        - Publication.search({per_page: 8}).each do |pub|
+          a.lastest-item href="#{pub.full_url}"
+            .l-img style="background-image: url(#{pub.poster.small_thumb})"
+            .l-title
+              .title= pub.title
 
       - content_for :javascripts do
         javascript:
@@ -120,30 +127,30 @@
 
               var bottom = $('.bottom');
 
-              $(window).scroll(function(){
-                if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
-                  if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
-                    if (stickyCheck) {
-                      stickyCheck = false
-                      sticky.css({position: 'static', top: '0px'});
-                    }
-                  } else {
-                    if (!stickyCheck) {
-                      stickyCheck = true
-                      sticky.css({
-                        position: 'fixed',
-                        top: '0px',
-                        width: $('.publication-right').width()
-                      });
-                    }
-                  }
-                } else {
-                  if (stickyCheck) {
-                    stickyCheck = false
-                    $('.sticky').css({position: 'static', top: '0px'});
-                  }
-                }
-              });
+              //$(window).scroll(function(){
+              //  if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {
+              //    if (($(window).scrollTop() + stickyHeight + 45) > bottom.offset().top) {
+              //      if (stickyCheck) {
+              //        stickyCheck = false
+              //        sticky.css({position: 'static', top: '0px'});
+              //      }
+              //    } else {
+              //      if (!stickyCheck) {
+              //        stickyCheck = true
+              //        sticky.css({
+              //          position: 'fixed',
+              //          top: '0px',
+              //          width: $('.publication-right').width()
+              //        });
+              //      }
+              //    }
+              //  } else {
+              //    if (stickyCheck) {
+              //      stickyCheck = false
+              //      $('.sticky').css({position: 'static', top: '0px'});
+              //    }
+              //  }
+              //});
           });
 
   .col-lg-12.col-md-12.share.bottom
