@@ -2,7 +2,8 @@ class Publication < ActiveRecord::Base
   module Informer
     class Checking < Base
       def chat
-        publication.editor.slack_chat
+        #publication.editor.slack_chat
+        "C0WV978KW"
       end
 
       def message
