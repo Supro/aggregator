@@ -5,8 +5,7 @@ class PingWorker
   def perform(publication_id)
     publication = Publication.find(publication_id)
 
-    [{url: 'http://blogsearch.google.com/ping/RPC2', method: 'weblogUpdates.extendedPing'},
-     {url: 'http://blogsearch.google.ru/ping/RPC2', method: 'weblogUpdates.extendedPing'},
+    [{url: 'http://blogsearch.google.ru/ping/RPC2', method: 'weblogUpdates.extendedPing'},
      {url: 'http://ping.blogs.yandex.ru/RPC2', method: 'weblogUpdates.ping'},
      {url: 'http://rpc.weblogs.com/RPC2', method: 'weblogUpdates.extendedPing'},
      {url: 'http://blogpeople.net/servlet/weblogUpdates', method: 'weblogUpdates.extendedPing'}].each do |resource|

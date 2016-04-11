@@ -103,13 +103,14 @@
           .navigation-heading position="#{item["position"]}"
             = "#{index}. #{item["content"]}"
           - index += 1
-      .lastest
-        .heading Последнее:
-        - Publication.search({per_page: 8}).each do |pub|
-          a.lastest-item href="#{pub.full_url}"
-            .l-img style="background-image: url(#{pub.poster.small_thumb})"
-            .l-title
-              .title= pub.title
+      noindex
+        .lastest
+          .heading Последнее:
+          - Publication.search({per_page: 8}).each do |pub|
+            a.lastest-item href="#{pub.full_url}"
+              .l-img style="background-image: url(#{pub.poster.small_thumb})"
+              .l-title
+                .title= pub.title
 
       - content_for :javascripts do
         javascript:
