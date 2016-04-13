@@ -42,6 +42,7 @@ class Publication < ActiveRecord::Base
   include Publication::Visits
   include Publication::DefaultBody
   include Publication::SocialJob
+  include Publication::Priceable
 
   self.inheritance_column = '_type'
 
