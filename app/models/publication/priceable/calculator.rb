@@ -22,9 +22,9 @@ class Publication < ActiveRecord::Base
             ["paragraph", "quote", "heading"].include?(j["type"])
           end.inject(0) do |sum, j|
             if j["type"].eql?("quote")
-              sum += j["content"]["text"].length
+              sum += j["content"]["text"].to_s.gsub(/\s/, '').length
             else
-              sum += j["content"].length
+              sum += j["content"].to_s.gsub(/\s/, '').length
             end
 
             sum
@@ -33,15 +33,15 @@ class Publication < ActiveRecord::Base
       end
 
       def title_price
-        publication.title.to_s.length.to_f * rate
+        publication.title.to_s.gsub(/\s/, '').length.to_f * rate
       end
 
       def sub_title_price
-        publication.sub_title.to_s.length.to_f * rate
+        publication.sub_title.to_s.gsub(/\s/, '').length.to_f * rate
       end
 
       def context_price
-        publication.context.to_s.length.to_f * rate
+        publication.context.to_s.gsub(/\s/, '').length.to_f * rate
       end
     end
   end
