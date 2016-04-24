@@ -23,6 +23,7 @@
 #  publish_at   :datetime
 #  tags         :string
 #  visits       :integer
+#  promoted     :boolean          default(FALSE)
 #
 # Indexes
 #

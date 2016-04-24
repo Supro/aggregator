@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424094315) do
+ActiveRecord::Schema.define(version: 20160424104819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,8 +182,8 @@ ActiveRecord::Schema.define(version: 20160424094315) do
     t.text     "context"
     t.string   "state"
     t.integer  "position",     default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "source_id"
     t.string   "sub_title"
     t.string   "slug"
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 20160424094315) do
     t.datetime "publish_at"
     t.string   "tags"
     t.integer  "visits"
+    t.boolean  "promoted",     default: false
   end
 
   add_index "publications", ["creator_id"], name: "index_publications_on_creator_id", using: :btree
