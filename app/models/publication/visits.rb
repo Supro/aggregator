@@ -3,8 +3,16 @@ class Publication < ActiveRecord::Base
     extend ActiveSupport::Concern
 
     included do
-      def total_visits
+      def ahoy_visits
         Ahoy::Event.where("properties ->> 'page' = '#{full_url}'").select("distinct visit_id").count
+      end
+
+      def update_visits
+        update(visits: ahoy_visits)
+      end
+
+      def total_visits
+        visits
       end
     end
   end

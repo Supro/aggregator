@@ -14,19 +14,21 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
   filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', 'titleFilter', function(){
     var _this = this;
 
-    var publications = this.get('publications').filter(function(publication, index, array){
-      return !_this.get('categoryPublications').contains(publication);
-    });
+//    var publications = this.get('publications').filter(function(publication, index, array){
+//      return !_this.get('categoryPublications').contains(publication);
+//    });
+//
+//    if (Ember.isPresent(this.get('titleFilter'))) {
+//      var regex = new RegExp(this.get('titleFilter'));
+//
+//      var publications = this.get('publications').filter(function(publication, index, array){
+//        return regex.test(publication.get('title'));
+//      });
+//    }
 
-    if (Ember.isPresent(this.get('titleFilter'))) {
-      var regex = new RegExp(this.get('titleFilter'));
+    return this.get('store').query('publication', {state: 'published', term: this.get('titleFilter')});
 
-      var publications = this.get('publications').filter(function(publication, index, array){
-        return regex.test(publication.get('title'));
-      });
-    }
-
-    return publications;
+    //return publications;
   }),
 
   categoryPublications: Ember.computed('category.lines.[]', 'fakeFire', function(){

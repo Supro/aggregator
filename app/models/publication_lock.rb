@@ -24,6 +24,8 @@
 #  background_by     :integer
 #  poster_locked     :boolean
 #  poster_by         :integer
+#  tags_locked       :boolean
+#  tags_by           :integer
 #
 # Indexes
 #
@@ -57,6 +59,10 @@ class PublicationLock < ActiveRecord::Base
 
   def url_locked_by
     User.find(url_by) if url_by.present?
+  end
+
+  def tags_locked_by
+    User.find(tags_by) if tags_by.present?
   end
 
   def poster_locked_by

@@ -23,6 +23,7 @@ Aggregator.Publication = DS.Model.extend(
 
   slug:     DS.attr('string'),
   state:    DS.attr('string'),
+  tags:     DS.attr('string'),
   type:     DS.attr('string'),
   title:    DS.attr('string'),
   subTitle: DS.attr('string'),
@@ -100,6 +101,21 @@ Aggregator.Publication = DS.Model.extend(
 
   titleTitle: Ember.computed('title', function(){
     return "Заголовок (" + this.get('titleSymbols') + "/" + this.get('titleMaxLength') + ")";
+  }),
+
+  tagsMinLength: 1,
+  tagsMaxLength: 120,
+  tagsValid: Ember.computed('tags', function(){
+    return this.get('tags.length') > this.get('tagsMinLength') &&
+           this.get('tags.length') < this.get('tagsMaxLength');
+  }),
+
+  tagsSymbols: Ember.computed('tags', function(){
+    return this.get('tags.length') || 0;
+  }),
+
+  tagsTitle: Ember.computed('tags', function(){
+    return "Теги через запятую, с маленькой буквы (" + this.get('tagsSymbols') + "/" + this.get('tagsMaxLength') + ")";
   }),
 
   slugMinLength: 3,

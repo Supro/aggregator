@@ -1,5 +1,5 @@
 class Api::V1::PublicationSerializer < ActiveModel::Serializer
-  attributes :id, :slug, :title, :sub_title, :context, :body,
+  attributes :id, :slug, :title, :sub_title, :context, :body, :tags,
              :type, :time, :category_ids, :box_ids, :state, :can_edit,
              :can_move_to_approved, :can_move_to_declined, :can_move_to_checking,
              :can_move_to_rework, :can_move_to_ready, :can_move_to_published
@@ -20,7 +20,6 @@ class Api::V1::PublicationSerializer < ActiveModel::Serializer
   end
 
   def can_edit
-    p ability.can?(:edit, object)
     ability.can?(:edit, object)
   end
 

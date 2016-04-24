@@ -26,7 +26,11 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
       var element = Ember.$(this);
 
       _this.set('valueTimeout', setTimeout(function(){
-        var content = element.html();
+        if(_this.get('session.currentUser.isChiefEditor')) {
+          var content = element.html();
+        } else {
+          var content = element.text();
+        }
         _this.updateContent(content.replace(/(\r\n|\n|\r)/gm, ''));
       }, _this.get('timeoutTime')));
     }).on('paste', function() {

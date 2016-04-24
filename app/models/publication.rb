@@ -21,6 +21,8 @@
 #  published_at :datetime
 #  writer_id    :integer
 #  publish_at   :datetime
+#  tags         :string
+#  visits       :integer
 #
 # Indexes
 #

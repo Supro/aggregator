@@ -121,6 +121,17 @@
                                 error="Минимум 100 символа, максимум 200"
                                 title=model.contextTitle}}
 
+    {{publication-edit-input socket=socket
+                             session=session
+                             model_id=model.publicationLock.id
+                             valid=model.tagsValid
+                             value=model.tags
+                             locked=model.publicationLock.tagsLocked
+                             lockedBy=model.publicationLock.tagsLockedBy
+                             field="tags"
+                             error="Теги обязательны"
+                             title=model.tagsTitle}}
+
     {{#if model.isNeedText}}
       {{publication-edit-body socket=socket
                               session=session

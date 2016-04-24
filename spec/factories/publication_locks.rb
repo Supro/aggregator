@@ -24,6 +24,8 @@
 #  background_by     :integer
 #  poster_locked     :boolean
 #  poster_by         :integer
+#  tags_locked       :boolean
+#  tags_by           :integer
 #
 # Indexes
 #

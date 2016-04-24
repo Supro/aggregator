@@ -20,7 +20,18 @@ module Ahoy
   class Event < ActiveRecord::Base
     self.table_name = "ahoy_events"
 
+    after_create :check_visits
+
     belongs_to :visit
     belongs_to :user
+
+    def check_visits
+      if name.eql?("$page_visit")
+        slug = properties["page"].split("/").last
+
+        pub = Publication.find(slug)
+        pub.update_visits
+      end
+    end
   end
 end

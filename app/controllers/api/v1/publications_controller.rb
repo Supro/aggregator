@@ -94,7 +94,7 @@ class Api::V1::PublicationsController < Api::V1::ApplicationController
 private
 
   def publication_params
-    params[:publication].permit(:type, :slug, :title, :sub_title, :editor_id, :state,
+    params[:publication].permit(:type, :slug, :title, :sub_title, :editor_id, :state, :tags,
                                 :context, :body, :creator_id, :writer_id, url_ids: [],
                                 slides_attributes: [:id, :title, :body, :publication_id, :image_id, :_destroy],
                                 images_attributes: [:id, :imageable_id, :imageable_type],

@@ -19,6 +19,9 @@ Aggregator.PublicationLock = DS.Model.extend({
   urlLockedBy: DS.belongsTo('user'),
   urlLocked: DS.attr('boolean'),
 
+  tagsLockedBy: DS.belongsTo('user'),
+  tagsLocked: DS.attr('boolean'),
+
   posterLockedBy: DS.belongsTo('user'),
   posterLocked: DS.attr('boolean'),
 
