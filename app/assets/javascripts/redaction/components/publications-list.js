@@ -14,21 +14,21 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
   filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', 'titleFilter', function(){
     var _this = this;
 
-//    var publications = this.get('publications').filter(function(publication, index, array){
-//      return !_this.get('categoryPublications').contains(publication);
-//    });
-//
-//    if (Ember.isPresent(this.get('titleFilter'))) {
-//      var regex = new RegExp(this.get('titleFilter'));
-//
-//      var publications = this.get('publications').filter(function(publication, index, array){
-//        return regex.test(publication.get('title'));
-//      });
-//    }
+    var publications = this.get('publications').filter(function(publication, index, array){
+      return !_this.get('categoryPublications').contains(publication);
+    });
 
-    return this.get('store').query('publication', {state: 'published', term: this.get('titleFilter')});
+    if (Ember.isPresent(this.get('titleFilter'))) {
+      var regex = new RegExp(this.get('titleFilter'));
 
-    //return publications;
+      var publications = this.get('publications').filter(function(publication, index, array){
+        return regex.test(publication.get('title'));
+      });
+    }
+
+    //return this.get('store').query('publication', {state: 'published', term: this.get('titleFilter')});
+
+    return publications;
   }),
 
   categoryPublications: Ember.computed('category.lines.[]', 'fakeFire', function(){
@@ -84,8 +84,12 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
       var _this = this;
       var params = {
         page: (this.get('publications.content.meta').page + 1),
-        state: 'published'
+        state: 'published',
       };
+
+      if(Ember.isPresent(this.get('titleFilter'))) {
+        params["term"] = this.get('titleFilter');
+      }
 
       this.get('store').query('publication', params).then(function(publications) {
         _this.get('publications.content').set('meta', publications.get('meta'));
