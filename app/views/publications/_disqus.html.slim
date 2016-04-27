@@ -2,12 +2,9 @@
   .button-disqus
     .btn.btn-default.comment-button
       i.fa.fa-comment
-      | ОБСУДИТЬ (
-      span.disqus-comment-count data-disqus-identifier="publication_#{@publication.id}"
-      | )
+      | ОБСУДИТЬ
 
 - content_for :javascripts do
-  script#dsq-count-scr src="//fireimp.disqus.com/count.js" async=true
   javascript:
     $('.comment-button').click(function(event){
       var url = "#{@publication.full_url}";
