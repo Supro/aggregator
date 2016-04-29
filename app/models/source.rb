@@ -49,4 +49,8 @@ class Source < ActiveRecord::Base
   def got_childrens
     childrens.count > 0
   end
+
+  def embed_sources
+    sources
+  end
 end
