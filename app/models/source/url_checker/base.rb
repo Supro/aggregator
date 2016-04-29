@@ -1,10 +1,11 @@
 class Source < ActiveRecord::Base
   module UrlChecker
     class Base
-      attr_reader :source
+      attr_reader :source, :urls
 
-      def initialize(source, *args, &block)
+      def initialize(source, urls)
         @source = source
+        @urls = urls
       end
 
       def check_urls

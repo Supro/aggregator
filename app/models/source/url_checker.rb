@@ -9,10 +9,14 @@ class Source < ActiveRecord::Base
       def check_urls
         case type
         when 'child'
-          Source::UrlChecker::Child.new(self).check_urls
+          Source::UrlChecker::Child.new(self, urls_by_path).check_urls
         when 'sibling'
-          Source::UrlChecker::Sibling.new(self).check_urls
+          Source::UrlChecker::Sibling.new(self, urls_by_path).check_urls
         end
+      end
+
+      def urls_by_path
+        Url.where("path LIKE ?", "#{url}%")
       end
     end
   end

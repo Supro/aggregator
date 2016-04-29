@@ -34,46 +34,6 @@ class Source < ActiveRecord::Base
                                 allow_destroy: true,
                                 reject_if: proc { |attributes| attributes['title'].blank? || attributes['url'].blank? }
 
-  def self.find_with_link(link)
-    rsource = nil
-
-    Source.where(source_id: nil).find_each do |source|
-      if link =~ /#{source.url}/
-        if source.got_childrens
-          source.childrens.find_each do |new_source|
-            if link =~ /#{new_source.url}/
-              return OpenStruct.new source: new_source, children: false
-            else
-              rsource = OpenStruct.new source: source, children: true
-            end
-          end
-
-          return rsource
-        else
-          rsource = OpenStruct.new source: source, children: false
-        end
-      else
-        if source.got_siblings
-          source.siblings.find_each do |new_source|
-            if link =~ /#{new_source.url}/
-              return OpenStruct.new source: new_source, children: false
-            else
-              rsource = OpenStruct.new source: nil, children: false
-            end
-          end
-        else
-          rsource = OpenStruct.new source: nil, children: false if rsource.blank?
-        end
-      end
-    end
-
-    return rsource
-  end
-
-  def embed_sources
-    sources
-  end
-
   def childrens
     sources.where(type: 'child')
   end

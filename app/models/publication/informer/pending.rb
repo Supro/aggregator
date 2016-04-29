@@ -2,7 +2,7 @@ class Publication < ActiveRecord::Base
   module Informer
     class Pending < Base
       def chat
-        "C0WV978KW"
+        "C13GV9VKR"
       end
 
       def message

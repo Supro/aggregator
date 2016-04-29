@@ -2,7 +2,7 @@ class Source < ActiveRecord::Base
   module UrlChecker
     class Child < Base
       def check_urls
-        Url.where("path LIKE ?", "#{source.url}%").update_all(source_id: source.id)
+        urls.update_all(source_id: source.id)
       end
     end
   end

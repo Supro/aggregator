@@ -3,7 +3,7 @@ class Publication < ActiveRecord::Base
     class Checking < Base
       def chat
         #publication.editor.slack_chat
-        "C0WV978KW"
+        "C13GV9VKR"
       end
 
       def message

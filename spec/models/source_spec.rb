@@ -21,58 +21,22 @@ RSpec.describe Source, type: :model do
   it "relations" do
     should belong_to(:source)
     should have_many(:sources)
+    should have_many(:urls)
+    should have_many(:publications)
   end
 
-  describe ".find_with_link" do
-    let(:source) { FactoryGirl.create :source }
+  context ".search" do
+    let(:params) { {term: "first"} }
 
-    context "by parent" do
-      let(:link) { "http://vk.com" }
-
-      before { source }
-
-      it "should find source by link" do
-        expect(Source.find_with_link(link).source).to eq source
-        expect(Source.find_with_link(link).children).to eq false
-      end
+    before do
+      create :source, title: 'First'
+      create :source, title: 'Second'
     end
 
-    context "by sibling" do
-      let(:link) { "http://vkontakte.ru" }
+    it { expect(Source).to respond_to(:search) }
 
-      before do
-        source.sources.create title: "Some", url: "http://vkontakte.ru", type: 'sibling', source_id: source.id
-      end
-
-      it "should find source by link" do
-        expect(Source.find_with_link(link).source).to eq source.sources.first
-      end
-    end
-
-    context "by child" do
-      let(:link) { "http://vk.com/cycling" }
-
-      before do
-        source.sources.create title: "Some", url: "http://vk.com/cycling", type: 'child', source_id: source.id
-      end
-
-      it "should find source by link" do
-        expect(Source.find_with_link(link).source).to eq source.sources.first
-      end
-    end
-
-    context "no child" do
-      let(:link) { "http://vk.com/cycling" }
-
-      before {
-        source
-        source.sources.create title: "Some", url: "http://vk.com/motocycling", type: 'child', source_id: source.id
-      }
-
-      it "should find source by link" do
-        expect(Source.find_with_link(link).source).to eq source
-        expect(Source.find_with_link(link).children).to be_truthy
-      end
+    it "should return right values" do
+      expect(Source.search(params).count).to eq 1
     end
   end
 end
