@@ -3,7 +3,7 @@ class Api::V1::PublicationsController < Api::V1::ApplicationController
   before_action :find_publication, only: [:show, :insert_at, :move_to_approved,
                                           :move_to_declined, :move_to_published,
                                           :move_to_checking, :move_to_ready,
-                                          :move_to_rework,
+                                          :move_to_rework, :promote,
                                           :update, :destroy]
   before_action :set_creator, only: [:create]
 
@@ -52,6 +52,13 @@ class Api::V1::PublicationsController < Api::V1::ApplicationController
       @publication.insert_at(Publication.find(params[:next]).position - 1)
     end
     render json: @publication, serializer: Api::V1::PublicationSerializer
+  end
+
+  def promote
+    Publication.update_all(promoted: false)
+    if @publication.update(promoted: true)
+      render json: @publication, serializer: Api::V1::PublicationSerializer
+    end
   end
 
   def move_to_approved

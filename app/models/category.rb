@@ -18,6 +18,7 @@ class Category < ActiveRecord::Base
   # Relations
   has_many :lines, dependent: :destroy
   has_and_belongs_to_many :publications
+  has_many :recommendations, as: :itemable
 
   # Nested
   accepts_nested_attributes_for :lines, allow_destroy: true

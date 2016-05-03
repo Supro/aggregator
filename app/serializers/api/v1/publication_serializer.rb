@@ -2,7 +2,8 @@ class Api::V1::PublicationSerializer < ActiveModel::Serializer
   attributes :id, :slug, :title, :sub_title, :context, :body, :tags,
              :type, :time, :category_ids, :box_ids, :state, :can_edit,
              :can_move_to_approved, :can_move_to_declined, :can_move_to_checking,
-             :can_move_to_rework, :can_move_to_ready, :can_move_to_published
+             :can_move_to_rework, :can_move_to_ready, :can_move_to_published,
+             :can_promote
 
   #has_one :source, embed: :ids, embed_in_root: true
   has_many :urls, embed: :ids, embed_in_root: true, serializer: Api::V1::UrlIndexSerializer
@@ -45,6 +46,10 @@ class Api::V1::PublicationSerializer < ActiveModel::Serializer
 
   def can_move_to_published
     ability.can?(:move_to_published, object)
+  end
+
+  def can_promote
+    ability.can?(:promote, object)
   end
 
   def ability

@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424104819) do
+ActiveRecord::Schema.define(version: 20160502105708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "add_tags_to_publications", force: :cascade do |t|
+    t.string   "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -189,7 +196,7 @@ ActiveRecord::Schema.define(version: 20160424104819) do
     t.integer  "writer_id"
     t.datetime "publish_at"
     t.string   "tags"
-    t.integer  "visits",       default: 0
+    t.integer  "visits"
     t.boolean  "promoted",     default: false
   end
 
@@ -198,6 +205,18 @@ ActiveRecord::Schema.define(version: 20160424104819) do
   add_index "publications", ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   add_index "publications", ["source_id"], name: "index_publications_on_source_id", using: :btree
   add_index "publications", ["writer_id"], name: "index_publications_on_writer_id", using: :btree
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "itemable_id"
+    t.string   "itemable_type"
+    t.integer  "publication_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "recommendations", ["itemable_type", "itemable_id"], name: "index_recommendations_on_itemable_type_and_itemable_id", using: :btree
+  add_index "recommendations", ["publication_id"], name: "index_recommendations_on_publication_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -232,6 +251,26 @@ ActiveRecord::Schema.define(version: 20160424104819) do
   end
 
   add_index "sources", ["source_id"], name: "index_sources_on_source_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "urls", force: :cascade do |t|
     t.string   "path"
@@ -312,7 +351,6 @@ ActiveRecord::Schema.define(version: 20160424104819) do
   add_foreign_key "boxes", "images"
   add_foreign_key "boxes", "lines"
   add_foreign_key "lines", "categories"
-  add_foreign_key "publication_locks", "publications"
   add_foreign_key "publications", "sources"
   add_foreign_key "slides", "images"
   add_foreign_key "slides", "publications"

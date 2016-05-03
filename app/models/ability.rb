@@ -100,6 +100,9 @@ class Ability
     can :move_to_intresting, Url
 
     can :edit, Publication
+    can :promote, Publication do |pub|
+      !pub.promoted && pub.published?
+    end
 
     can :move_to_checking, Publication do |pub|
       pub.can_move_to_checking?

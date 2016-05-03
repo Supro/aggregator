@@ -43,6 +43,8 @@ Aggregator::Application.routes.draw do
         post :insert_at, on: :member
       end
 
+      resources :recommendations, only: [:create]
+
       resources :urls, only: [:index, :show] do
         member do
           put :move_to_lame
@@ -53,6 +55,7 @@ Aggregator::Application.routes.draw do
       resources :publications, only: [:index, :show, :create, :update, :destroy] do
         member do
           post :insert_at
+          put :promote
           put :move_to_approved
           put :move_to_declined
           put :move_to_checking

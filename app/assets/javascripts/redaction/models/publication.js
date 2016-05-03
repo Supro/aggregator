@@ -40,6 +40,7 @@ Aggregator.Publication = DS.Model.extend(
   canMoveToRework: DS.attr('boolean'),
   canMoveToReady: DS.attr('boolean'),
   canMoveToPublished: DS.attr('boolean'),
+  canPromote: DS.attr('boolean'),
 
   slidesActive: Ember.computed('slides.@each.willDestroy', 'lines.@each.position', 'fakeFire', function(){
     var slides = this.get('slides');

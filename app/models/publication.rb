@@ -59,11 +59,12 @@ class Publication < ActiveRecord::Base
   after_create :create_publication_lock, :create_publication_watcher
 
   # Relations
-  has_one :publication_lock
-  has_one :publication_watcher
   has_and_belongs_to_many :boxes
   has_and_belongs_to_many :categories
   has_many :images, as: :imageable
+  has_many :recommendations, as: :itemable
+  has_one :publication_lock
+  has_one :publication_watcher
   has_many :publication_links
   has_many :urls
   belongs_to :source
