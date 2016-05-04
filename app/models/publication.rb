@@ -37,6 +37,7 @@
 class Publication < ActiveRecord::Base
   include FragmentCacheRemoveable
   include Publication::Searchable
+  include Publication::Recommendations
   include Publication::Slugable
   include Publication::Informer
   include Publication::States
@@ -62,7 +63,6 @@ class Publication < ActiveRecord::Base
   has_and_belongs_to_many :boxes
   has_and_belongs_to_many :categories
   has_many :images, as: :imageable
-  has_many :recommendations, as: :itemable
   has_one :publication_lock
   has_one :publication_watcher
   has_many :publication_links

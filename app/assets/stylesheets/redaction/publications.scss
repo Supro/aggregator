@@ -6,6 +6,25 @@
   padding: 0 30px;
 }
 
+.recommendations-list {
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 15px;
+
+  .box-list {
+    padding: 15px;
+    overflow: hidden;
+  }
+
+  .delete-pub {
+    opacity: 1 !important;
+    float: right;
+    line-height: 0;
+    font-size: 20px !important;
+    margin-top: -7px;
+  }
+}
+
 .image-resource-upload-container {
   margin-bottom: 10px;
 

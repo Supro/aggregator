@@ -3,7 +3,7 @@ class Api::V1::PublicationIndexSerializer < ActiveModel::Serializer
              :approve_time, :publish_time, :position, :category_ids, :box_ids,
              :can_move_to_approved, :can_move_to_declined, :can_move_to_checking,
              :can_move_to_rework, :can_move_to_ready, :can_move_to_published,
-             :can_promote
+             :can_promote, :recommendation_ids
 
   has_one :editor, embed: :ids, embed_in_root: true, root: :users
   has_one :creator, embed: :ids, embed_in_root: true, root: :users

@@ -3,7 +3,7 @@ class Api::V1::PublicationSerializer < ActiveModel::Serializer
              :type, :time, :category_ids, :box_ids, :state, :can_edit,
              :can_move_to_approved, :can_move_to_declined, :can_move_to_checking,
              :can_move_to_rework, :can_move_to_ready, :can_move_to_published,
-             :can_promote
+             :can_promote, :total_visits, :recommendation_ids
 
   #has_one :source, embed: :ids, embed_in_root: true
   has_many :urls, embed: :ids, embed_in_root: true, serializer: Api::V1::UrlIndexSerializer

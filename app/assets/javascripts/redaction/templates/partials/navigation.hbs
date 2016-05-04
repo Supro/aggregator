@@ -14,6 +14,7 @@
       <ul class="nav navbar-nav">
         {{#if session.currentUser.isChiefEditor}}
           <li>{{link-to "Страницы" 'pages.show' 1}}</li>
+          <li>{{link-to "Рекомендации" 'recommendations.index'}}</li>
           <li>{{link-to "Источники" 'sources'}}</li>
           <li>{{link-to "Редакция" 'publications'}}</li>
           <li>{{link-to "Пользователи" 'users'}}</li>
@@ -40,3 +41,5 @@
     </div>
   </div>
 </nav>
+
+{{menu-hack}}

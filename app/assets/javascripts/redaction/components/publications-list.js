@@ -2,31 +2,36 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
   classNames: ['publications-list', 'col-lg-3', 'col-md-3'],
 
   loading: false,
+  title: '',
+  valuesTimeout: null,
 
-  publications: Ember.computed('category', function(){
+  publications: Ember.computed('title', function(){
     var _this = this;
 
-    return this.get('store').query('publication', {state: 'published'});//.then(function(publications){
-    //  _this.set('publications', publications);
-    //});
+    params = {
+      state: 'published',
+      term: this.get('title')
+    }
+
+    return this.get('store').query('publication', params);
   }),
 
-  filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', 'titleFilter', function(){
+  titleFilterObserver: Ember.observer('titleFilter', function(){
+    var _this = this;
+
+    clearTimeout(this.get('valuesTimeout'));
+
+    this.set('valuesTimeout', setTimeout(function(){
+      _this.set('title', _this.get('titleFilter'));
+    }, 500));
+  }),
+
+  filteredPublications: Ember.computed('categoryPublications.[]', 'publications.[]', function(){
     var _this = this;
 
     var publications = this.get('publications').filter(function(publication, index, array){
       return !_this.get('categoryPublications').contains(publication);
     });
-
-    if (Ember.isPresent(this.get('titleFilter'))) {
-      var regex = new RegExp(this.get('titleFilter'));
-
-      var publications = this.get('publications').filter(function(publication, index, array){
-        return regex.test(publication.get('title'));
-      });
-    }
-
-    //return this.get('store').query('publication', {state: 'published', term: this.get('titleFilter')});
 
     return publications;
   }),
@@ -85,11 +90,8 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
       var params = {
         page: (this.get('publications.content.meta').page + 1),
         state: 'published',
+        term: this.get('title')
       };
-
-      if(Ember.isPresent(this.get('titleFilter'))) {
-        params["term"] = this.get('titleFilter');
-      }
 
       this.get('store').query('publication', params).then(function(publications) {
         _this.get('publications.content').set('meta', publications.get('meta'));
@@ -98,4 +100,17 @@ Aggregator.PublicationsListComponent = Ember.Component.extend({
       });
     }
   }
+});
+
+Aggregator.PublicationsRecommendationsListComponent = Aggregator.PublicationsListComponent.extend({
+
+  filteredPublications: Ember.computed('ids.[]', 'publications.[]', function(){
+    var _this = this;
+
+    var publications = this.get('publications').filter(function(publication, index, array){
+      return !_this.get('ids').contains(parseInt(publication.get('id')));
+    });
+
+    return publications;
+  })
 });

@@ -1,5 +1,5 @@
 class Api::V1::PublicationSearchSerializer < ActiveModel::Serializer
-  attributes :id, :title, :sub_title, :type_color, :type_name,
+  attributes :id, :title, :sub_title, :type_color, :type_name, :total_visits,
              :full_url, :created_at, :thumb, :time
 
   def thumb

@@ -19,4 +19,8 @@
 class Recommendation < ActiveRecord::Base
   belongs_to :itemable, polymorphic: true
   belongs_to :publication
+
+  def self.regular_ids
+    where(itemable_type: "Category", itemable_id: '1').select(:publication_id).map(&:publication_id)
+  end
 end

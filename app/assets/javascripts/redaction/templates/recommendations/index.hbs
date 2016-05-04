@@ -1,0 +1,11 @@
+<div class="col-lg-8 col-md-8">
+  {{recommendations-list store=store ids=settings.recommendations store=store publications=model}}
+  <button class="btn btn-success" {{action "saveRecommendations"}}>
+    {{#if saving}}
+      Сохраняю
+    {{else}}
+      Сохранить рекомендации
+    {{/if}}
+  </button>
+</div>
+{{publications-recommendations-list ids=settings.recommendations list=model store=store}}

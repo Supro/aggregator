@@ -1,0 +1,7 @@
+<div class="background">
+  <div class="box-list">
+    {{#each publications as |publication|}}
+      {{publication-recommendation-element publication=publication publications=publications store=store ids=ids fakeFire=fakeFire}}
+    {{/each}}
+  </div>
+</div>

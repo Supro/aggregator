@@ -47,3 +47,14 @@ Aggregator.PublicationElementComponent = Ember.Component.extend({
     }
   }
 });
+
+Aggregator.PublicationRecommendationElementComponent = Aggregator.PublicationElementComponent.extend({
+  actions: {
+    removeFromBox: function(){
+      var publication = this.get('publication');
+      this.get('publications').removeObject(publication);
+      this.get('ids').removeObject(parseInt(publication.get('id')));
+      //this.toggleProperty('fakeFire');
+    }
+  }
+});

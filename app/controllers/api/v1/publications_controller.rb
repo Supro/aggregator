@@ -1,5 +1,5 @@
 class Api::V1::PublicationsController < Api::V1::ApplicationController
-  before_action :doorkeeper_authorize!
+  #before_action :doorkeeper_authorize!
   before_action :find_publication, only: [:show, :insert_at, :move_to_approved,
                                           :move_to_declined, :move_to_published,
                                           :move_to_checking, :move_to_ready,

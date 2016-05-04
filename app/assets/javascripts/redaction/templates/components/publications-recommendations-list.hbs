@@ -1,0 +1,16 @@
+{{input value=titleFilter class="form-control title-filter" placeholder="Поиск"}}
+{{#each filteredPublications as |publication|}}
+  {{publication-recommendation-element publication=publication publications=list ids=ids store=store}}
+{{/each}}
+
+<div class="show-more">
+  {{#if canLoadMore}}
+    <a class="btn btn-primary" {{action 'getMore'}}>
+      {{#if loading}}
+        Загрузка
+      {{else}}
+        Еще
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

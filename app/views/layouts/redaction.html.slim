@@ -16,3 +16,7 @@ html
     = stylesheet_link_tag :redaction
     = javascript_include_tag :redaction
     = yield :javascripts
+    javascript:
+      Aggregator.__container__.lookup('controller:setting').setProperties({
+        recommendations: #{Recommendation.where(itemable_type: 'Category', itemable_id: 1).map{|rec| rec.publication_id }}
+      });

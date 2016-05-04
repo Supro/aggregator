@@ -31,6 +31,8 @@ Aggregator.Publication = DS.Model.extend(
   body:     DS.attr('string'),
   //url:      DS.attr('string'),
 
+  recommendationIds: DS.attr('array'),
+
   totalVisits: DS.attr('number'),
 
   canEdit: DS.attr('boolean'),

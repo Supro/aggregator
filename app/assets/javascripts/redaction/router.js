@@ -14,6 +14,10 @@ Aggregator.Router.map(function() {
       this.route('show', { path: '/:link' });
     });
 
+    this.route('recommendations', { resetNamespace: true }, function(){
+      this.route('index', { path: '/' });
+    });
+
     this.route('sources', { resetNamespace: true }, function(){
       this.route('new', { path: '/new' });
       this.route('show', { path: '/:id' });

@@ -1,5 +1,3 @@
-{{#if isShowingEditor}}
-  {{publication-edit model=model store=store settings=settings session=session}}
-{{else}}
-  {{publication-links model=model store=store settings=settings session=session}}
-{{/if}}
+{{publication-edit model=model store=store settings=settings session=session}}
+
+{{publication-recommendations publication=model settings=settings store=store session=session}}
