@@ -21,7 +21,7 @@
 
     .info {
       padding: 10px;
-      height: 62px;
+      height: 82px;
 
       .type {
         display: block;
@@ -33,7 +33,7 @@
       }
 
       h3 {
-        height: 40px;
+        height: 60px;
         display: block;
         padding: 0;
         margin: 0;
@@ -44,7 +44,7 @@
         margin-bottom: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         display: -webkit-box;
         text-shadow: 1px 1px #fff;
