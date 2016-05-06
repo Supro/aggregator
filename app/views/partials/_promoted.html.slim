@@ -1,7 +1,7 @@
 noindex
   .promoted
     - Publication.where(promoted: true).where.not(id: @publication.id).each do |publication|
-      a.publication-inner href="#{publication.full_url}"
+      a.publication-inner  oncontextmenu="yaCounter28115085.reachGoal('PromotedClick');" keydown="yaCounter28115085.reachGoal('PromotedClick');" onclick="yaCounter28115085.reachGoal('PromotedClick');" href="#{publication.full_url}"
         .black-background
           .img style="background-image: url(#{publication.poster.present? ? publication.poster.small_thumb : ''});"
           .info
