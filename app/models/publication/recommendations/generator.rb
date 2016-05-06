@@ -12,16 +12,16 @@ class Publication < ActiveRecord::Base
 
       def recommend
         generate
-        Publication.where(id: recommended_ids)
+        Publication.where(id: recommended_ids).limit(size)
       end
 
       def generate
         publication_ids.each do |id|
-          recommended_ids.push(id) if recommended_ids.length < size
+          recommended_ids.push(id)
         end
 
         regular_ids.each do |id|
-          recommended_ids.push(id) if recommended_ids.length < size
+          recommended_ids.push(id)
         end
       end
     end
