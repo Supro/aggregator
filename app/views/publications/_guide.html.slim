@@ -96,8 +96,9 @@
                   });
 
   .col-lg-3.col-md-3.publication-right.visible-md.visible-lg
-    = render partial: 'partials/promoted'
-    .navigator.sticky
+    .sticky
+      = render partial: 'partials/promoted'
+    .navigator
       - index = 1
       - json.sort_by{|item| item["position"] }.each do |item|
         - if item["type"].eql?("heading")
@@ -114,12 +115,12 @@
               $(".heading_" + position).get(0).scrollIntoView();
             });
 
-              var sticky = $('.sticky');
-              var stickyHeight = sticky.height();
-              var stickyHeaderTop = sticky.offset().top;
-              var stickyCheck = false;
+              //var sticky = $('.sticky');
+              //var stickyHeight = sticky.height();
+              //var stickyHeaderTop = sticky.offset().top;
+              //var stickyCheck = false;
 
-              var bottom = $('.bottom');
+              //var bottom = $('.bottom');
 
               //$(window).scroll(function(){
               //  if($(window).scrollTop() > stickyHeaderTop && (stickyHeight + 100) < $(window).height()) {

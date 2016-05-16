@@ -273,7 +273,7 @@ var renderPublication = function(publication) {
                   html += '</div>'
                 html += '</div>'
               } else if (elem.type === 'image') {
-                html += '<a class="image-block image_' + elem.position + '" target="_blank" rel="nofollow" href="' + elem.content.link + '">'
+                html += '<a class="image-block image_' + elem.position + '" target="_blank" rel="nofollow" href="' + elem.content.url + '">'
                   var style = '';
 
                   if (elem.content.width != '') {
