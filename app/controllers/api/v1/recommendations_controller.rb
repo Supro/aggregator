@@ -1,7 +1,8 @@
 class Api::V1::RecommendationsController < Api::V1::ApplicationController
-  before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!, except: [:show]
 
   before_action :find_itemable, :clear_old, only: [:create]
+  before_action :find_publication, :find_recommendation, only: [:show]
 
   def create
     params[:ids].each do |id|
@@ -11,7 +12,21 @@ class Api::V1::RecommendationsController < Api::V1::ApplicationController
     render json: {status: 'ok'}, status: :ok
   end
 
+  def show
+    render json: @recommendation,
+           root: :publication,
+           serializer: Api::V1::PublicationRecSerializer
+  end
+
 private
+
+  def find_publication
+    @publication = Publication.find(params[:publication_id])
+  end
+
+  def find_recommendation
+    @recommendation = @publication.recommended_publications.find(params[:id])
+  end
 
   def find_itemable
     @itemable = params[:itemable_type].constantize.find(params[:itemable_id])

@@ -1,12 +1,3 @@
-//new GetShare({
-//  root: $(".twitter"),
-//  network: "twitter",
-//  share: {
-//    url: url,
-//    message: url + ' ' + title,
-//  }
-//});
-
 new GetShare({
   root: $(".facebook"),
   network: "facebook",
@@ -23,15 +14,6 @@ new GetShare({
     url: url
   }
 });
-
-//new GetShare({
-//  root: $(".googleplus"),
-//  network: "googleplus",
-//  share: {
-//    url: url,
-//    message: url + ' ' + title
-//  }
-//});
 
 $(function(){
   var screen = $(window);

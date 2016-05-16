@@ -3,7 +3,7 @@
                 og: { title: @publication.full_title, type: 'article', image: @publication.poster.square, description: @publication.context, url: "#{@publication.full_url}" },
                 twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.square }
 
-.publication-show.news
+.publication-show.news class="publication_#{@publication.id}"
   .publication-top
     .background style="background-image: url(#{@publication.background.present? ? @publication.background.url : (@publication.poster.present? ? @publication.poster.url : '')});"
       .inner-block
@@ -156,8 +156,8 @@
 
   = render partial: 'publications/recommendations'
 
-  .col-lg-12-col-md-12.disqus-cont
-    = render partial: 'publications/disqus'
+  //.col-lg-12-col-md-12.disqus-cont
+  //  = render partial: 'publications/disqus'
 
 script type="application/ld+json" {
     "@context": "http://schema.org",

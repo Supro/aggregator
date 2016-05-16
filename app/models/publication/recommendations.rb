@@ -11,9 +11,9 @@ class Publication < ActiveRecord::Base
     end
 
     def recommended_publications
-      regular_ids = Recommendation.regular_ids
+      regular_ids = Recommendation.regular_ids.reject{|r| r == id }
 
-      Publication::Recommendations::Generator.new(recommendation_ids, regular_ids).recommend
+      Publication::Recommendations::Generator.new(recommendation_ids.reject{|r| r == id }, regular_ids).recommend
     end
   end
 end

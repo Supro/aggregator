@@ -21,6 +21,10 @@ a.publication-inner {
   //background-color: rgba(255, 255, 255, 0.92);
   overflow: hidden;
 
+  &.marged {
+    margin-top: 100px;
+  }
+
   .publication-top {
     height: 450px;
 

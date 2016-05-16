@@ -31,6 +31,7 @@ Aggregator::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :search, only: [:index]
+        resources :search, only: [:index]
 
       resources :users, only: [:index, :show, :create, :update] do
         get 'me', on: :collection
@@ -43,7 +44,7 @@ Aggregator::Application.routes.draw do
         post :insert_at, on: :member
       end
 
-      resources :recommendations, only: [:create]
+      resources :recommendations, only: [:create, :show]
 
       resources :urls, only: [:index, :show] do
         member do

@@ -1,5 +1,6 @@
-.col-lg-12-col-md-12.recommendations.hidden-xs
-  - @publication.recommended_publications.shuffle.each_with_index do |publication, index|
+.col-lg-12.col-md-12.recommendations.hidden-xs
+  - recommendations = @publication.recommended_publications.shuffle
+  - recommendations.shuffle.each_with_index do |publication, index|
     a.publication-inner.col-lg-3.col-md-3.col-sm-4 oncontextmenu="yaCounter28115085.reachGoal('RecommendationClick');" keydown="yaCounter28115085.reachGoal('RecommendationClick');" onclick="yaCounter28115085.reachGoal('RecommendationClick');" class="#{(index > 5) ? 'visible-lg visible-md' : ''}" href="#{publication.full_url}"
       .black-background
         .img style="background-image: url(#{publication.poster.present? ? publication.poster.thumb : ''});"
@@ -11,3 +12,12 @@
             //- if publication.sub_title.present?
             //  span= publication.sub_title
           //time= "#{time_ago_in_words publication.published_at} назад"
+
+- content_for :javascripts do
+  javascript:
+    var recommendations = #{recommendations.map(&:id)};
+    var publicationId = #{@publication.id};
+    var publicationTitle = "#{@publication.title}";
+    var publicationTypePath = "#{@publication.type_path}";
+
+  = javascript_include_tag :recommendations
