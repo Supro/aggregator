@@ -41,8 +41,8 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
     }).on('paste', function() {
       setTimeout(function(){
         var element = Ember.$(_this.$().find('.item-content'));
-        var re = new RegExp(String.fromCharCode(160), "g");
-        var content = element.text().replace(/(\r\n|\n|\r)/gm, '').replace(re, " ");
+        //var re = new RegExp(String.fromCharCode(160), "g");
+        var content = element.text().replace(/(\r\n|\n|\r)/gm, '');
         if(_this.get('session.currentUser.isChiefEditor')) {
           element.html(content);
         } else {
@@ -59,7 +59,10 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
     range.deleteContents();
     range.insertNode(el);
 
-    this.updateItem();
+    var element = Ember.$(this.$().find('.item-content'));
+    var content = element.html();
+
+    this.updateContent(content);
   },
 
   actions: {
