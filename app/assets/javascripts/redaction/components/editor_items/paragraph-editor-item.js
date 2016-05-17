@@ -21,7 +21,12 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
       var json = JSON.stringify(hash);
 
       socket.send(json);
-    }).on('keyup input', function() {
+    }).on('keyup input mouseup', function() {
+      var sel = window.getSelection();
+
+      _this.set('selected', sel.toString());
+      _this.set('range', sel.getRangeAt(0));
+
       clearTimeout(_this.get('valueTimeout'));
       var element = Ember.$(this);
 
@@ -46,5 +51,34 @@ Aggregator.ParagraphEditorItemComponent = Aggregator.EditorItemComponent.extend(
         _this.updateContent(content);
       }, _this.get('timeoutTime'))
     });
+  },
+
+  insertTextAtCursor: function (el) {
+    var range = this.get('range');
+
+    range.deleteContents();
+    range.insertNode(el);
+
+    this.updateItem();
+  },
+
+  actions: {
+    addLink: function() {
+      var text = prompt("Введите текст ссылки:", this.get('selected'));
+      var url = prompt("Введите адрес ссылки:", "");
+
+      var el = document.createElement('a');
+      el.href = url;
+      el.innerHTML = text;
+
+      if (/^http/.test(url) && !(/http\:\/\/fireimp\.ru/.test(url))) {
+        el.rel = "nofollow";
+        el.target = "_blank";
+      }
+
+      if (url != null && url != '') {
+        this.insertTextAtCursor(el);
+      }
+    }
   }
 });

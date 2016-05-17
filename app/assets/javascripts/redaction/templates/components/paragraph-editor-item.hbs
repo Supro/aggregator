@@ -5,6 +5,9 @@
   <div class="handle {{if disabled 'hidden' 'visible'}}">
     <i class="fa fa-arrows-alt"></i>
   </div>
-  <div class="type">Абзац</div>
+  <div class="type">
+    Абзац
+    <i class="fa fa-link" {{action 'addLink'}}></i>
+  </div>
 </div>
 <div class="paragraph item-content" contenteditable="{{enabled}}">{{{currentItem.content}}}</div>
