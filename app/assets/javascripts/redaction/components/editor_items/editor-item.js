@@ -76,7 +76,7 @@ Aggregator.EditorItemComponent = Ember.Component.extend({
         this.get('socket').send(json);
       }
     }
-  },
+  }//,
 
-  didInserElement: function(){}
+  //didInsertElement: function(){}
 });
