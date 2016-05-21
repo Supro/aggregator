@@ -3,7 +3,7 @@
                 og: { title: @publication.full_title, type: 'article', image: @publication.poster.square, description: @publication.context, url: "#{@publication.full_url}" },
                 twitter: { card: "summary_large_image", site: "@fireimp_ru", image: @publication.poster.square }
 
-.publication-show.news class="publication_#{@publication.id}"
+.publication-show.news class="publication_#{@publication.id}" data-appear-top-offset="-500"
   .publication-top
     .background style="background-image: url(#{@publication.background.present? ? @publication.background.url : (@publication.poster.present? ? @publication.poster.url : '')});"
       .inner-block
@@ -66,8 +66,7 @@
                 = youtube_embed(item["content"]["source"])
           - if item["type"].eql?('adv')
             .laugh-block
-              .laugh-inner
-                .fake-adv Реклама
+              = render partial: 'publications/adv_inner'
           - if item["type"].eql?('image')
             a.image-block class="image_#{item["position"]}" href="#{item["content"]["url"]}" target="_blank"
               img src="#{item["content"]["url"]}" alt="#{item["content"]["alt"]}" style="#{item["content"]["width"].blank? ? "" : "max-width: #{item["content"]["width"]}px;"}#{item["content"]["height"].blank? ? "" : "max-height: #{item["content"]["height"]}px;"}"

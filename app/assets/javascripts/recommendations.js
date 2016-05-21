@@ -136,6 +136,16 @@ $(function(){
       var st = $('.sticky').detach();
 
       $(selector).find('.publication-right').append(st);
+
+      var st2 = $('#adv-inner').detach();
+
+      var laughBlock = $(selector).find('.laugh-block');
+
+      if (laughBlock.length > 0) {
+        laughBlock.append(st2);
+      } else {
+        $('#hidden-laugh').append(st2);
+      }
     }
   });
 });
@@ -158,13 +168,13 @@ var renderPublication = function(publication) {
   var body = JSON.parse(publication.body.replace(/&lt;/, "<").replace(/&gt;/, ">"))
 
   if (publication.type === 'news') {
-    html += '<div class="publication-show marged news publication_' + publication.id + '">'
+    html += '<div data-appear-top-offset="-500" class="publication-show marged news publication_' + publication.id + '">'
   } else if (publication.type === 'video') {
-    html += '<div class="publication-show marged video publication_' + publication.id + '">'
+    html += '<div data-appear-top-offset="-500" class="publication-show marged video publication_' + publication.id + '">'
   } else if (publication.type === 'guide') {
-    html += '<div class="publication-show marged guide publication_' + publication.id + '">'
+    html += '<div data-appear-top-offset="-500" class="publication-show marged guide publication_' + publication.id + '">'
   } else if (publication.type === 'article') {
-    html += '<div class="publication-show marged article publication_' + publication.id + '">'
+    html += '<div data-appear-top-offset="-500" class="publication-show marged article publication_' + publication.id + '">'
   }
 
     html += '<div class="publication-top">'
@@ -241,6 +251,9 @@ var renderPublication = function(publication) {
               } else if (elem.type === 'tweet') {
                 html += '<div class="embed-tweet">'
                 html += elem.content.html
+                html += '</div>'
+              } else if (elem.type === 'adv') {
+                html += '<div class="laugh-block">'
                 html += '</div>'
               } else if (elem.type === 'quote') {
                 html += '<div class="quote-block">'
@@ -394,6 +407,16 @@ var renderPublication = function(publication) {
         var st = $('.sticky').detach();
 
         $(selector).find('.publication-right').append(st);
+
+        var st2 = $('#adv-inner').detach();
+
+        var laughBlock = $(selector).find('.laugh-block');
+
+        if (laughBlock.length > 0) {
+          laughBlock.append(st2);
+        } else {
+          $('#hidden-laugh').append(st2);
+        }
 
         once(function() {
           var id = recommendations.shift();
