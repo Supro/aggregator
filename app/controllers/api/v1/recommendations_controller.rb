@@ -1,5 +1,5 @@
 class Api::V1::RecommendationsController < Api::V1::ApplicationController
-  before_action :doorkeeper_authorize!, except: [:show]
+  before_action :doorkeeper_authorize!, except: [:show, :index]
 
   before_action :find_itemable, :clear_old, only: [:create]
   before_action :find_publication, :find_recommendation, only: [:show]
@@ -16,6 +16,12 @@ class Api::V1::RecommendationsController < Api::V1::ApplicationController
     render json: @recommendation,
            root: :publication,
            serializer: Api::V1::PublicationRecSerializer
+  end
+
+  def index
+    render json: Recommendation.where(itemable_type: 'Category', itemable_id: 1).map(&:publication),
+           root: :publication,
+           each_serializer: Api::V1::RecommendationSerializer
   end
 
 private

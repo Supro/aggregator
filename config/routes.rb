@@ -44,7 +44,7 @@ Aggregator::Application.routes.draw do
         post :insert_at, on: :member
       end
 
-      resources :recommendations, only: [:create, :show]
+      resources :recommendations, only: [:create, :show,:index]
 
       resources :urls, only: [:index, :show] do
         member do
