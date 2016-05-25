@@ -254,6 +254,7 @@ var renderPublication = function(publication) {
                 html += '</div>'
               } else if (elem.type === 'adv') {
                 html += '<div class="laugh-block">'
+                  html += '<script id="4B_gGNgYMJ5k1-fn">if (window.relap) window.relap.ar("4B_gGNgYMJ5k1-fn");</script>'
                 html += '</div>'
               } else if (elem.type === 'quote') {
                 html += '<div class="quote-block">'
