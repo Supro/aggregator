@@ -1,6 +1,6 @@
 set :stages, %w(staging production)
 set :default_stage, "production"
-set :user, :deploy
+set :user, :root
 set :application, 'fireimp'
 
 set :deploy_via, :remote_cache
@@ -13,6 +13,7 @@ set :linked_dirs, ['log', 'tmp/pids', 'public/uploads']
 set :use_sudo, false
 set :rbenv_type, :system
 set :rbenv_ruby, '2.2.2'
+set :rbenv_path, '/root/.rbenv'
 
 set :keep_releases, 3
 
